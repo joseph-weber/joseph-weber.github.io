@@ -1,0 +1,102 @@
+body {
+	font-family: "Comic Sans MS", sans-serif;;
+	text-align: center;
+	margin: 0 auto;
+}
+
+html { 
+  background: url(../Images/StPete.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+}
+#main {
+	 z-index: 1;
+    position: relative;
+    opacity: 1;
+}
+
+header {
+	z-index: 1;
+    position: relative;
+	width: 1000px;
+	margin: 0 auto;
+}
+h1 {
+	color: #FFFFFF;
+	font-size: 48px;
+	margin: 12px;
+}
+
+h2 {
+	color: #FFFFFF;
+	text-align: center;
+	font-size: 30px;
+}
+
+nav {
+	background-color: #FFFFFF;
+	border-radius: 25px;
+	padding: 20px 0 20px 0;
+	display: inline;
+	margin: 40px auto;
+}
+
+p {
+	margin: 24px;
+}
+
+.rougarou {
+	transform: rotate(90deg);
+	height: 150px;
+	width: 150px;
+	display: block;
+	margin: auto;
+	border-radius: 150px;
+	margin: 40px auto;
+}
+
+#container {
+	text-align:center;
+	width: 100%;
+	margin: 0;
+}
+
+.column {
+	float: left;
+	width: 33%;
+	margin: 0 auto;
+	background-color: rgba(0,0,0,.8);
+	height: 190px;
+}
+
+#programming {
+	height: 190px;
+	width: 100%;
+}
+
+ul {
+
+	text-align: center;
+	margin: 0 auto;
+	text-align: left;
+}
+
+li {
+	text-align: center;
+	padding: 4px;
+}
+
+main {
+	margin: 40px auto 0 auto;
+	color: #FFFFFF;
+	display: block;
+	background-color: rgba(0,0,0,.8);
+	z-index: 1;
+    position: relative;
+	width: 1000px;
+	margin: 35px auto;
+}
