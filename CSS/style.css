@@ -67,6 +67,7 @@ p {
 
 .column {
 	float: left;
+	padding-bottom: 20px;
 	width: 33%;
 	margin: 0 auto;
 	background-color: rgba(0,0,0,.8);
@@ -74,7 +75,7 @@ p {
 }
 
 #programming {
-	height: 190px;
+	height: 210px;
 	width: 100%;
 }
 
