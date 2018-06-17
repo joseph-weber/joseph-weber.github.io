@@ -43,6 +43,10 @@ const loseGame = (opponent) => {
   }
 }
 
+// Reset positioning via set timeout
+// const resetPosition = () => {
+//
+// }
 //////////////////////////////////////////
 // Create my general fighter class here
 class Character {
@@ -101,6 +105,8 @@ class TVChef extends Character {
     if (guyRando < this.weapons.donkeySauce.accuracy){
     $attackText.text('You have dealt 25 damage to ' + opponent.name);
     opponent.health -= 25;
+    $conanImage.css('transform', 'rotate(20deg)')
+    setTimeout(function(){$conanImage.css('transform', 'rotate(0)')}, 2000);
   }
     else {
       $attackText.text('you missed');
@@ -110,16 +116,19 @@ class TVChef extends Character {
     if (guyRando < this.weapons.frostedTipProjectiles.accuracy){
     $attackText.text('You have dealt 10 damage to ' + opponent.name);
     opponent.health -= 10;
+    $conanImage.css('transform', 'rotate(20deg)')
+    setTimeout(function(){$conanImage.css('transform', 'rotate(0)')}, 2000);
     }
     else {
       $attackText.text('you missed');
-
     }
     break;
   case 'Bowling Shirt Flamethrower':
   if (guyRando < this.weapons.bowlingShirtFlameThrower.accuracy){
     $attackText.text('You have dealt 100 damage to ' + opponent.name);
     opponent.health -= 100;
+    $conanImage.css('transform', 'rotate(20deg)')
+    setTimeout(function(){$conanImage.css('transform', 'rotate(0)')}, 2000);
     }
     else {
     $attackText.text('you missed');
@@ -129,6 +138,8 @@ class TVChef extends Character {
   if (guyRando < this.weapons.alliterativeShowTitles.accuracy){
     $attackText.text('You have dealt 40 damage to ' + opponent.name);
     opponent.health -= 40;
+    $conanImage.css('transform', 'rotate(20deg)')
+    setTimeout(function(){$conanImage.css('transform', 'rotate(0)')}, 2000);
     }
     else {
     $attackText.text('you missed');
@@ -183,6 +194,8 @@ class Enemy extends Character {
   if (conanRando < this.weapons.healthConsciousFood.accuracy){
     $attackText.text('You have dealt 25 damage to ' + opponent.name);
     opponent.health -= 25;
+    $guyImage.css('transform', 'rotate(-20deg)')
+    setTimeout(function(){$guyImage.css('transform', 'rotate(0)')}, 2000);
   }
   else {
     $attackText.text('you missed');
@@ -192,6 +205,8 @@ class Enemy extends Character {
   if (conanRando < this.weapons.appropriateClothing.accuracy){
     $attackText.text('You have dealt 10 damage to ' + opponent.name);
     opponent.health -= 10;
+    $guyImage.css('transform', 'rotate(-20deg)')
+    setTimeout(function(){$guyImage.css('transform', 'rotate(0)')}, 2000);
   }
   else {
     $attackText.text('you missed');
@@ -201,6 +216,8 @@ class Enemy extends Character {
   if (conanRando < this.weapons.midlifeCrisisAntidote.accuracy){
     $attackText.text('You have dealt 100 damage to ' + opponent.name);
     opponent.health -= 100;
+    $guyImage.css('transform', 'rotate(-20deg)')
+    setTimeout(function(){$guyImage.css('transform', 'rotate(0)')}, 2000);
   }
   else {
     $attackText.text('you missed');
@@ -210,6 +227,8 @@ class Enemy extends Character {
   if (conanRando < this.weapons.goodTableManners.accuracy){
     $attackText.text('You have dealt 40 damage to ' + opponent.name);
     opponent.health -= 40;
+    $guyImage.css('transform', 'rotate(-20deg)')
+    setTimeout(function(){$guyImage.css('transform', 'rotate(0)')}, 2000);
   }
   else {
     $attackText.text('you missed');
@@ -288,6 +307,9 @@ $closeBtn.on('click', closeModal);
 
 // set a timer to automatically close Modal
 setTimeout(openModal, 2000);
+
+// $guyHealth.text(wAA.health);
+
   // on click events for each of the attacks
   // we will draw the html text from the event current target to get the input
 })
