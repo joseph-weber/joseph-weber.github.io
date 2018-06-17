@@ -269,8 +269,25 @@ $(()=> {
     wAA.shield()
   });
 
-// $guyHealth.text(wAA.health);
+  const $openBtn = $('#openModal');
 
+const $modal = $('#modal');
+
+const $closeBtn = $('#close');
+
+
+
+const openModal = () => {
+  $modal.css('display', 'block');
+}
+const closeModal = () => {
+  $modal.css('display', 'none');
+}
+$openBtn.on('click', openModal);
+$closeBtn.on('click', closeModal);
+
+// set a timer to automatically close Modal
+setTimeout(openModal, 2000);
   // on click events for each of the attacks
   // we will draw the html text from the event current target to get the input
 })

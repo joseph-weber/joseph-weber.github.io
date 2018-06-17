@@ -1,19 +1,19 @@
 body {
   background: linear-gradient(red, yellow);
-  text-align: center;
   color: blue;
   background-size: center;
   height: 100%;
 }
 
-h1 {
+h1, #conan-health, #guy-health {
   margin: 0;
+  text-align: center;
 }
 
 #gameboard {
   display: flex;
   justify-content: center;
-  margin-top: 40px;
+  margin-top: 20px;
   height: 100%;
 }
 
@@ -71,4 +71,26 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+#modal {
+	background-color: rgba(0,0,0,0.4);
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 1;
+	over-flow: auto;
+	display: none;
+}
+
+#modal-textbox {
+	background-color: white;
+	height: 350px;
+	width: 550px;
+	border-radius: 2px;
+	padding: 10px;
+	margin: 150px auto;
+	box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
 }
