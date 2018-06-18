@@ -24,7 +24,13 @@ const $attackText = $('#attack-text');
 
 const $attackImage = $('#attack');
 
-const imageArray = ['images/Donkey_Sauce.jpeg', 'images/Flamethrower.png', 'images/alliteration.png', 'frosted_tips.jpg'];
+const imageArray = ['images/Donkey_Sauce.jpg', 'images/frosted_tips.jpg', 'images/Flamethrower.png', 'images/alliteration.png', 'images/healthy_food.jpg', 'images/suit.jpg', 'images/Antidote.jpg', 'images/good_manners.jpg'];
+
+const $guySelect = $('#guy-select');
+
+const $conanSelect = $('#conan-select');
+
+const $modal = $('#modal');
 
 
 
@@ -45,6 +51,22 @@ const loseGame = (opponent) => {
   }
 }
 
+const guyAttack = () => {
+  $attackImage.css('transform', 'translate(-200px)')
+  setTimeout(function(){$attackImage.css('transform', 'translate(-100px)')}, 100);
+  setTimeout(function(){$attackImage.css('transform', 'translate(0px)')}, 200);
+  setTimeout(function(){$attackImage.css('transform', 'translate(100px)')}, 200);
+  setTimeout(function(){$attackImage.css('transform', 'translate(200px)')}, 400);
+  setTimeout(function(){$attackImage.attr('src', '')}, 500);
+}
+const conanAttack = () => {
+$attackImage.css('transform', 'translate(200px)')
+setTimeout(function(){$attackImage.css('transform', 'translate(100px)')}, 100);
+setTimeout(function(){$attackImage.css('transform', 'translate(0px)')}, 200);
+setTimeout(function(){$attackImage.css('transform', 'translate(-100px)')}, 200);
+setTimeout(function(){$attackImage.css('transform', 'translate(-200px)')}, 300);
+setTimeout(function(){$attackImage.attr('src', '')}, 1000);
+}
 // Reset positioning via set timeout
 // const resetPosition = () => {
 //
@@ -81,7 +103,7 @@ class TVChef extends Character {
   //// Weapons
     this.weapons = {
       donkeySauce: {
-        power: 25,
+        power: 40,
         accuracy: .7
       },
       frostedTipProjectiles: {
@@ -90,10 +112,10 @@ class TVChef extends Character {
       },
       bowlingShirtFlameThrower: {
         power: 100,
-        accuracy: .1
+        accuracy: .2
       },
       alliterativeShowTitles: {
-        power: 40,
+        power: 60,
         accuracy: .5
       },
     }
@@ -105,17 +127,12 @@ class TVChef extends Character {
   switch (move) {
   case 'Donkey Sauce':
     if (guyRando < this.weapons.donkeySauce.accuracy){
-    $attackText.text('You have dealt 25 damage to ' + opponent.name);
-    opponent.health -= 25;
+    $attackText.text('You have dealt ' + this.weapons.donkeySauce.power + ' damage to ' + opponent.name);
+    opponent.health -= this.weapons.donkeySauce.power;
     $conanImage.css('transform', 'rotate(20deg)')
     setTimeout(function(){$conanImage.css('transform', 'rotate(0)')}, 1000);
-    $attackImage.attr('src', 'images/Donkey_Sauce.jpg')
-    $attackImage.css('transform', 'translate(-200px)')
-    setTimeout(function(){$attackImage.css('transform', 'translate(-100px)')}, 100);
-    setTimeout(function(){$attackImage.css('transform', 'translate(0px)')}, 200);
-    setTimeout(function(){$attackImage.css('transform', 'translate(100px)')}, 200);
-    setTimeout(function(){$attackImage.css('transform', 'translate(200px)')}, 400);
-    setTimeout(function(){$attackImage.attr('src', '')}, 500);
+    $attackImage.attr('src', imageArray[0]);
+    guyAttack();
 
   }
     else {
@@ -124,17 +141,12 @@ class TVChef extends Character {
     break;
   case 'Frosted Tip Projectiles':
     if (guyRando < this.weapons.frostedTipProjectiles.accuracy){
-    $attackText.text('You have dealt 10 damage to ' + opponent.name);
-    opponent.health -= 10;
+    $attackText.text('You have dealt ' + this.weapons.frostedTipProjectiles.power + ' damage to ' + opponent.name);
+    opponent.health -= this.weapons.frostedTipProjectiles.power;
     $conanImage.css('transform', 'rotate(20deg)')
     setTimeout(function(){$conanImage.css('transform', 'rotate(0)')}, 1000);
-    $attackImage.attr('src', 'images/frosted_tips.jpg')
-    $attackImage.css('transform', 'translate(-200px)')
-    setTimeout(function(){$attackImage.css('transform', 'translate(-100px)')}, 100);
-    setTimeout(function(){$attackImage.css('transform', 'translate(0px)')}, 200);
-    setTimeout(function(){$attackImage.css('transform', 'translate(100px)')}, 200);
-    setTimeout(function(){$attackImage.css('transform', 'translate(200px)')}, 300);
-    setTimeout(function(){$attackImage.attr('src', '')}, 1000);
+    $attackImage.attr('src', imageArray[1]);
+    guyAttack();
     }
     else {
       $attackText.text('you missed');
@@ -146,13 +158,8 @@ class TVChef extends Character {
     opponent.health -= 100;
     $conanImage.css('transform', 'rotate(20deg)')
     setTimeout(function(){$conanImage.css('transform', 'rotate(0)')}, 1000);
-    $attackImage.attr('src', 'images/Flamethrower.png')
-    $attackImage.css('transform', 'translate(-200px)')
-    setTimeout(function(){$attackImage.css('transform', 'translate(-100px)')}, 100);
-    setTimeout(function(){$attackImage.css('transform', 'translate(0px)')}, 200);
-    setTimeout(function(){$attackImage.css('transform', 'translate(100px)')}, 200);
-    setTimeout(function(){$attackImage.css('transform', 'translate(200px)')}, 300);
-    setTimeout(function(){$attackImage.attr('src', '')}, 1000);
+    $attackImage.attr('src', imageArray[2])
+    guyAttack();
     }
     else {
     $attackText.text('you missed');
@@ -164,13 +171,8 @@ class TVChef extends Character {
     opponent.health -= 40;
     $conanImage.css('transform', 'rotate(20deg)')
     setTimeout(function(){$conanImage.css('transform', 'rotate(0)')}, 1000);
-    $attackImage.attr('src', 'images/alliteration.png')
-    $attackImage.css('transform', 'translate(-200px)')
-    setTimeout(function(){$attackImage.css('transform', 'translate(-100px)')}, 100);
-    setTimeout(function(){$attackImage.css('transform', 'translate(0px)')}, 200);
-    setTimeout(function(){$attackImage.css('transform', 'translate(100px)')}, 200);
-    setTimeout(function(){$attackImage.css('transform', 'translate(200px)')}, 300);
-    setTimeout(function(){$attackImage.attr('src', '')}, 1000);
+    $attackImage.attr('src', imageArray[3])
+    guyAttack();
     }
     else {
     $attackText.text('you missed');
@@ -199,16 +201,16 @@ class Enemy extends Character {
 //// Weapons
     this.weapons = {
       healthConsciousFood: {
-        power: 25,
-        accuracy: .7
+        power: 30,
+        accuracy: .8
       },
       appropriateClothing: {
         power: 10,
         accuracy: 1.0
       },
       midlifeCrisisAntidote: {
-        power: 100,
-        accuracy: .1
+        power: 80,
+        accuracy: .4
       },
       goodTableManners: {
         power: 40,
@@ -228,12 +230,7 @@ class Enemy extends Character {
     $guyImage.css('transform', 'rotate(-60deg)')
     setTimeout(function(){$guyImage.css('transform', 'rotate(0)')}, 1000);
     $attackImage.attr('src', 'images/healthy_food.jpg')
-    $attackImage.css('transform', 'translate(200px)')
-    setTimeout(function(){$attackImage.css('transform', 'translate(100px)')}, 100);
-    setTimeout(function(){$attackImage.css('transform', 'translate(0px)')}, 200);
-    setTimeout(function(){$attackImage.css('transform', 'translate(-100px)')}, 200);
-    setTimeout(function(){$attackImage.css('transform', 'translate(-200px)')}, 300);
-    setTimeout(function(){$attackImage.attr('src', '')}, 1000);
+    conanAttack();
   }
   else {
     $attackText.text('you missed');
@@ -246,12 +243,7 @@ class Enemy extends Character {
     $guyImage.css('transform', 'rotate(-60deg)')
     setTimeout(function(){$guyImage.css('transform', 'rotate(0)')}, 1000);
     $attackImage.attr('src', 'images/suit.jpg')
-    $attackImage.css('transform', 'translate(200px)')
-    setTimeout(function(){$attackImage.css('transform', 'translate(100px)')}, 100);
-    setTimeout(function(){$attackImage.css('transform', 'translate(0px)')}, 200);
-    setTimeout(function(){$attackImage.css('transform', 'translate(-100px)')}, 200);
-    setTimeout(function(){$attackImage.css('transform', 'translate(-200px)')}, 300);
-    setTimeout(function(){$attackImage.attr('src', '')}, 1000);
+    conanAttack();
   }
   else {
     $attackText.text('you missed');
@@ -264,12 +256,7 @@ class Enemy extends Character {
     $guyImage.css('transform', 'rotate(-60deg)')
     setTimeout(function(){$guyImage.css('transform', 'rotate(0)')}, 1000);
     $attackImage.attr('src', 'images/Antidote.jpg')
-    $attackImage.css('transform', 'translate(200px)')
-    setTimeout(function(){$attackImage.css('transform', 'translate(100px)')}, 100);
-    setTimeout(function(){$attackImage.css('transform', 'translate(0px)')}, 200);
-    setTimeout(function(){$attackImage.css('transform', 'translate(-100px)')}, 200);
-    setTimeout(function(){$attackImage.css('transform', 'translate(-200px)')}, 300);
-    setTimeout(function(){$attackImage.attr('src', '')}, 1000);
+    conanAttack();
   }
   else {
     $attackText.text('you missed');
@@ -282,12 +269,7 @@ class Enemy extends Character {
     $guyImage.css('transform', 'rotate(-60deg)')
     setTimeout(function(){$guyImage.css('transform', 'rotate(0)')}, 1000);
     $attackImage.attr('src', 'images/good_manners.jpg')
-    $attackImage.css('transform', 'translate(200px)')
-    setTimeout(function(){$attackImage.css('transform', 'translate(100px)')}, 100);
-    setTimeout(function(){$attackImage.css('transform', 'translate(0px)')}, 200);
-    setTimeout(function(){$attackImage.css('transform', 'translate(-100px)')}, 200);
-    setTimeout(function(){$attackImage.css('transform', 'translate(-200px)')}, 300);
-    setTimeout(function(){$attackImage.attr('src', '')}, 1000);
+    conanAttack();
   }
   else {
     $attackText.text('you missed');
@@ -346,6 +328,14 @@ $(()=> {
   $conanShield.on('click', () => {
     wAA.shield()
   });
+  $conanSelect.on('click', () => {
+    $guyButton.hide();
+    $modal.css('display', 'none');
+  });
+  $guySelect.on('click', () => {
+    $conanButton.hide();
+    $modal.css('display', 'none');
+  });
 
   const $openBtn = $('#openModal');
 
@@ -365,7 +355,7 @@ $openBtn.on('click', openModal);
 $closeBtn.on('click', closeModal);
 
 // set a timer to automatically close Modal
-setTimeout(openModal, 2000);
+setTimeout(openModal, 200);
 
 // $guyHealth.text(wAA.health);
 
