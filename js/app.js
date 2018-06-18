@@ -24,6 +24,8 @@ const $attackText = $('#attack-text');
 
 const $attackImage = $('#attack');
 
+const imageArray = ['images/Donkey_Sauce.jpeg', 'images/Flamethrower.png', 'images/alliteration.png', 'frosted_tips.jpg'];
+
 
 
 //////////////////////////////////////////
@@ -106,7 +108,15 @@ class TVChef extends Character {
     $attackText.text('You have dealt 25 damage to ' + opponent.name);
     opponent.health -= 25;
     $conanImage.css('transform', 'rotate(20deg)')
-    setTimeout(function(){$conanImage.css('transform', 'rotate(0)')}, 2000);
+    setTimeout(function(){$conanImage.css('transform', 'rotate(0)')}, 1000);
+    $attackImage.attr('src', 'images/Donkey_Sauce.jpg')
+    $attackImage.css('transform', 'translate(-200px)')
+    setTimeout(function(){$attackImage.css('transform', 'translate(-100px)')}, 100);
+    setTimeout(function(){$attackImage.css('transform', 'translate(0px)')}, 200);
+    setTimeout(function(){$attackImage.css('transform', 'translate(100px)')}, 200);
+    setTimeout(function(){$attackImage.css('transform', 'translate(200px)')}, 300);
+    setTimeout(function(){$attackImage.attr('src', '')}, 1000);
+
   }
     else {
       $attackText.text('you missed');
@@ -117,7 +127,14 @@ class TVChef extends Character {
     $attackText.text('You have dealt 10 damage to ' + opponent.name);
     opponent.health -= 10;
     $conanImage.css('transform', 'rotate(20deg)')
-    setTimeout(function(){$conanImage.css('transform', 'rotate(0)')}, 2000);
+    setTimeout(function(){$conanImage.css('transform', 'rotate(0)')}, 1000);
+    $attackImage.attr('src', 'images/frosted_tips.jpg')
+    $attackImage.css('transform', 'translate(-200px)')
+    setTimeout(function(){$attackImage.css('transform', 'translate(-100px)')}, 100);
+    setTimeout(function(){$attackImage.css('transform', 'translate(0px)')}, 200);
+    setTimeout(function(){$attackImage.css('transform', 'translate(100px)')}, 200);
+    setTimeout(function(){$attackImage.css('transform', 'translate(200px)')}, 300);
+    setTimeout(function(){$attackImage.attr('src', '')}, 1000);
     }
     else {
       $attackText.text('you missed');
@@ -128,7 +145,14 @@ class TVChef extends Character {
     $attackText.text('You have dealt 100 damage to ' + opponent.name);
     opponent.health -= 100;
     $conanImage.css('transform', 'rotate(20deg)')
-    setTimeout(function(){$conanImage.css('transform', 'rotate(0)')}, 2000);
+    setTimeout(function(){$conanImage.css('transform', 'rotate(0)')}, 1000);
+    $attackImage.attr('src', 'images/Flamethrower.png')
+    $attackImage.css('transform', 'translate(-200px)')
+    setTimeout(function(){$attackImage.css('transform', 'translate(-100px)')}, 100);
+    setTimeout(function(){$attackImage.css('transform', 'translate(0px)')}, 200);
+    setTimeout(function(){$attackImage.css('transform', 'translate(100px)')}, 200);
+    setTimeout(function(){$attackImage.css('transform', 'translate(200px)')}, 300);
+    setTimeout(function(){$attackImage.attr('src', '')}, 1000);
     }
     else {
     $attackText.text('you missed');
@@ -139,7 +163,14 @@ class TVChef extends Character {
     $attackText.text('You have dealt 40 damage to ' + opponent.name);
     opponent.health -= 40;
     $conanImage.css('transform', 'rotate(20deg)')
-    setTimeout(function(){$conanImage.css('transform', 'rotate(0)')}, 2000);
+    setTimeout(function(){$conanImage.css('transform', 'rotate(0)')}, 1000);
+    $attackImage.attr('src', 'images/alliteration.png')
+    $attackImage.css('transform', 'translate(-200px)')
+    setTimeout(function(){$attackImage.css('transform', 'translate(-100px)')}, 100);
+    setTimeout(function(){$attackImage.css('transform', 'translate(0px)')}, 200);
+    setTimeout(function(){$attackImage.css('transform', 'translate(100px)')}, 200);
+    setTimeout(function(){$attackImage.css('transform', 'translate(200px)')}, 300);
+    setTimeout(function(){$attackImage.attr('src', '')}, 1000);
     }
     else {
     $attackText.text('you missed');
@@ -194,8 +225,15 @@ class Enemy extends Character {
   if (conanRando < this.weapons.healthConsciousFood.accuracy){
     $attackText.text('You have dealt 25 damage to ' + opponent.name);
     opponent.health -= 25;
-    $guyImage.css('transform', 'rotate(-20deg)')
-    setTimeout(function(){$guyImage.css('transform', 'rotate(0)')}, 2000);
+    $guyImage.css('transform', 'rotate(-60deg)')
+    setTimeout(function(){$guyImage.css('transform', 'rotate(0)')}, 1000);
+    $attackImage.attr('src', 'images/healthy_food.jpg')
+    $attackImage.css('transform', 'translate(200px)')
+    setTimeout(function(){$attackImage.css('transform', 'translate(100px)')}, 100);
+    setTimeout(function(){$attackImage.css('transform', 'translate(0px)')}, 200);
+    setTimeout(function(){$attackImage.css('transform', 'translate(-100px)')}, 200);
+    setTimeout(function(){$attackImage.css('transform', 'translate(-200px)')}, 300);
+    setTimeout(function(){$attackImage.attr('src', '')}, 1000);
   }
   else {
     $attackText.text('you missed');
@@ -205,8 +243,15 @@ class Enemy extends Character {
   if (conanRando < this.weapons.appropriateClothing.accuracy){
     $attackText.text('You have dealt 10 damage to ' + opponent.name);
     opponent.health -= 10;
-    $guyImage.css('transform', 'rotate(-20deg)')
-    setTimeout(function(){$guyImage.css('transform', 'rotate(0)')}, 2000);
+    $guyImage.css('transform', 'rotate(-60deg)')
+    setTimeout(function(){$guyImage.css('transform', 'rotate(0)')}, 1000);
+    $attackImage.attr('src', 'images/suit.jpg')
+    $attackImage.css('transform', 'translate(200px)')
+    setTimeout(function(){$attackImage.css('transform', 'translate(100px)')}, 100);
+    setTimeout(function(){$attackImage.css('transform', 'translate(0px)')}, 200);
+    setTimeout(function(){$attackImage.css('transform', 'translate(-100px)')}, 200);
+    setTimeout(function(){$attackImage.css('transform', 'translate(-200px)')}, 300);
+    setTimeout(function(){$attackImage.attr('src', '')}, 1000);
   }
   else {
     $attackText.text('you missed');
@@ -216,8 +261,15 @@ class Enemy extends Character {
   if (conanRando < this.weapons.midlifeCrisisAntidote.accuracy){
     $attackText.text('You have dealt 100 damage to ' + opponent.name);
     opponent.health -= 100;
-    $guyImage.css('transform', 'rotate(-20deg)')
-    setTimeout(function(){$guyImage.css('transform', 'rotate(0)')}, 2000);
+    $guyImage.css('transform', 'rotate(-60deg)')
+    setTimeout(function(){$guyImage.css('transform', 'rotate(0)')}, 1000);
+    $attackImage.attr('src', 'images/Antidote.jpg')
+    $attackImage.css('transform', 'translate(200px)')
+    setTimeout(function(){$attackImage.css('transform', 'translate(100px)')}, 100);
+    setTimeout(function(){$attackImage.css('transform', 'translate(0px)')}, 200);
+    setTimeout(function(){$attackImage.css('transform', 'translate(-100px)')}, 200);
+    setTimeout(function(){$attackImage.css('transform', 'translate(-200px)')}, 300);
+    setTimeout(function(){$attackImage.attr('src', '')}, 1000);
   }
   else {
     $attackText.text('you missed');
@@ -227,8 +279,15 @@ class Enemy extends Character {
   if (conanRando < this.weapons.goodTableManners.accuracy){
     $attackText.text('You have dealt 40 damage to ' + opponent.name);
     opponent.health -= 40;
-    $guyImage.css('transform', 'rotate(-20deg)')
-    setTimeout(function(){$guyImage.css('transform', 'rotate(0)')}, 2000);
+    $guyImage.css('transform', 'rotate(-60deg)')
+    setTimeout(function(){$guyImage.css('transform', 'rotate(0)')}, 1000);
+    $attackImage.attr('src', 'images/good_manners.jpg')
+    $attackImage.css('transform', 'translate(200px)')
+    setTimeout(function(){$attackImage.css('transform', 'translate(100px)')}, 100);
+    setTimeout(function(){$attackImage.css('transform', 'translate(0px)')}, 200);
+    setTimeout(function(){$attackImage.css('transform', 'translate(-100px)')}, 200);
+    setTimeout(function(){$attackImage.css('transform', 'translate(-200px)')}, 300);
+    setTimeout(function(){$attackImage.attr('src', '')}, 1000);
   }
   else {
     $attackText.text('you missed');
