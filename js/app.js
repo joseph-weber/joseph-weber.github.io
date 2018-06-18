@@ -24,7 +24,7 @@ const $attackText = $('#attack-text');
 
 const $attackImage = $('#attack');
 
-const imageArray = ['images/Donkey_Sauce.jpg', 'images/frosted_tips.jpg', 'images/Flamethrower.png', 'images/alliteration.png', 'images/healthy_food.jpg', 'images/suit.jpg', 'images/Antidote.jpg', 'images/good_manners.jpg'];
+const imageArray = ['images/Donkey_Sauce.jpg', 'images/frosted_tips.jpg', 'images/Flamethrower.png', 'images/alliteration.png', 'images/healthy_food.jpg', 'images/suit.jpg', 'images/Antidote.jpg', 'images/good_manners.jpg', 'images/missed.gif'];
 
 const $guySelect = $('#guy-select');
 
@@ -50,7 +50,8 @@ const loseGame = (opponent) => {
     $guyImage.css('transform', 'rotate(180deg)')
   }
 }
-
+// Attack functions for animations
+// Guy's attack
 const guyAttack = () => {
   $attackImage.css('transform', 'translate(-200px)')
   setTimeout(function(){$attackImage.css('transform', 'translate(-100px)')}, 100);
@@ -59,6 +60,8 @@ const guyAttack = () => {
   setTimeout(function(){$attackImage.css('transform', 'translate(200px)')}, 400);
   setTimeout(function(){$attackImage.attr('src', '')}, 500);
 }
+
+// Conan's attack
 const conanAttack = () => {
 $attackImage.css('transform', 'translate(200px)')
 setTimeout(function(){$attackImage.css('transform', 'translate(100px)')}, 100);
@@ -67,9 +70,13 @@ setTimeout(function(){$attackImage.css('transform', 'translate(-100px)')}, 200);
 setTimeout(function(){$attackImage.css('transform', 'translate(-200px)')}, 300);
 setTimeout(function(){$attackImage.attr('src', '')}, 1000);
 }
-// Reset positioning via set timeout
-// const resetPosition = () => {
-//
+// Function for missed animation
+const miss = () => {
+  $attackImage.css('transform', 'translate(0px)')
+  $attackImage.attr('src', imageArray[8]);
+  setTimeout(function(){$attackImage.attr('src', '')}, 2000);
+  $attackText.text('you missed');
+}
 // }
 //////////////////////////////////////////
 // Create my general fighter class here
@@ -103,16 +110,16 @@ class TVChef extends Character {
   //// Weapons
     this.weapons = {
       donkeySauce: {
-        power: 40,
+        power: 50,
         accuracy: .7
       },
       frostedTipProjectiles: {
-        power: 10,
-        accuracy: 1.0
+        power: 30,
+        accuracy: .8
       },
       bowlingShirtFlameThrower: {
-        power: 100,
-        accuracy: .2
+        power: 130,
+        accuracy: .3
       },
       alliterativeShowTitles: {
         power: 60,
@@ -136,7 +143,7 @@ class TVChef extends Character {
 
   }
     else {
-      $attackText.text('you missed');
+      miss();
     }
     break;
   case 'Frosted Tip Projectiles':
@@ -149,33 +156,33 @@ class TVChef extends Character {
     guyAttack();
     }
     else {
-      $attackText.text('you missed');
+      miss();
     }
     break;
   case 'Bowling Shirt Flamethrower':
   if (guyRando < this.weapons.bowlingShirtFlameThrower.accuracy){
-    $attackText.text('You have dealt 100 damage to ' + opponent.name);
-    opponent.health -= 100;
+    $attackText.text('You have dealt ' + this.weapons.bowlingShirtFlameThrower.power + ' damage to ' + opponent.name);
+    opponent.health -= this.weapons.bowlingShirtFlameThrower.power;
     $conanImage.css('transform', 'rotate(20deg)')
     setTimeout(function(){$conanImage.css('transform', 'rotate(0)')}, 1000);
     $attackImage.attr('src', imageArray[2])
     guyAttack();
     }
     else {
-    $attackText.text('you missed');
+    miss();
   }
   break;
   case 'Alliterative TV Show':
   if (guyRando < this.weapons.alliterativeShowTitles.accuracy){
-    $attackText.text('You have dealt 40 damage to ' + opponent.name);
-    opponent.health -= 40;
+    $attackText.text('You have dealt ' + this.weapons.alliterativeShowTitles.power + ' damage to ' + opponent.name);
+    opponent.health -= this.weapons.alliterativeShowTitles.power;
     $conanImage.css('transform', 'rotate(20deg)')
     setTimeout(function(){$conanImage.css('transform', 'rotate(0)')}, 1000);
     $attackImage.attr('src', imageArray[3])
     guyAttack();
     }
     else {
-    $attackText.text('you missed');
+    miss();
   }
   break;
 }
@@ -225,54 +232,54 @@ class Enemy extends Character {
   switch (move) {
   case 'Health Conscious Food':
   if (conanRando < this.weapons.healthConsciousFood.accuracy){
-    $attackText.text('You have dealt 25 damage to ' + opponent.name);
-    opponent.health -= 25;
+    $attackText.text('You have dealt ' + this.weapons.healthConsciousFood.power + ' damage to ' + opponent.name);
+    opponent.health -= this.weapons.healthConsciousFood.power;
     $guyImage.css('transform', 'rotate(-60deg)')
     setTimeout(function(){$guyImage.css('transform', 'rotate(0)')}, 1000);
     $attackImage.attr('src', 'images/healthy_food.jpg')
     conanAttack();
   }
   else {
-    $attackText.text('you missed');
+    miss();
   }
     break;
   case 'Appropriate Clothing':
   if (conanRando < this.weapons.appropriateClothing.accuracy){
-    $attackText.text('You have dealt 10 damage to ' + opponent.name);
-    opponent.health -= 10;
+    $attackText.text('You have dealt ' + this.weapons.appropriateClothing.power + ' damage to ' + opponent.name);
+    opponent.health -= this.weapons.appropriateClothing.power;
     $guyImage.css('transform', 'rotate(-60deg)')
     setTimeout(function(){$guyImage.css('transform', 'rotate(0)')}, 1000);
     $attackImage.attr('src', 'images/suit.jpg')
     conanAttack();
   }
   else {
-    $attackText.text('you missed');
+    miss();
   }
   break;
   case 'Mid-life Crisis Antidote':
   if (conanRando < this.weapons.midlifeCrisisAntidote.accuracy){
-    $attackText.text('You have dealt 100 damage to ' + opponent.name);
-    opponent.health -= 100;
+    $attackText.text('You have dealt ' + this.weapons.midlifeCrisisAntidote.power + ' damage to ' + opponent.name);
+    opponent.health -= this.weapons.midlifeCrisisAntidote.power;
     $guyImage.css('transform', 'rotate(-60deg)')
     setTimeout(function(){$guyImage.css('transform', 'rotate(0)')}, 1000);
     $attackImage.attr('src', 'images/Antidote.jpg')
     conanAttack();
   }
   else {
-    $attackText.text('you missed');
+    miss();
   }
     break;
   case 'Good Table Manners':
   if (conanRando < this.weapons.goodTableManners.accuracy){
-    $attackText.text('You have dealt 40 damage to ' + opponent.name);
-    opponent.health -= 40;
+    $attackText.text('You have dealt ' + this.weapons.goodTableManners.power + ' damage to ' + opponent.name);
+    opponent.health -= this.weapons.goodTableManners.power;
     $guyImage.css('transform', 'rotate(-60deg)')
     setTimeout(function(){$guyImage.css('transform', 'rotate(0)')}, 1000);
     $attackImage.attr('src', 'images/good_manners.jpg')
     conanAttack();
   }
   else {
-    $attackText.text('you missed');
+    miss();
   }
     break;
 }
