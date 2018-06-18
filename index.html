@@ -14,14 +14,15 @@
         <h1>How to Play Guy Fighter</h1>
         <!-- Content -->
         <p>Guy Fighter 2018 is greatest fighter game in the world. You can either play as Guy Fieri or as the Well-Adjusted Adult. Your battle goes until one of the fighters is defeated</p>
-        <p>Each attacker has 4 unique attacks. The more powerful attacks will be less accurate. So choose wisely</p>
+        <p>Each attacker has 4 unique attacks. The more powerful attacks will be less accurate. Use the shield move to help increase your health, but beware of the shield backfiring.</p>
         <p>Now, get ready to play Guy Fighter. Will tacky Ed-Hardyness win or will this be the triumph of norm-core? You may select your player. Choose your character wisely</p>
         <div id = "character-select">
           <div id="guy-stats">
             <img id = "modal-guy" src="images/Guy-Fighter.png" alt="Guy">
             <h1>Stats</h1>
-            <p>Power: 8</p>
-            <p>Accuracy: 5</p>
+            <p>Power: 9</p>
+            <p>Accuracy: 6</p>
+            <p>Shield Power: 5</p>
             <a id="guy-select" href="#">Player 1 Select</a>
           </div>
           <div id="conan-stats">
@@ -29,6 +30,7 @@
             <h1>Stats</h1>
             <p>Power: 5</p>
             <p>Accuracy: 8</p>
+            <p>Shield Power: 7</p>
             <a id="conan-select" href="#">Player 1 Select</a>
           </div>
         </div>
@@ -42,12 +44,12 @@
         <img id = "guy-pic" src="images/Guy-Fighter.png" alt="Guy">
         <p>Moves</p>
         <div class="attacks">
-          <button class="guy-button" id="donkey-sauce">Donkey Sauce</button>
-          <button class="guy-button" id="frosted-tip-projectiles">Frosted Tip Projectiles</button>
-          <button class="guy-button" id="bowling-shirt-flamethrower">Bowling Shirt Flamethrower</button>
-          <button class="guy-button" id="alliterative-tv-show">Alliterative TV Show</button>
+          <button class="guy-button" id="donkey-sauce">Donkey Sauce <span>50</span></button>
+          <button class="guy-button" id="frosted-tip-projectiles">Frosted Tip Projectiles <span>20</span></button>
+          <button class="guy-button" id="bowling-shirt-flamethrower">Bowling Shirt Flamethrower <span>130</span></button>
+          <button class="guy-button" id="alliterative-tv-show">Alliterative TV Show <span>60</span></button>
         </div>
-        <button class="guy-button" id="guy-shield">Shield</button>
+        <button class="guy-button" id="guy-shield">Shield <span>+50</span></button>
       </div>
       <div id="attack-images">
         <img>
@@ -60,12 +62,12 @@
         <img id = "conan-pic" src="images/wellAdjustedAdult.png" alt="Enemy">
         <p>Moves</p>
         <div class="attacks">
-          <button class = "conan-button" id="health-conscious-food">Health Conscious Food</button>
-          <button class = "conan-button" id="appropriate-clothing">Appropriate Clothing</button>
-          <button class = "conan-button" id="mid-life-crisis-antidote">Mid-life Crisis Antidote</button>
-          <button class = "conan-button" id="good-table-manners">Good Table Manners</button>
+          <button class = "conan-button" id="health-conscious-food">Health Conscious Food <span>30</span></button>
+          <button class = "conan-button" id="appropriate-clothing">Appropriate Clothing <span>10</span></button>
+          <button class = "conan-button" id="mid-life-crisis-antidote">Mid-life Crisis Antidote <span>80</span></button>
+          <button class = "conan-button" id="good-table-manners">Good Table Manners <span>40</span></button>
         </div>
-        <button class="conan-button" id="conan-shield">Shield</button>
+        <button class="conan-button" id="conan-shield">Shield <span>+70</span></button>
       </div>
     </div>
   </body>

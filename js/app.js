@@ -1,3 +1,6 @@
+// Make sure to make universal shield function
+
+
 // Set variables up here for all of the events in the document ready.
 
 const $scoreboard = $('#scoreboard');
@@ -24,7 +27,7 @@ const $attackText = $('#attack-text');
 
 const $attackImage = $('#attack');
 
-const imageArray = ['images/Donkey_Sauce.jpg', 'images/frosted_tips.jpg', 'images/Flamethrower.png', 'images/alliteration.png', 'images/healthy_food.jpg', 'images/suit.jpg', 'images/Antidote.jpg', 'images/good_manners.jpg', 'images/missed.gif'];
+const imageArray = ['images/Donkey_Sauce.jpg', 'images/frosted_tips.jpg', 'images/Flamethrower.png', 'images/alliteration.png', 'images/healthy_food.jpg', 'images/suit.jpg', 'images/Antidote.jpg', 'images/good_manners.jpg', 'images/missed.gif', 'images/Fieri_Shield.jpg', 'images/shield.png', 'images/short_circuit.png'];
 
 const $guySelect = $('#guy-select');
 
@@ -43,7 +46,6 @@ const winGame = (opponent) => {
     $conanImage.css('transform', 'rotate(180deg)');
     $conanButton.hide();
     $guyImage.css('transform', 'translate(400px, -150px)');
-    // $attackText.css('z-index', '2');
   }
 }
 // Lose game function
@@ -94,16 +96,6 @@ class Character {
   // Attack methods that must do accuracy function, draw away health if hit, log message, and lead to an animation
   attack(opponent, move){
   }
-  // method to allow character to guard and gain some health
-  shield(){
-    const shieldRando = Math.random() * 1;
-    if (shieldRando > .5){
-      $attackText.text('your defense has been bolstered by 50 hp');
-    }
-    else {
-      $attackText.text('your shields short-circuited, no dice');
-    }
-}
 }
 
 /////////////////////////////////////////
@@ -119,7 +111,7 @@ class TVChef extends Character {
         accuracy: .7
       },
       frostedTipProjectiles: {
-        power: 30,
+        power: 20,
         accuracy: .8
       },
       bowlingShirtFlameThrower: {
@@ -137,7 +129,7 @@ class TVChef extends Character {
   super.attack(opponent, move)
   const guyRando = Math.random() * 1;
   switch (move) {
-  case 'Donkey Sauce':
+  case 'Donkey Sauce 50':
     if (guyRando < this.weapons.donkeySauce.accuracy){
     $attackText.text('You have dealt ' + this.weapons.donkeySauce.power + ' damage to ' + opponent.name);
     opponent.health -= this.weapons.donkeySauce.power;
@@ -151,7 +143,7 @@ class TVChef extends Character {
       miss();
     }
     break;
-  case 'Frosted Tip Projectiles':
+  case 'Frosted Tip Projectiles 20':
     if (guyRando < this.weapons.frostedTipProjectiles.accuracy){
     $attackText.text('You have dealt ' + this.weapons.frostedTipProjectiles.power + ' damage to ' + opponent.name);
     opponent.health -= this.weapons.frostedTipProjectiles.power;
@@ -164,7 +156,7 @@ class TVChef extends Character {
       miss();
     }
     break;
-  case 'Bowling Shirt Flamethrower':
+  case 'Bowling Shirt Flamethrower 130':
   if (guyRando < this.weapons.bowlingShirtFlameThrower.accuracy){
     $attackText.text('You have dealt ' + this.weapons.bowlingShirtFlameThrower.power + ' damage to ' + opponent.name);
     opponent.health -= this.weapons.bowlingShirtFlameThrower.power;
@@ -177,7 +169,7 @@ class TVChef extends Character {
     miss();
   }
   break;
-  case 'Alliterative TV Show':
+  case 'Alliterative TV Show 60':
   if (guyRando < this.weapons.alliterativeShowTitles.accuracy){
     $attackText.text('You have dealt ' + this.weapons.alliterativeShowTitles.power + ' damage to ' + opponent.name);
     opponent.health -= this.weapons.alliterativeShowTitles.power;
@@ -198,8 +190,23 @@ $conanHealth.text(wAA.health);
 winGame(wAA);
 }
   // give message about guard
-  shield () {
-super.shield ();
+shield () {
+  const guyShieldRando = Math.random() * 1;
+  if (guyShieldRando > .5){
+    $attackText.text('your defense has been bolstered by 50 hp');
+    $attackImage.css('transform', 'translate(0)');
+    $attackImage.attr('src', imageArray[9]);
+    setTimeout(function(){$attackImage.attr('src', '')}, 1000);
+    this.health += 50;
+    $guyHealth.text(this.health);
+  }
+  else {
+    $attackText.text('your shields short-circuited, 10 health lost');
+    this.health -= 10;
+    $guyHealth.text(this.health);
+    $attackImage.css('transform', 'translate(0)');
+    $attackImage.attr('src', imageArray[11])
+  }
 $guyButton.hide();
 $conanButton.show();
 }
@@ -236,7 +243,7 @@ class Enemy extends Character {
   super.attack(opponent, move);
   const conanRando = Math.random() * 1;
   switch (move) {
-  case 'Health Conscious Food':
+  case 'Health Conscious Food 30':
   if (conanRando < this.weapons.healthConsciousFood.accuracy){
     $attackText.text('You have dealt ' + this.weapons.healthConsciousFood.power + ' damage to ' + opponent.name);
     opponent.health -= this.weapons.healthConsciousFood.power;
@@ -249,7 +256,7 @@ class Enemy extends Character {
     miss();
   }
     break;
-  case 'Appropriate Clothing':
+  case 'Appropriate Clothing 10':
   if (conanRando < this.weapons.appropriateClothing.accuracy){
     $attackText.text('You have dealt ' + this.weapons.appropriateClothing.power + ' damage to ' + opponent.name);
     opponent.health -= this.weapons.appropriateClothing.power;
@@ -262,7 +269,7 @@ class Enemy extends Character {
     miss();
   }
   break;
-  case 'Mid-life Crisis Antidote':
+  case 'Mid-life Crisis Antidote 80':
   if (conanRando < this.weapons.midlifeCrisisAntidote.accuracy){
     $attackText.text('You have dealt ' + this.weapons.midlifeCrisisAntidote.power + ' damage to ' + opponent.name);
     opponent.health -= this.weapons.midlifeCrisisAntidote.power;
@@ -275,7 +282,7 @@ class Enemy extends Character {
     miss();
   }
     break;
-  case 'Good Table Manners':
+  case 'Good Table Manners 40':
   if (conanRando < this.weapons.goodTableManners.accuracy){
     $attackText.text('You have dealt ' + this.weapons.goodTableManners.power + ' damage to ' + opponent.name);
     opponent.health -= this.weapons.goodTableManners.power;
@@ -295,8 +302,23 @@ $guyHealth.text(guy.health);
 loseGame(guy);
 }
   // give message about guard
-  shield () {
-super.shield ()
+shield () {
+  const conanShieldRando = Math.random() * 1;
+  if (conanShieldRando > .5){
+    $attackText.text('your defense has been bolstered by 70 hp');
+    $attackImage.css('transform', 'translate(0)');
+    $attackImage.attr('src', imageArray[10]);
+    setTimeout(function(){$attackImage.attr('src', '')}, 1000);
+    this.health += 70;
+    $conanHealth.text(this.health);
+  }
+  else {
+    $attackText.text('your shields short-circuited, 20 health lost');
+    this.health -= 20;
+    $conanHealth.text(this.health);
+    $attackImage.css('transform', 'translate(0)');
+    $attackImage.attr('src', imageArray[11])
+  }
 $conanButton.hide();
 $guyButton.show();
   }
@@ -315,7 +337,6 @@ $(()=> {
 
 
   /// All my onclick events
-  $attackText.css('z-index', '2');
   $("#donkey-sauce").on('click', ()=>{guy.attack(wAA, $(event.currentTarget).text())
   });
   $("#alliterative-tv-show").on('click', ()=>{guy.attack(wAA, $(event.currentTarget).text())
