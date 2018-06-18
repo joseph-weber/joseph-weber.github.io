@@ -41,13 +41,15 @@ const winGame = (opponent) => {
   if (opponent.health <= 0){
     $attackText.text('Guy Fieri is victorious. Ed Hardy decals for everyone');
     $conanImage.css('transform', 'rotate(180deg)')
+    $conanButton.hide();
   }
 }
 // Lose game function
 const loseGame = (opponent) => {
   if (opponent.health <= 0){
     $attackText.text('Guy Fieri has been defeated. Norm-core wins!');
-    $guyImage.css('transform', 'rotate(180deg)')
+    $guyImage.css('transform', 'rotate(180deg)');
+    $guyButton.hide();
   }
 }
 // Attack functions for animations
@@ -190,6 +192,7 @@ winGame(wAA);
 $conanButton.show();
 $guyButton.hide();
 $conanHealth.text(wAA.health);
+winGame(wAA);
 }
   // give message about guard
   shield () {
@@ -283,10 +286,10 @@ class Enemy extends Character {
   }
     break;
 }
-loseGame(guy);
 $conanButton.hide();
 $guyButton.show();
 $guyHealth.text(guy.health);
+loseGame(guy);
 }
   // give message about guard
   shield () {
