@@ -114,8 +114,8 @@ class TVChef extends Character {
     setTimeout(function(){$attackImage.css('transform', 'translate(-100px)')}, 100);
     setTimeout(function(){$attackImage.css('transform', 'translate(0px)')}, 200);
     setTimeout(function(){$attackImage.css('transform', 'translate(100px)')}, 200);
-    setTimeout(function(){$attackImage.css('transform', 'translate(200px)')}, 300);
-    setTimeout(function(){$attackImage.attr('src', '')}, 1000);
+    setTimeout(function(){$attackImage.css('transform', 'translate(200px)')}, 400);
+    setTimeout(function(){$attackImage.attr('src', '')}, 500);
 
   }
     else {
