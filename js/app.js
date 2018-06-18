@@ -40,8 +40,10 @@ const $modal = $('#modal');
 const winGame = (opponent) => {
   if (opponent.health <= 0){
     $attackText.text('Guy Fieri is victorious. Ed Hardy decals for everyone');
-    $conanImage.css('transform', 'rotate(180deg)')
+    $conanImage.css('transform', 'rotate(180deg)');
     $conanButton.hide();
+    $guyImage.css('transform', 'translate(400px, -150px)');
+    // $attackText.css('z-index', '2');
   }
 }
 // Lose game function
@@ -50,6 +52,7 @@ const loseGame = (opponent) => {
     $attackText.text('Guy Fieri has been defeated. Norm-core wins!');
     $guyImage.css('transform', 'rotate(180deg)');
     $guyButton.hide();
+    $conanImage.css('transform', 'translate(-400px, -150px)');
   }
 }
 // Attack functions for animations
@@ -312,6 +315,7 @@ $(()=> {
 
 
   /// All my onclick events
+  $attackText.css('z-index', '2');
   $("#donkey-sauce").on('click', ()=>{guy.attack(wAA, $(event.currentTarget).text())
   });
   $("#alliterative-tv-show").on('click', ()=>{guy.attack(wAA, $(event.currentTarget).text())
