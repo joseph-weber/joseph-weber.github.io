@@ -9,7 +9,7 @@ const $body = $('body');
 
 const $player2Button = $('.conan-button');
 
-const $player1Button = $('.guy-button');
+const $player1Button = $('.player1-button');
 
 const $player1Health = $('#guy-health');
 
@@ -19,7 +19,15 @@ const $player1Image = $('#guy-pic');
 
 const $player2Image = $('#conan-pic');
 
-const $player1Shield = $('#guy-shield');
+const $player1Button1 = $('#player1-button1');
+
+const $player1Button2 = $('#player1-button2');
+
+const $player1Button3 = $('#player1-button3');
+
+const $player1Button4 = $('#player1-button4');
+
+const $player1Shield = $('#player1-shield');
 
 const $player2Shield = $('#conan-shield');
 
@@ -64,7 +72,7 @@ const loseGame = (opponent) => {
 const player1Attack = (param1, param2, param3) => {
   const player1Rando = Math.random() * 1;
   switch (param3) {
-  case 'Donkey Sauce 50':
+  case 'player1-button1':
     if (player1Rando < param1.weapons.move1.accuracy){
     $attackText.text('You have dealt ' + param1.weapons.move1.power + ' damage to ' + param2.name);
     param2.health -= param1.weapons.move1.power;
@@ -78,7 +86,7 @@ const player1Attack = (param1, param2, param3) => {
       miss();
     }
     break;
-  case 'Frosted Tip Projectiles 20':
+  case 'player1-button2':
     if (player1Rando < param1.weapons.move2.accuracy){
     $attackText.text('You have dealt ' + param1.weapons.move2.power + ' damage to ' + param2.name);
     param2.health -= param1.weapons.move2.power;
@@ -92,7 +100,7 @@ const player1Attack = (param1, param2, param3) => {
       miss();
     }
     break;
-  case 'Bowling Shirt Flamethrower 130':
+  case 'player1-button3':
   if (player1Rando < param1.weapons.move3.accuracy){
     $attackText.text('You have dealt ' + param1.weapons.move3.power + ' damage to ' + param2.name);
     param2.health -= param1.weapons.move3.power;
@@ -106,7 +114,7 @@ const player1Attack = (param1, param2, param3) => {
     miss();
   }
   break;
-  case 'Alliterative TV Show 60':
+  case 'player1-button4':
   if (player1Rando < param1.weapons.move4.accuracy){
     $attackText.text('You have dealt ' + param1.weapons.move4.power + ' damage to ' + param2.name);
     param2.health -= param1.weapons.move4.power;
@@ -120,7 +128,7 @@ const player1Attack = (param1, param2, param3) => {
     miss();
   }
   break;
-  case 'Shield +50':
+  case 'player1-shield':
   if (player1Rando > param1.weapons.move5.accuracy){
     $attackText.text('your defense has been bolstered by 50 hp');
     $attackImage.css('transform', 'translate(0)');
@@ -178,58 +186,17 @@ const miss = () => {
 // Create my general fighter class here
 class Character {
   // health will be the same for both characters
-  constructor(name, health){
+  constructor(name, health, weapons){
     this.name = name
     this.health = 400
+    this.weapons = weapons
   }
   // Attack methods that must do accuracy function, draw away health if hit, log message, and lead to an animation
   attack(opponent, move){
   }
 }
 
-/////////////////////////////////////////
-// TVChef class goes here
-class TVChef extends Character {
-  //// Constructor with super
-  constructor(name, health){
-    super(name, health)
-  //// Weapons
-    this.weapons = {
-      move1: {
-        name: 'donkey sauce',
-        power: 50,
-        accuracy: .7
-      },
-      move2: {
-        name: 'frosted tip projectiles',
-        power: 20,
-        accuracy: .8
-      },
-      move3: {
-        name: 'bowling shirt flamethrower',
-        power: 130,
-        accuracy: .3
-      },
-      move4: {
-        name: 'alliterative show titles',
-        power: 60,
-        accuracy: .5
-      },
-      move5: {
-        name: 'shield',
-        power: 50,
-        misfire: 10,
-        accuracy: .5
-      }
-    }
-  }
-    attack(attacker, opponent, move){
-      let param1 = attacker;
-      let param2 = opponent;
-      let param3 = move;
-      player1Attack(param1, param2, param3);
-    }
-}
+
   // give message about partic attack
 // shield () {
 //   const player1ShieldRando = Math.random() * 1;
@@ -374,7 +341,34 @@ $player1Button.show();
   }
 }
 
-const guy = new TVChef('Guy');
+const guy = new Character('Guy', 400, {
+  move1: {
+    name: 'donkey sauce',
+    power: 50,
+    accuracy: .7
+  },
+  move2: {
+    name: 'frosted tip projectiles',
+    power: 20,
+    accuracy: .8
+  },
+  move3: {
+    name: 'bowling shirt flamethrower',
+    power: 130,
+    accuracy: .3
+  },
+  move4: {
+    name: 'alliterative show titles',
+    power: 60,
+    accuracy: .5
+  },
+  move5: {
+    name: 'shield',
+    power: 50,
+    misfire: 10,
+    accuracy: .5
+  }
+});
 
 const wAA = new Enemy('Well Adjusted Adult');
 
@@ -387,13 +381,13 @@ $(()=> {
 
 
   /// All my onclick events
-  $("#donkey-sauce").on('click', ()=>{guy.attack(guy, wAA, $(event.currentTarget).text())
+  $player1Button1.on('click', ()=>{player1Attack(guy, wAA, $(event.currentTarget).attr('id'))
   });
-  $("#alliterative-tv-show").on('click', ()=>{guy.attack(guy, wAA, $(event.currentTarget).text())
+  $player1Button2.on('click', ()=>{player1Attack(guy, wAA, $(event.currentTarget).attr('id'))
   });
-  $("#bowling-shirt-flamethrower").on('click', ()=>{guy.attack(guy, wAA, $(event.currentTarget).text())
+  $player1Button3.on('click', ()=>{player1Attack(guy, wAA, $(event.currentTarget).attr('id'))
   });
-  $("#frosted-tip-projectiles").on('click', ()=>{guy.attack(guy, wAA, $(event.currentTarget).text())
+  $player1Button4.on('click', ()=>{player1Attack(guy, wAA, $(event.currentTarget).attr('id'))
   });
   $("#health-conscious-food").on('click', ()=>{
     wAA.attack(guy, $(event.currentTarget).text())
@@ -407,8 +401,7 @@ $(()=> {
   $("#good-table-manners").on('click', ()=>{
     wAA.attack(guy, $(event.currentTarget).text())
   });
-  $player1Shield.on('click', () => {
-    guy.attack(guy, wAA, $(event.currentTarget).text())
+  $player1Shield.on('click', () =>{player1Attack(guy, wAA, $(event.currentTarget).attr('id'))
   });
   $player2Shield.on('click', () => {
     wAA.attack(guy, $(event.currentTarget).text())
