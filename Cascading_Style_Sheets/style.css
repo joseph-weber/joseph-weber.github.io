@@ -5,13 +5,9 @@ body {
   height: 100%;
 }
 
-h1, #conan-health, #guy-health {
+h1, #player2-health, #player1-health {
   margin: 0;
   text-align: center;
-}
-
-#conan-health, #guy-health {
-  border-radius: 5px;
 }
 
 #gameboard {
@@ -22,12 +18,12 @@ h1, #conan-health, #guy-health {
 }
 
 
-#conan-div #conan-pic {
+#conan-div #player2-pic {
   width: 600px;
   height: 400px;
 }
 
-#guy-div #guy-pic {
+#guy-div #player1-pic {
   width: 600px;
   height: 400px;
 }
@@ -45,12 +41,13 @@ h1, #conan-health, #guy-health {
   width: 410px;
 }
 
-#guy-health, #conan-health {
+#player1-health, #player2-health {
   width: 400px;
   height: 30px;
   background-color: black;
   margin: 0 auto;
   color: white;
+  border-radius: 5px;
 }
 
 button {
