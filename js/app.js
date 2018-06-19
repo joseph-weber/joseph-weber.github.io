@@ -152,7 +152,7 @@ const player1Attack = (attacker, opponent, move) => {
     setTimeout(function(){$attackImage.attr('src', '')}, 1000);
     attacker.health += 50;
     $player1Health.text(attacker.health);
-    loseGame(guy);
+    loseGame(player1);
   }
   else {
     console.log('miss');
@@ -162,12 +162,12 @@ const player1Attack = (attacker, opponent, move) => {
     $attackImage.css('transform', 'translate(0)');
     $attackImage.attr('src', imageArray[11]);
     setTimeout(function(){$attackImage.attr('src', '')}, 1000);
-    setTimeout(loseGame(guy), 1000);
+    setTimeout(loseGame(player1), 1000);
     }
     break;
 }
-winGame(wAA);
-$player2Health.text(wAA.health);
+winGame(player2);
+$player2Health.text(player2.health);
 $player2Button.show();
 $player1Button.hide();
 }
@@ -182,8 +182,8 @@ const player2Attack = (attacker, opponent, move) => {
     if (player2Rando < attacker.weapons.move1.accuracy){
     $attackText.text('You have dealt ' + attacker.weapons.move1.power + ' damage to ' + opponent.name);
     opponent.health -= attacker.weapons.move1.power;
-    $player2Image.css('transform', 'rotate(20deg)')
-    setTimeout(function(){$player2Image.css('transform', 'rotate(0)')}, 1000);
+    $player1Image.css('transform', 'rotate(-20deg)')
+    setTimeout(function(){$player1Image.css('transform', 'rotate(0)')}, 1000);
     $attackImage.attr('src', imageArray[4]);
     player2AttackAnimation();
   }
@@ -195,8 +195,8 @@ const player2Attack = (attacker, opponent, move) => {
     if (player2Rando < attacker.weapons.move2.accuracy){
     $attackText.text('You have dealt ' + attacker.weapons.move2.power + ' damage to ' + opponent.name);
     opponent.health -= attacker.weapons.move2.power;
-    $player2Image.css('transform', 'rotate(20deg)')
-    setTimeout(function(){$player2Image.css('transform', 'rotate(0)')}, 1000);
+    $player1Image.css('transform', 'rotate(-20deg)')
+    setTimeout(function(){$player1Image.css('transform', 'rotate(0)')}, 1000);
     $attackImage.attr('src', imageArray[5]);
     player2AttackAnimation();
     }
@@ -208,8 +208,8 @@ const player2Attack = (attacker, opponent, move) => {
   if (player2Rando < attacker.weapons.move3.accuracy){
     $attackText.text('You have dealt ' + attacker.weapons.move3.power + ' damage to ' + opponent.name);
     opponent.health -= attacker.weapons.move3.power;
-    $player2Image.css('transform', 'rotate(20deg)')
-    setTimeout(function(){$player2Image.css('transform', 'rotate(0)')}, 1000);
+    $player1Image.css('transform', 'rotate(-20deg)')
+    setTimeout(function(){$player1Image.css('transform', 'rotate(0)')}, 1000);
     $attackImage.attr('src', imageArray[6]);
     player2AttackAnimation();
     }
@@ -221,8 +221,8 @@ const player2Attack = (attacker, opponent, move) => {
   if (player2Rando < attacker.weapons.move4.accuracy){
     $attackText.text('You have dealt ' + attacker.weapons.move4.power + ' damage to ' + opponent.name);
     opponent.health -= attacker.weapons.move4.power;
-    $player2Image.css('transform', 'rotate(20deg)')
-    setTimeout(function(){$player2Image.css('transform', 'rotate(0)')}, 1000);
+    $player1Image.css('transform', 'rotate(-20deg)')
+    setTimeout(function(){$player1Image.css('transform', 'rotate(0)')}, 1000);
     $attackImage.attr('src', imageArray[7]);
     player2AttackAnimation();
     }
@@ -238,7 +238,7 @@ const player2Attack = (attacker, opponent, move) => {
     setTimeout(function(){$attackImage.attr('src', '')}, 1000);
     attacker.health += 50;
     $player2Health.text(attacker.health);
-    loseGame(guy);
+    loseGame(player1);
   }
   else {
     // console.log('miss');
@@ -248,12 +248,12 @@ const player2Attack = (attacker, opponent, move) => {
     $attackImage.css('transform', 'translate(0)');
     $attackImage.attr('src', imageArray[11]);
     setTimeout(function(){$attackImage.attr('src', '')}, 1000);
-    setTimeout(winGame(wAA), 1000);
+    setTimeout(winGame(player2), 1000);
     }
     break;
 }
-loseGame(guy);
-$player1Health.text(guy.health);
+loseGame(player1);
+$player1Health.text(player1.health);
 $player1Button.show();
 $player2Button.hide();
 }
@@ -461,14 +461,14 @@ class Enemy extends Character {
 //     $attackImage.css('transform', 'translate(0)');
 //     $attackImage.attr('src', imageArray[11]);
 //     setTimeout(function(){$attackImage.attr('src', '')}, 1000);
-//     setTimeout(winGame(wAA), 1000);
+//     setTimeout(winGame(player2), 1000);
 //   }
 // $player2Button.hide();
 // $player1Button.show();
 //   }
 // }
 
-const guy = new Character('Guy', 400, 'images/Guy-Fighter.png', {
+const player1 = new Character('Guy', 400, 'images/Guy-Fighter.png', {
   move1: {
     name: 'donkey sauce',
     power: 50,
@@ -497,7 +497,7 @@ const guy = new Character('Guy', 400, 'images/Guy-Fighter.png', {
   }
 });
 
-const wAA = new Character('Well Adjusted Adult', 400, 'images/wellAdjustedAdult.png', {
+const player2 = new Character('Well Adjusted Adult', 400, 'images/wellAdjustedAdult.png', {
   move1: {
     name: 'health conscious food',
     power: 30,
@@ -526,43 +526,54 @@ const wAA = new Character('Well Adjusted Adult', 400, 'images/wellAdjustedAdult.
   }
 });
 
-console.log(wAA);
+console.log(player2);
 
-// commented this out for practice console.log(wAA.weapons.midlifeCrisisAntidote.power);
+// commented this out for practice console.log(player2.weapons.midlifeCrisisAntidote.power);
 
-// guy.attack(wAA, 'Frosted Tip Projectiles');
+// guy.attack(player2, 'Frosted Tip Projectiles');
 $(()=> {
   /// Display score
 
 
   /// All my onclick events
-  $player1Button1.on('click', ()=>{player1Attack(guy, wAA, $(event.currentTarget).attr('id'))
+  $player1Button1.on('click', ()=>{player1Attack(player1, player2, $(event.currentTarget).attr('id'))
   });
-  $player1Button2.on('click', ()=>{player1Attack(guy, wAA, $(event.currentTarget).attr('id'))
+  $player1Button2.on('click', ()=>{player1Attack(player1, player2, $(event.currentTarget).attr('id'))
   });
-  $player1Button3.on('click', ()=>{player1Attack(guy, wAA, $(event.currentTarget).attr('id'))
+  $player1Button3.on('click', ()=>{player1Attack(player1, player2, $(event.currentTarget).attr('id'))
   });
-  $player1Button4.on('click', ()=>{player1Attack(guy, wAA, $(event.currentTarget).attr('id'))
+  $player1Button4.on('click', ()=>{player1Attack(player1, player2, $(event.currentTarget).attr('id'))
   });
-  $player2Button1.on('click', ()=>{player2Attack(wAA, guy, $(event.currentTarget).attr('id'))
+  $player2Button1.on('click', ()=>{player2Attack(player2, player1, $(event.currentTarget).attr('id'))
   });
-  $player2Button2.on('click', ()=>{player2Attack(wAA, guy, $(event.currentTarget).attr('id'))
+  $player2Button2.on('click', ()=>{player2Attack(player2, player1, $(event.currentTarget).attr('id'))
   });
-  $player2Button3.on('click', ()=>{player2Attack(wAA, guy, $(event.currentTarget).attr('id'))
+  $player2Button3.on('click', ()=>{player2Attack(player2, player1, $(event.currentTarget).attr('id'))
   });
-  $player2Button4.on('click', ()=>{player2Attack(wAA, guy, $(event.currentTarget).attr('id'))
+  $player2Button4.on('click', ()=>{player2Attack(player2, player1, $(event.currentTarget).attr('id'))
   });
-  $player1Shield.on('click', () =>{player1Attack(guy, wAA, $(event.currentTarget).attr('id'))
+  $player1Shield.on('click', () =>{player1Attack(player1, player2, $(event.currentTarget).attr('id'))
   });
-  $player2Shield.on('click', () => {player2Attack(wAA, guy, $(event.currentTarget).attr('id'))
+  $player2Shield.on('click', () => {player2Attack(player2, player1, $(event.currentTarget).attr('id'))
   });
   $conanSelect.on('click', () => {
+    // $player2Button.hide();
     $player1Button.hide();
     $modal.css('display', 'none');
+    // $player1Image.attr('src', 'images/wellAdjustedAdult.png');
+    // $player1Image.css('visibility', 'visible');
+    // $player1Image.css('transform', 'scaleX(-1)');
+    // $player2Image.attr('src', 'images/Guy-Fighter.png');
+    // $player2Image.css('visibility', 'visible');
+    // $player2Image.css('transform', 'scaleX(-1)');
   });
   $guySelect.on('click', () => {
     $player2Button.hide();
     $modal.css('display', 'none');
+    // $player2Image.attr('src', 'images/wellAdjustedAdult.png');
+    // $player2Image.css('visibility', 'visible');
+    // $player1Image.attr('src', 'images/Guy-Fighter.png');
+    // $player1Image.css('visibility', 'visible');
   });
 
   const $openBtn = $('#openModal');
@@ -585,7 +596,7 @@ $closeBtn.on('click', closeModal);
 // set a timer to automatically close Modal
 setTimeout(openModal, 200);
 
-// $player1Health.text(wAA.health);
+// $player1Health.text(player2.health);
 
   // on click events for each of the attacks
   // we will draw the html text from the event current target to get the input

@@ -21,11 +21,13 @@ h1, #player2-health, #player1-health {
 #conan-div #player2-pic {
   width: 600px;
   height: 400px;
+  visibility: hidden;
 }
 
 #guy-div #player1-pic {
   width: 600px;
   height: 400px;
+  visibility: hidden;
 }
 
 #guy-div, #conan-div {
