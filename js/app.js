@@ -61,7 +61,94 @@ const loseGame = (opponent) => {
 }
 // Attack functions for animations
 // Guy's attack
-const player1Attack = () => {
+const player1Attack = (param1, param2, param3) => {
+  const player1Rando = Math.random() * 1;
+  switch (param3) {
+  case 'Donkey Sauce 50':
+    if (player1Rando < param1.weapons.move1.accuracy){
+    $attackText.text('You have dealt ' + param1.weapons.move1.power + ' damage to ' + param2.name);
+    param2.health -= param1.weapons.move1.power;
+    $player2Image.css('transform', 'rotate(20deg)')
+    setTimeout(function(){$player2Image.css('transform', 'rotate(0)')}, 1000);
+    $attackImage.attr('src', imageArray[0]);
+    player1Attack();
+    player1AttackAnimation();
+  }
+    else {
+      miss();
+    }
+    break;
+  case 'Frosted Tip Projectiles 20':
+    if (player1Rando < param1.weapons.move2.accuracy){
+    $attackText.text('You have dealt ' + param1.weapons.move2.power + ' damage to ' + param2.name);
+    param2.health -= param1.weapons.move2.power;
+    $player2Image.css('transform', 'rotate(20deg)')
+    setTimeout(function(){$player2Image.css('transform', 'rotate(0)')}, 1000);
+    $attackImage.attr('src', imageArray[1]);
+    player1Attack();
+    player1AttackAnimation();
+    }
+    else {
+      miss();
+    }
+    break;
+  case 'Bowling Shirt Flamethrower 130':
+  if (player1Rando < param1.weapons.move3.accuracy){
+    $attackText.text('You have dealt ' + param1.weapons.move3.power + ' damage to ' + param2.name);
+    param2.health -= param1.weapons.move3.power;
+    $player2Image.css('transform', 'rotate(20deg)')
+    setTimeout(function(){$player2Image.css('transform', 'rotate(0)')}, 1000);
+    $attackImage.attr('src', imageArray[2])
+    player1Attack();
+    player1AttackAnimation();
+    }
+    else {
+    miss();
+  }
+  break;
+  case 'Alliterative TV Show 60':
+  if (player1Rando < param1.weapons.move4.accuracy){
+    $attackText.text('You have dealt ' + param1.weapons.move4.power + ' damage to ' + param2.name);
+    param2.health -= param1.weapons.move4.power;
+    $player2Image.css('transform', 'rotate(20deg)')
+    setTimeout(function(){$player2Image.css('transform', 'rotate(0)')}, 1000);
+    $attackImage.attr('src', imageArray[3])
+    player1Attack();
+    player1AttackAnimation();
+    }
+    else {
+    miss();
+  }
+  break;
+  case 'Shield +50':
+  if (player1Rando > param1.weapons.move5.accuracy){
+    $attackText.text('your defense has been bolstered by 50 hp');
+    $attackImage.css('transform', 'translate(0)');
+    $attackImage.attr('src', imageArray[9]);
+    setTimeout(function(){$attackImage.attr('src', '')}, 1000);
+    param1.health += 50;
+    $player1Health.text(param1.health);
+    loseGame(guy);
+  }
+  else {
+    console.log('miss');
+    $attackText.text('your shields short-circuited, 10 health lost');
+    param1.health -= 10;
+    $player1Health.text(param1.health);
+    $attackImage.css('transform', 'translate(0)');
+    $attackImage.attr('src', imageArray[11]);
+    setTimeout(function(){$attackImage.attr('src', '')}, 1000);
+    setTimeout(loseGame(guy), 1000);
+    }
+    break;
+}
+winGame(wAA);
+$player2Health.text(wAA.health);
+$player2Button.show();
+$player1Button.hide();
+}
+
+const player1AttackAnimation = () => {
   $attackImage.css('transform', 'translate(-200px)')
   setTimeout(function(){$attackImage.css('transform', 'translate(-100px)')}, 100);
   setTimeout(function(){$attackImage.css('transform', 'translate(0px)')}, 200);
@@ -136,90 +223,14 @@ class TVChef extends Character {
       }
     }
   }
+    attack(attacker, opponent, move){
+      let param1 = attacker;
+      let param2 = opponent;
+      let param3 = move;
+      player1Attack(param1, param2, param3);
+    }
+}
   // give message about partic attack
-  attack(opponent, move){
-  super.attack(opponent, move)
-  const player1Rando = Math.random() * 1;
-  switch (move) {
-  case 'Donkey Sauce 50':
-    if (player1Rando < this.weapons.move1.accuracy){
-    $attackText.text('You have dealt ' + this.weapons.move1.power + ' damage to ' + opponent.name);
-    opponent.health -= this.weapons.move1.power;
-    $player2Image.css('transform', 'rotate(20deg)')
-    setTimeout(function(){$player2Image.css('transform', 'rotate(0)')}, 1000);
-    $attackImage.attr('src', imageArray[0]);
-    player1Attack();
-  }
-    else {
-      miss();
-    }
-    break;
-  case 'Frosted Tip Projectiles 20':
-    if (player1Rando < this.weapons.move2.accuracy){
-    $attackText.text('You have dealt ' + this.weapons.move2.power + ' damage to ' + opponent.name);
-    opponent.health -= this.weapons.move2.power;
-    $player2Image.css('transform', 'rotate(20deg)')
-    setTimeout(function(){$player2Image.css('transform', 'rotate(0)')}, 1000);
-    $attackImage.attr('src', imageArray[1]);
-    player1Attack();
-    }
-    else {
-      miss();
-    }
-    break;
-  case 'Bowling Shirt Flamethrower 130':
-  if (player1Rando < this.weapons.move3.accuracy){
-    $attackText.text('You have dealt ' + this.weapons.move3.power + ' damage to ' + opponent.name);
-    opponent.health -= this.weapons.move3.power;
-    $player2Image.css('transform', 'rotate(20deg)')
-    setTimeout(function(){$player2Image.css('transform', 'rotate(0)')}, 1000);
-    $attackImage.attr('src', imageArray[2])
-    player1Attack();
-    }
-    else {
-    miss();
-  }
-  break;
-  case 'Alliterative TV Show 60':
-  if (player1Rando < this.weapons.move4.accuracy){
-    $attackText.text('You have dealt ' + this.weapons.move4.power + ' damage to ' + opponent.name);
-    opponent.health -= this.weapons.move4.power;
-    $player2Image.css('transform', 'rotate(20deg)')
-    setTimeout(function(){$player2Image.css('transform', 'rotate(0)')}, 1000);
-    $attackImage.attr('src', imageArray[3])
-    player1Attack();
-    }
-    else {
-    miss();
-  }
-  break;
-  case 'Shield +50':
-  if (player1Rando > this.weapons.move5.accuracy){
-    $attackText.text('your defense has been bolstered by 50 hp');
-    $attackImage.css('transform', 'translate(0)');
-    $attackImage.attr('src', imageArray[9]);
-    setTimeout(function(){$attackImage.attr('src', '')}, 1000);
-    this.health += 50;
-    $player1Health.text(this.health);
-    loseGame(guy);
-  }
-  else {
-    console.log('miss');
-    $attackText.text('your shields short-circuited, 10 health lost');
-    this.health -= 10;
-    $player1Health.text(this.health);
-    $attackImage.css('transform', 'translate(0)');
-    $attackImage.attr('src', imageArray[11]);
-    setTimeout(function(){$attackImage.attr('src', '')}, 1000);
-    setTimeout(loseGame(guy), 1000);
-    }
-    break;
-}
-winGame(wAA);
-$player2Health.text(wAA.health);
-$player2Button.show();
-$player1Button.hide();
-}
 // shield () {
 //   const player1ShieldRando = Math.random() * 1;
 //   if (player1ShieldRando > .5){
@@ -243,7 +254,6 @@ $player1Button.hide();
 // $player1Button.hide();
 // $player2Button.show();
 // }
-}
 
 /////////////////////////////////////////
 // Enemy class goes here
@@ -377,13 +387,13 @@ $(()=> {
 
 
   /// All my onclick events
-  $("#donkey-sauce").on('click', ()=>{guy.attack(wAA, $(event.currentTarget).text())
+  $("#donkey-sauce").on('click', ()=>{guy.attack(guy, wAA, $(event.currentTarget).text())
   });
-  $("#alliterative-tv-show").on('click', ()=>{guy.attack(wAA, $(event.currentTarget).text())
+  $("#alliterative-tv-show").on('click', ()=>{guy.attack(guy, wAA, $(event.currentTarget).text())
   });
-  $("#bowling-shirt-flamethrower").on('click', ()=>{guy.attack(wAA, $(event.currentTarget).text())
+  $("#bowling-shirt-flamethrower").on('click', ()=>{guy.attack(guy, wAA, $(event.currentTarget).text())
   });
-  $("#frosted-tip-projectiles").on('click', ()=>{guy.attack(wAA, $(event.currentTarget).text())
+  $("#frosted-tip-projectiles").on('click', ()=>{guy.attack(guy, wAA, $(event.currentTarget).text())
   });
   $("#health-conscious-food").on('click', ()=>{
     wAA.attack(guy, $(event.currentTarget).text())
@@ -398,7 +408,7 @@ $(()=> {
     wAA.attack(guy, $(event.currentTarget).text())
   });
   $player1Shield.on('click', () => {
-    guy.attack(wAA, $(event.currentTarget).text())
+    guy.attack(guy, wAA, $(event.currentTarget).text())
   });
   $player2Shield.on('click', () => {
     wAA.attack(guy, $(event.currentTarget).text())
