@@ -35,6 +35,8 @@ const $conanSelect = $('#conan-select');
 
 const $modal = $('#modal');
 
+let player = 2;
+
 
 
 //////////////////////////////////////////
@@ -187,7 +189,6 @@ winGame(wAA);
 $conanButton.show();
 $guyButton.hide();
 $conanHealth.text(wAA.health);
-winGame(wAA);
 }
   // give message about guard
 shield () {
@@ -199,13 +200,16 @@ shield () {
     setTimeout(function(){$attackImage.attr('src', '')}, 1000);
     this.health += 50;
     $guyHealth.text(this.health);
+    loseGame(guy);
   }
   else {
     $attackText.text('your shields short-circuited, 10 health lost');
     this.health -= 10;
     $guyHealth.text(this.health);
     $attackImage.css('transform', 'translate(0)');
-    $attackImage.attr('src', imageArray[11])
+    $attackImage.attr('src', imageArray[11]);
+    setTimeout(function(){$attackImage.attr('src', '')}, 1000);
+    setTimeout(loseGame(guy), 1000);
   }
 $guyButton.hide();
 $conanButton.show();
@@ -317,7 +321,9 @@ shield () {
     this.health -= 20;
     $conanHealth.text(this.health);
     $attackImage.css('transform', 'translate(0)');
-    $attackImage.attr('src', imageArray[11])
+    $attackImage.attr('src', imageArray[11]);
+    setTimeout(function(){$attackImage.attr('src', '')}, 1000);
+    setTimeout(winGame(wAA), 1000);
   }
 $conanButton.hide();
 $guyButton.show();
