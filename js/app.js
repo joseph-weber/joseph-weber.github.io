@@ -43,6 +43,10 @@ const $attackText = $('#attack-text');
 
 const $attackImage = $('#attack');
 
+const $onePlayerBtn = $('#one-player');
+
+const $twoPlayerBtn = $('#two-player');
+
 const imageArray = ['images/Donkey_Sauce.jpg', 'images/frosted_tips.jpg', 'images/Flamethrower.png', 'images/alliteration.png', 'images/healthy_food.jpg', 'images/suit.jpg', 'images/Antidote.jpg', 'images/good_manners.jpg', 'images/missed.gif', 'images/Fieri_Shield.jpg', 'images/shield.png', 'images/short_circuit.png'];
 
 
@@ -576,13 +580,21 @@ $(()=> {
     // $player1Image.css('visibility', 'visible');
   });
 
-  const $openBtn = $('#openModal');
-
 const $modal = $('#modal');
+
+const $premodal = $('#premodal');
 
 const $closeBtn = $('#close');
 
 
+
+const openPremodal = () => {
+  $premodal.css('display', 'block');
+}
+const closePremodal = () => {
+  $premodal.css('display', 'none');
+  openModal();
+}
 
 const openModal = () => {
   $modal.css('display', 'block');
@@ -590,11 +602,22 @@ const openModal = () => {
 const closeModal = () => {
   $modal.css('display', 'none');
 }
-$openBtn.on('click', openModal);
+
+$
+$onePlayerBtn.on('click', ()=>{
+  closePremodal();
+  player = 1;
+  console.log(player);
+});
+$twoPlayerBtn.on('click', ()=>{
+  closePremodal();
+  player = 2;
+  console.log(player);
+});
 $closeBtn.on('click', closeModal);
 
 // set a timer to automatically close Modal
-setTimeout(openModal, 200);
+setTimeout(openPremodal, 200);
 
 // $player1Health.text(player2.health);
 
