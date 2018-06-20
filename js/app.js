@@ -109,7 +109,6 @@ const player1Attack = (attacker, opponent, move) => {
     if (player1Rando < attacker.weapons.move1.accuracy){
     $attackText.text(attacker.name + ' has dealt ' + attacker.weapons.move1.power + ' damage to ' + opponent.name);
     opponent.health -= attacker.weapons.move1.power;
-    $player2Health.css('width', player2.health);
     $player2Image.css('transform', 'rotate(20deg)')
     setTimeout(function(){$player2Image.css('transform', 'rotate(0)')}, 1000);
     $attackImage.attr('src', attacker.weapons.move1.attackImage);
@@ -184,6 +183,8 @@ winGame(player2);
 $player2Health.text(player2.health);
 $player2Button.css('visibility', 'visible');
 $player1Button.css('visibility', 'hidden');
+$player2Health.css('width', player2.health);
+$player1Health.css('width', player1.health);
 }
 else {
   $player2Button.hide();
@@ -286,6 +287,8 @@ else {
 }
 winGame(player2);
 $player2Health.text(player2.health);
+$player2Health.css('width', player2.health);
+$player1Health.css('width', player1.health);
 }
 }
 ///////////////////////////////////
@@ -372,6 +375,8 @@ loseGame(player1);
 $player1Health.text(player1.health);
 $player1Button.css('visibility', 'visible');
 $player2Button.css('visibility', 'hidden');
+$player2Health.css('width', player2.health);
+$player1Health.css('width', player1.health);
 }
 
 
@@ -439,122 +444,7 @@ class Character {
   }
 }
 
-
-  // give message about partic attack
-// shield () {
-//   const player1ShieldRando = Math.random() * 1;
-//   if (player1ShieldRando > .5){
-//     $attackText.text('your defense has been bolstered by 50 hp');
-//     $attackImage.css('transform', 'translate(0)');
-//     $attackImage.attr('src', imageArray[9]);
-//     setTimeout(function(){$attackImage.attr('src', '')}, 1000);
-//     this.health += 50;
-//     $player1Health.text(this.health);
-//     loseGame(guy);
-//   }
-//   else {
-//     $attackText.text('your shields short-circuited, 10 health lost');
-//     this.health -= 10;
-//     $player1Health.text(this.health);
-//     $attackImage.css('transform', 'translate(0)');
-//     $attackImage.attr('src', imageArray[11]);
-//     setTimeout(function(){$attackImage.attr('src', '')}, 1000);
-//     setTimeout(loseGame(guy), 1000);
-//   }
-// $player1Button.hide();
-// $player2Button.show();
-// }
-
-/////////////////////////////////////////
-// Enemy class goes here
-  // give message about partic attack
-//   attack(opponent, move){
-//   super.attack(opponent, move);
-//   const conanRando = Math.random() * 1;
-//   switch (move) {
-//   case 'Health Conscious Food 30':
-//   if (conanRando < this.weapons.healthConsciousFood.accuracy){
-//     $attackText.text('You have dealt ' + this.weapons.healthConsciousFood.power + ' damage to ' + opponent.name);
-//     opponent.health -= this.weapons.healthConsciousFood.power;
-//     $player1Image.css('transform', 'rotate(-60deg)')
-//     setTimeout(function(){$player1Image.css('transform', 'rotate(0)')}, 1000);
-//     $attackImage.attr('src', 'images/healthy_food.jpg')
-//     player2Attack();
-//   }
-//   else {
-//     miss();
-//   }
-//     break;
-//   case 'Appropriate Clothing 10':
-//   if (conanRando < this.weapons.appropriateClothing.accuracy){
-//     $attackText.text('You have dealt ' + this.weapons.appropriateClothing.power + ' damage to ' + opponent.name);
-//     opponent.health -= this.weapons.appropriateClothing.power;
-//     $player1Image.css('transform', 'rotate(-60deg)')
-//     setTimeout(function(){$player1Image.css('transform', 'rotate(0)')}, 1000);
-//     $attackImage.attr('src', 'images/suit.jpg')
-//     player2Attack();
-//   }
-//   else {
-//     miss();
-//   }
-//   break;
-//   case 'Mid-life Crisis Antidote 80':
-//   if (conanRando < this.weapons.midlifeCrisisAntidote.accuracy){
-//     $attackText.text('You have dealt ' + this.weapons.midlifeCrisisAntidote.power + ' damage to ' + opponent.name);
-//     opponent.health -= this.weapons.midlifeCrisisAntidote.power;
-//     $player1Image.css('transform', 'rotate(-60deg)')
-//     setTimeout(function(){$player1Image.css('transform', 'rotate(0)')}, 1000);
-//     $attackImage.attr('src', 'images/Antidote.jpg')
-//     player2Attack();
-//   }
-//   else {
-//     miss();
-//   }
-//     break;
-//   case 'Good Table Manners 40':
-//   if (conanRando < this.weapons.goodTableManners.accuracy){
-//     $attackText.text('You have dealt ' + this.weapons.goodTableManners.power + ' damage to ' + opponent.name);
-//     opponent.health -= this.weapons.goodTableManners.power;
-//     $player1Image.css('transform', 'rotate(-60deg)')
-//     setTimeout(function(){$player1Image.css('transform', 'rotate(0)')}, 1000);
-//     $attackImage.attr('src', 'images/good_manners.jpg')
-//     player2Attack();
-//   }
-//   else {
-//     miss();
-//   }
-//     break;
-// }
-// $player2Button.hide();
-// $player1Button.show();
-// $player1Health.text(guy.health);
-// loseGame(guy);
-// }
-  // give message about guard
-// shield () {
-//   const player2ShieldRando = Math.random() * 1;
-//   if (player2ShieldRando > .5){
-//     $attackText.text('your defense has been bolstered by 70 hp');
-//     $attackImage.css('transform', 'translate(0)');
-//     $attackImage.attr('src', imageArray[10]);
-//     setTimeout(function(){$attackImage.attr('src', '')}, 1000);
-//     this.health += 70;
-//     $player2Health.text(this.health);
-//   }
-//   else {
-//     $attackText.text('your shields short-circuited, 20 health lost');
-//     this.health -= 20;
-//     $player2Health.text(this.health);
-//     $attackImage.css('transform', 'translate(0)');
-//     $attackImage.attr('src', imageArray[11]);
-//     setTimeout(function(){$attackImage.attr('src', '')}, 1000);
-//     setTimeout(winGame(player2), 1000);
-//   }
-// $player2Button.hide();
-// $player1Button.show();
-//   }
-// }
-
+///////// Stock characters
 const guy = new Character('Guy', 400, 'images/Guy-Fighter.png', 'images/flipped-Guy-Fieri.png', {
   move1: {
     name: 'donkey sauce',
