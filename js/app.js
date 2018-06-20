@@ -51,6 +51,8 @@ let player1;
 
 let player2;
 
+const player2MoveArray = ["player2-button1", "player2-button2", "player2-button3", "player2-button4", "player2-button5"]
+
 const imageArray = ['images/Donkey_Sauce.jpg', 'images/frosted_tips.jpg', 'images/Flamethrower.png', 'images/alliteration.png', 'images/healthy_food.jpg', 'images/suit.jpg', 'images/Antidote.jpg', 'images/good_manners.jpg', 'images/missed.gif', 'images/Fieri_Shield.jpg', 'images/shield.png', 'images/short_circuit.png'];
 
 
@@ -99,16 +101,103 @@ const player1Attack = (attacker, opponent, move) => {
   switch (move) {
   case 'player1-button1':
     if (player1Rando < attacker.weapons.move1.accuracy){
+    $attackText.text(attacker.name + ' has dealt ' + attacker.weapons.move1.power + ' damage to ' + opponent.name);
+    opponent.health -= attacker.weapons.move1.power;
+    $player2Image.css('transform', 'rotate(20deg)')
+    setTimeout(function(){$player2Image.css('transform', 'rotate(0)')}, 1000);
+    $attackImage.attr('src', attacker.weapons.move1.attackImage);
+    player1AttackAnimation();
+  }
+    else {
+      miss();
+    }
+    break;
+  case 'player1-button2':
+    if (player1Rando < attacker.weapons.move2.accuracy){
+    $attackText.text(attacker.name + ' has dealt ' + attacker.weapons.move2.power + ' damage to ' + opponent.name);
+    opponent.health -= attacker.weapons.move2.power;
+    $player2Image.css('transform', 'rotate(20deg)')
+    setTimeout(function(){$player2Image.css('transform', 'rotate(0)')}, 1000);
+    $attackImage.attr('src', attacker.weapons.move2.attackImage);
+    player1AttackAnimation();
+    }
+    else {
+      miss();
+    }
+    break;
+  case 'player1-button3':
+  if (player1Rando < attacker.weapons.move3.accuracy){
+    $attackText.text(attacker.name + ' has dealt ' + attacker.weapons.move3.power + ' damage to ' + opponent.name);
+    opponent.health -= attacker.weapons.move3.power;
+    $player2Image.css('transform', 'rotate(20deg)')
+    setTimeout(function(){$player2Image.css('transform', 'rotate(0)')}, 1000);
+    $attackImage.attr('src', attacker.weapons.move3.attackImage)
+    player1AttackAnimation();
+    }
+    else {
+    miss();
+  }
+  break;
+  case 'player1-button4':
+  if (player1Rando < attacker.weapons.move4.accuracy){
+    $attackText.text(attacker.name + ' has dealt ' + attacker.weapons.move4.power + ' damage to ' + opponent.name);
+    opponent.health -= attacker.weapons.move4.power;
+    $player2Image.css('transform', 'rotate(20deg)')
+    setTimeout(function(){$player2Image.css('transform', 'rotate(0)')}, 1000);
+    $attackImage.attr('src', attacker.weapons.move4.attackImage)
+    player1AttackAnimation();
+    }
+    else {
+    miss();
+  }
+  break;
+  case 'player1-shield':
+  if (player1Rando > attacker.weapons.move5.accuracy){
+    $attackText.text(attacker.name + '\'s defense has been bolstered by 50 hp');
+    $attackImage.css('transform', 'translate(0)');
+    $attackImage.attr('src', attacker.weapons.move5.attackImage);
+    setTimeout(function(){$attackImage.attr('src', '')}, 1000);
+    attacker.health += 50;
+    $player1Health.text(attacker.health);
+    loseGame(player1);
+  }
+  else {
+    console.log('miss');
+    $attackText.text(attacker.name + '\'s shields short-circuited, 10 health lost');
+    attacker.health -= 10;
+    $player1Health.text(attacker.health);
+    $attackImage.css('transform', 'translate(0)');
+    $attackImage.attr('src', attacker.weapons.move5.attackImageMiss);
+    setTimeout(function(){$attackImage.attr('src', '')}, 1000);
+    setTimeout(loseGame(player1), 1000);
+    }
+    break;
+}
+winGame(player2);
+$player2Health.text(player2.health);
+$player2Button.css('visibility', 'visible');
+$player1Button.css('visibility', 'hidden');
+}
+else {
+  $player2Button.hide();
+  const player1Rando = Math.random() * 1;
+  const computerRando = Math.floor(Math.random() * 4);
+  switch (move) {
+  case 'player1-button1':
+    if (player1Rando < attacker.weapons.move1.accuracy){
     $attackText.text('You have dealt ' + attacker.weapons.move1.power + ' damage to ' + opponent.name);
     opponent.health -= attacker.weapons.move1.power;
     $player2Image.css('transform', 'rotate(20deg)')
     setTimeout(function(){$player2Image.css('transform', 'rotate(0)')}, 1000);
     $attackImage.attr('src', attacker.weapons.move1.attackImage);
-    player1Attack();
     player1AttackAnimation();
+    $player1Button.css('visibility', 'hidden');
+    setTimeout(function(){player2Attack(player2, player1, player2MoveArray[computerRando])}, 2000);
   }
     else {
       miss();
+      $player1Button.css('visibility', 'hidden');
+      setTimeout(function(){player2Attack(player2, player1, player2MoveArray[computerRando])}, 2000);
     }
     break;
   case 'player1-button2':
@@ -118,11 +207,14 @@ const player1Attack = (attacker, opponent, move) => {
     $player2Image.css('transform', 'rotate(20deg)')
     setTimeout(function(){$player2Image.css('transform', 'rotate(0)')}, 1000);
     $attackImage.attr('src', attacker.weapons.move2.attackImage);
-    player1Attack();
     player1AttackAnimation();
+    $player1Button.css('visibility', 'hidden');
+    setTimeout(function(){player2Attack(player2, player1, player2MoveArray[computerRando])}, 2000);
     }
     else {
       miss();
+      $player1Button.css('visibility', 'hidden');
+      setTimeout(function(){player2Attack(player2, player1, player2MoveArray[computerRando])}, 2000);
     }
     break;
   case 'player1-button3':
@@ -132,11 +224,14 @@ const player1Attack = (attacker, opponent, move) => {
     $player2Image.css('transform', 'rotate(20deg)')
     setTimeout(function(){$player2Image.css('transform', 'rotate(0)')}, 1000);
     $attackImage.attr('src', attacker.weapons.move3.attackImage)
-    player1Attack();
     player1AttackAnimation();
+    $player1Button.css('visibility', 'hidden');
+    setTimeout(function(){player2Attack(player2, player1, player2MoveArray[computerRando])}, 2000);
     }
     else {
     miss();
+    $player1Button.css('visibility', 'hidden');
+    setTimeout(function(){player2Attack(player2, player1, player2MoveArray[computerRando])}, 2000);
   }
   break;
   case 'player1-button4':
@@ -145,24 +240,28 @@ const player1Attack = (attacker, opponent, move) => {
     opponent.health -= attacker.weapons.move4.power;
     $player2Image.css('transform', 'rotate(20deg)')
     setTimeout(function(){$player2Image.css('transform', 'rotate(0)')}, 1000);
-    $attackImage.attr('src', attacker.weapons.move4.attackImage)
-    player1Attack();
+    $attackImage.attr('src', attacker.weapons.move4.attackImage);
     player1AttackAnimation();
+    $player1Button.css('visibility', 'hidden');
+    setTimeout(function(){player2Attack(player2, player1, player2MoveArray[computerRando])}, 2000);
     }
     else {
     miss();
+    $player1Button.css('visibility', 'hidden');
+    setTimeout(function(){player2Attack(player2, player1, player2MoveArray[computerRando])}, 2000);
   }
   break;
   case 'player1-shield':
   if (player1Rando > attacker.weapons.move5.accuracy){
     $attackText.text('your defense has been bolstered by 50 hp');
     $attackImage.css('transform', 'translate(0)');
-    $attackImage.attr('src',     $attackImage.attr('src', attacker.weapons.move5.attackImage)
-);
+    $attackImage.attr('src', attacker.weapons.move5.attackImage);
     setTimeout(function(){$attackImage.attr('src', '')}, 1000);
     attacker.health += 50;
     $player1Health.text(attacker.health);
     loseGame(player1);
+    $player1Button.css('visibility', 'hidden');
+    setTimeout(function(){player2Attack(player2, player1, player2MoveArray[computerRando])}, 2000);
   }
   else {
     console.log('miss');
@@ -170,25 +269,20 @@ const player1Attack = (attacker, opponent, move) => {
     attacker.health -= 10;
     $player1Health.text(attacker.health);
     $attackImage.css('transform', 'translate(0)');
-    $attackImage.attr('src',     $attackImage.attr('src', attacker.weapons.move5.attackImageMiss)
-);
+    $attackImage.attr('src', attacker.weapons.move5.attackImageMiss);
     setTimeout(function(){$attackImage.attr('src', '')}, 1000);
     setTimeout(loseGame(player1), 1000);
+    $player1Button.css('visibility', 'hidden');
+    setTimeout(function(){player2Attack(player2, player1, player2MoveArray[computerRando])}, 2000);
     }
     break;
 }
 winGame(player2);
 $player2Health.text(player2.health);
-$player2Button.show();
-$player1Button.hide();
 }
 }
-else {
-
-}
-
 ///////////////////////////////////
-// Conan's attack
+// Attack for player 2
 ///////////////////////////////////
 const player2Attack = (attacker, opponent, move) => {
   const player2Rando = Math.random() * 1;
@@ -261,7 +355,7 @@ const player2Attack = (attacker, opponent, move) => {
     attacker.health -= 10;
     $player2Health.text(attacker.health);
     $attackImage.css('transform', 'translate(0)');
-    $attackImage.attr('src', imagattacker.weapons.move5.attackImageMiss);
+    $attackImage.attr('src', attacker.weapons.move5.attackImageMiss);
     setTimeout(function(){$attackImage.attr('src', '')}, 1000);
     setTimeout(winGame(player2), 1000);
     }
@@ -269,8 +363,8 @@ const player2Attack = (attacker, opponent, move) => {
 }
 loseGame(player1);
 $player1Health.text(player1.health);
-$player1Button.show();
-$player2Button.hide();
+$player1Button.css('visibility', 'visible');
+$player2Button.css('visibility', 'hidden');
 }
 
 
