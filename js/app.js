@@ -47,6 +47,12 @@ const $onePlayerBtn = $('#one-player');
 
 const $twoPlayerBtn = $('#two-player');
 
+const $player1Name = $('#player1-name');
+
+const $player2Name = $('#player2-name');
+
+const $reset = $('#reset');
+
 let player1;
 
 let player2;
@@ -626,6 +632,9 @@ $(()=> {
   /// Display score
 
   /// All my onclick events
+  $reset.on('click', ()=>{
+    resetGame();
+  });
   $player1Button1.on('click', ()=>{player1Attack(player1, player2, $(event.currentTarget).attr('id'))
   });
   $player1Button2.on('click', ()=>{player1Attack(player1, player2, $(event.currentTarget).attr('id'))
@@ -667,6 +676,8 @@ $(()=> {
     $player2Image.css('visibility', 'visible');
     $player1Image.css('visibility', 'visible');
     $modal.css('display', 'none');
+    $player1Name.text(player1.name);
+    $player2Name.text(player2.name);
   });
 
 const $modal = $('#modal');
@@ -679,6 +690,83 @@ const $closeBtn = $('#close');
 
 const openPremodal = () => {
   $premodal.css('display', 'block');
+  const guy = new Character('Guy', 400, 'images/Guy-Fighter.png', 'images/flipped-Guy-Fieri.png', {
+    move1: {
+      name: 'donkey sauce',
+      power: 50,
+      accuracy: .7,
+      attackImage: 'images/Donkey_Sauce.jpg'
+    },
+    move2: {
+      name: 'frosted tip projectiles',
+      power: 20,
+      accuracy: .8,
+      attackImage: 'images/frosted_tips.jpg'
+    },
+    move3: {
+      name: 'bowling shirt flamethrower',
+      power: 130,
+      accuracy: .3,
+      attackImage: 'images/Flamethrower.png'
+    },
+    move4: {
+      name: 'alliterative show titles',
+      power: 60,
+      accuracy: .5,
+      attackImage: 'images/alliteration.png'
+    },
+    move5: {
+      name: 'shield',
+      power: 50,
+      misfire: 10,
+      accuracy: .5,
+      attackImage: 'images/Fieri_Shield.jpg',
+      attackImageMiss: 'images/short_circuit.png'
+    }
+  });
+
+  const conan = new Character('Well Adjusted Adult', 400, 'images/wellAdjustedAdult.png', 'images/flipped-conan.png', {
+    move1: {
+      name: 'health conscious food',
+      power: 30,
+      accuracy: .8,
+      attackImage: 'images/healthy_food.jpg'
+    },
+    move2: {
+      name: 'appropriate clothing',
+      power: 10,
+      accuracy: 1.0,
+      attackImage:'images/suit.jpg'
+    },
+    move3: {
+      name: 'midlife crisis antidote',
+      power: 80,
+      accuracy: .4,
+      attackImage: 'images/Antidote.jpg'
+    },
+    move4: {
+      name: 'good table manners',
+      power: 40,
+      accuracy: .5,
+      attackImage: 'images/good_manners.jpg'
+    },
+    move5: {
+      name: 'shield',
+      power: 70,
+      misfire: 20,
+      accuracy: .5,
+      attackImage: 'images/shield.png',
+      attackImageMiss: 'images/short_circuit.png'
+    }
+  });
+}
+
+const resetGame = () => {
+  player1.health = 400;
+  player2.health = 400;
+  $player1Health.text(player1.health);
+  $player2Health.text(player2.health);
+  openPremodal();
 }
 const closePremodal = () => {
   $premodal.css('display', 'none');
@@ -724,6 +812,8 @@ $player1Select.on('click', ()=>{
   $player1Image.css('visibility', 'visible');
   $player2Button.hide();
   $modal.css('display', 'none');
+  $player1Name.text(player1.name);
+  $player2Name.text(player2.name);
 })
 
 // set a timer to automatically close Modal

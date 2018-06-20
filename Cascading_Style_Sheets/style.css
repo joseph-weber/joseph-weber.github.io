@@ -177,3 +177,8 @@ span {
   border: 1px solid black;
   font-size: 20px;
 }
+
+#reset {
+  position: absolute;
+  top: -3px; 
+}
