@@ -84,7 +84,7 @@ let player;
 // Win game function
 const winGame = (opponent) => {
   if (opponent.health <= 0){
-    $attackText.text('Guy Fieri is victorious. Ed Hardy decals for everyone');
+    $attackText.text(player1.name + ' is victorious.');
     $player2Image.css('transform', 'rotate(180deg)');
     $player2Button.hide();
     $player1Image.css('transform', 'translate(400px, -150px)');
@@ -93,7 +93,7 @@ const winGame = (opponent) => {
 // Lose game function
 const loseGame = (opponent) => {
   if (opponent.health <= 0){
-    $attackText.text('Guy Fieri has been defeated. Norm-core wins!');
+    $attackText.text(player2.name + ' is the champion.');
     $player1Image.css('transform', 'rotate(180deg)');
     $player1Button.hide();
     $player2Image.css('transform', 'translate(-400px, -150px)');
@@ -432,11 +432,14 @@ const miss = () => {
 // Create my general fighter class here
 class Character {
   // health will be the same for both characters
-  constructor(name, health, image, flippedImage, weapons){
+  constructor(name, health, image, flippedImage, overallPower, overallAccuracy, shield, weapons){
     this.name = name
     this.health = 400
     this.image = image
     this.flippedImage = flippedImage
+    this.overallPower = overallPower
+    this.overallAccuracy = overallAccuracy
+    this.shield = shield
     this.weapons = weapons
   }
   // Attack methods that must do accuracy function, draw away health if hit, log message, and lead to an animation
@@ -445,7 +448,7 @@ class Character {
 }
 
 ///////// Stock characters
-const guy = new Character('Guy', 400, 'images/Guy-Fighter.png', 'images/flipped-Guy-Fieri.png', {
+const guy = new Character('Guy', 400, 'images/Guy-Fighter.png', 'images/flipped-Guy-Fieri.png', 'power = 9', 'accuracy = 6', 'shield = 5', {
   move1: {
     name: 'donkey sauce',
     power: 50,
@@ -480,7 +483,7 @@ const guy = new Character('Guy', 400, 'images/Guy-Fighter.png', 'images/flipped-
   }
 });
 
-const conan = new Character('Well Adjusted Adult', 400, 'images/wellAdjustedAdult.png', 'images/flipped-conan.png', {
+const conan = new Character('Well Adjusted Adult', 400, 'images/wellAdjustedAdult.png', 'images/flipped-conan.png', 'power = 5', 'accuracy = 8', 'shield = 7', {
   move1: {
     name: 'health conscious food',
     power: 30,
@@ -515,7 +518,7 @@ const conan = new Character('Well Adjusted Adult', 400, 'images/wellAdjustedAdul
   }
 });
 
-const pusheen = new Character('Pusheen the Cat', 400, 'images/pusheen.png', 'images/pusheen.png', {
+const pusheen = new Character('Pusheen the Cat', 400, 'images/pusheen.png', 'images/pusheen.png', 'power = 8', 'accuracy = 8', 'shield = 2', {
   move1: {
     name: 'hairball',
     power: 40,
@@ -542,7 +545,7 @@ const pusheen = new Character('Pusheen the Cat', 400, 'images/pusheen.png', 'ima
   },
   move5: {
     name: 'shield',
-    power: 70,
+    power: 40,
     misfire: 20,
     accuracy: .5,
     attackImage: 'images/pusheen_shield.png',
