@@ -420,10 +420,11 @@ const miss = () => {
 // Create my general fighter class here
 class Character {
   // health will be the same for both characters
-  constructor(name, health, image, weapons){
+  constructor(name, health, image, flippedImage, weapons){
     this.name = name
     this.health = 400
     this.image = image
+    this.flippedImage = flippedImage
     this.weapons = weapons
   }
   // Attack methods that must do accuracy function, draw away health if hit, log message, and lead to an animation
@@ -459,36 +460,6 @@ class Character {
 
 /////////////////////////////////////////
 // Enemy class goes here
-class Enemy extends Character {
-//// Constructor with super
-  constructor(name, health){
-    super(name, health)
-//// Weapons
-    this.weapons = {
-      healthConsciousFood: {
-        power: 30,
-        accuracy: .8
-      },
-      appropriateClothing: {
-        power: 10,
-        accuracy: 1.0
-      },
-      midlifeCrisisAntidote: {
-        power: 80,
-        accuracy: .4
-      },
-      goodTableManners: {
-        power: 40,
-        accuracy: .5
-      },
-      shield: {
-        power: 70,
-        misfire: 20,
-        accuracy: .5
-    }
-  }
-}
-}
   // give message about partic attack
 //   attack(opponent, move){
 //   super.attack(opponent, move);
@@ -577,7 +548,7 @@ class Enemy extends Character {
 //   }
 // }
 
-const guy = new Character('Guy', 400, 'images/Guy-Fighter.png', {
+const guy = new Character('Guy', 400, 'images/Guy-Fighter.png', 'images/flipped-Guy-Fieri.png', {
   move1: {
     name: 'donkey sauce',
     power: 50,
@@ -612,7 +583,7 @@ const guy = new Character('Guy', 400, 'images/Guy-Fighter.png', {
   }
 });
 
-const conan = new Character('Well Adjusted Adult', 400, 'images/wellAdjustedAdult.png', {
+const conan = new Character('Well Adjusted Adult', 400, 'images/wellAdjustedAdult.png', 'images/flipped-conan.png', {
   move1: {
     name: 'health conscious food',
     power: 30,
@@ -647,7 +618,6 @@ const conan = new Character('Well Adjusted Adult', 400, 'images/wellAdjustedAdul
   }
 });
 
-console.log(player2);
 
 // commented this out for practice console.log(player2.weapons.midlifeCrisisAntidote.power);
 /// Display score
@@ -678,7 +648,7 @@ $(()=> {
   });
   $player2Select.on('click', () => {
     // $player2Button.hide();
-    $player2Button.hide();
+    $player2Button.css('visibility', 'hidden');
     player1 = conan;
     player2 = guy;
     $modal.css('display', 'none');
@@ -687,16 +657,13 @@ $(()=> {
     $player1Button3.text(player1.weapons.move3.name + ' ' + player1.weapons.move3.power);
     $player1Button4.text(player1.weapons.move4.name + ' ' + player1.weapons.move4.power);
     $player1Shield.text(player1.weapons.move5.name + ' ' + player1.weapons.move5.power);
-    $player1Image.attr('src', player2.image);
     $player2Button1.text(player2.weapons.move1.name + ' ' + player2.weapons.move1.power);
     $player2Button2.text(player2.weapons.move2.name + ' ' + player2.weapons.move2.power);
     $player2Button3.text(player2.weapons.move3.name + ' ' + player2.weapons.move3.power);
     $player2Button4.text(player2.weapons.move4.name + ' ' + player2.weapons.move4.power);
     $player2Shield.text(player2.weapons.move5.name + ' ' + player2.weapons.move5.power);
-    $player1Image.attr('src', player1.image);
-    $player2Image.attr('src', player2.image);
-    $player1Image.css('transform', 'scaleX(-1)');
-    $player2Image.css('transform', 'scaleX(-1)');
+    $player1Image.attr('src', player1.flippedImage);
+    $player2Image.attr('src', player2.flippedImage);
     $player2Image.css('visibility', 'visible');
     $player1Image.css('visibility', 'visible');
     $modal.css('display', 'none');
