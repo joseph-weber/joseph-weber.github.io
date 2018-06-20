@@ -47,15 +47,19 @@ const $onePlayerBtn = $('#one-player');
 
 const $twoPlayerBtn = $('#two-player');
 
+let player1;
+
+let player2;
+
 const imageArray = ['images/Donkey_Sauce.jpg', 'images/frosted_tips.jpg', 'images/Flamethrower.png', 'images/alliteration.png', 'images/healthy_food.jpg', 'images/suit.jpg', 'images/Antidote.jpg', 'images/good_manners.jpg', 'images/missed.gif', 'images/Fieri_Shield.jpg', 'images/shield.png', 'images/short_circuit.png'];
 
 
 ///////////////////////////
 // Two variables for selecting character for 2 player version
 //////////////////////////
-const $guySelect = $('#guy-select');
+const $player1Select = $('#player1-select');
 
-const $conanSelect = $('#conan-select');
+const $player2Select = $('#player2-select');
 
 
 //// Variable for modal manipulation
@@ -63,7 +67,7 @@ const $modal = $('#modal');
 
 
 //////// Variable for multiplayer functionality
-let player = 2;
+let player;
 
 
 
@@ -90,6 +94,7 @@ const loseGame = (opponent) => {
 // Attack functions for animations
 // Guy's attack
 const player1Attack = (attacker, opponent, move) => {
+  if (player === 2){
   const player1Rando = Math.random() * 1;
   switch (move) {
   case 'player1-button1':
@@ -98,7 +103,7 @@ const player1Attack = (attacker, opponent, move) => {
     opponent.health -= attacker.weapons.move1.power;
     $player2Image.css('transform', 'rotate(20deg)')
     setTimeout(function(){$player2Image.css('transform', 'rotate(0)')}, 1000);
-    $attackImage.attr('src', imageArray[0]);
+    $attackImage.attr('src', attacker.weapons.move1.attackImage);
     player1Attack();
     player1AttackAnimation();
   }
@@ -112,7 +117,7 @@ const player1Attack = (attacker, opponent, move) => {
     opponent.health -= attacker.weapons.move2.power;
     $player2Image.css('transform', 'rotate(20deg)')
     setTimeout(function(){$player2Image.css('transform', 'rotate(0)')}, 1000);
-    $attackImage.attr('src', imageArray[1]);
+    $attackImage.attr('src', attacker.weapons.move2.attackImage);
     player1Attack();
     player1AttackAnimation();
     }
@@ -126,7 +131,7 @@ const player1Attack = (attacker, opponent, move) => {
     opponent.health -= attacker.weapons.move3.power;
     $player2Image.css('transform', 'rotate(20deg)')
     setTimeout(function(){$player2Image.css('transform', 'rotate(0)')}, 1000);
-    $attackImage.attr('src', imageArray[2])
+    $attackImage.attr('src', attacker.weapons.move3.attackImage)
     player1Attack();
     player1AttackAnimation();
     }
@@ -140,7 +145,7 @@ const player1Attack = (attacker, opponent, move) => {
     opponent.health -= attacker.weapons.move4.power;
     $player2Image.css('transform', 'rotate(20deg)')
     setTimeout(function(){$player2Image.css('transform', 'rotate(0)')}, 1000);
-    $attackImage.attr('src', imageArray[3])
+    $attackImage.attr('src', attacker.weapons.move4.attackImage)
     player1Attack();
     player1AttackAnimation();
     }
@@ -152,7 +157,8 @@ const player1Attack = (attacker, opponent, move) => {
   if (player1Rando > attacker.weapons.move5.accuracy){
     $attackText.text('your defense has been bolstered by 50 hp');
     $attackImage.css('transform', 'translate(0)');
-    $attackImage.attr('src', imageArray[9]);
+    $attackImage.attr('src',     $attackImage.attr('src', attacker.weapons.move5.attackImage)
+);
     setTimeout(function(){$attackImage.attr('src', '')}, 1000);
     attacker.health += 50;
     $player1Health.text(attacker.health);
@@ -164,7 +170,8 @@ const player1Attack = (attacker, opponent, move) => {
     attacker.health -= 10;
     $player1Health.text(attacker.health);
     $attackImage.css('transform', 'translate(0)');
-    $attackImage.attr('src', imageArray[11]);
+    $attackImage.attr('src',     $attackImage.attr('src', attacker.weapons.move5.attackImageMiss)
+);
     setTimeout(function(){$attackImage.attr('src', '')}, 1000);
     setTimeout(loseGame(player1), 1000);
     }
@@ -174,6 +181,10 @@ winGame(player2);
 $player2Health.text(player2.health);
 $player2Button.show();
 $player1Button.hide();
+}
+}
+else {
+
 }
 
 ///////////////////////////////////
@@ -188,7 +199,7 @@ const player2Attack = (attacker, opponent, move) => {
     opponent.health -= attacker.weapons.move1.power;
     $player1Image.css('transform', 'rotate(-20deg)')
     setTimeout(function(){$player1Image.css('transform', 'rotate(0)')}, 1000);
-    $attackImage.attr('src', imageArray[4]);
+    $attackImage.attr('src', attacker.weapons.move1.attackImage);
     player2AttackAnimation();
   }
     else {
@@ -201,7 +212,7 @@ const player2Attack = (attacker, opponent, move) => {
     opponent.health -= attacker.weapons.move2.power;
     $player1Image.css('transform', 'rotate(-20deg)')
     setTimeout(function(){$player1Image.css('transform', 'rotate(0)')}, 1000);
-    $attackImage.attr('src', imageArray[5]);
+    $attackImage.attr('src', attacker.weapons.move2.attackImage);
     player2AttackAnimation();
     }
     else {
@@ -214,7 +225,7 @@ const player2Attack = (attacker, opponent, move) => {
     opponent.health -= attacker.weapons.move3.power;
     $player1Image.css('transform', 'rotate(-20deg)')
     setTimeout(function(){$player1Image.css('transform', 'rotate(0)')}, 1000);
-    $attackImage.attr('src', imageArray[6]);
+    $attackImage.attr('src', attacker.weapons.move3.attackImage);
     player2AttackAnimation();
     }
     else {
@@ -227,7 +238,7 @@ const player2Attack = (attacker, opponent, move) => {
     opponent.health -= attacker.weapons.move4.power;
     $player1Image.css('transform', 'rotate(-20deg)')
     setTimeout(function(){$player1Image.css('transform', 'rotate(0)')}, 1000);
-    $attackImage.attr('src', imageArray[7]);
+    $attackImage.attr('src', attacker.weapons.move4.attackImage);
     player2AttackAnimation();
     }
     else {
@@ -238,7 +249,7 @@ const player2Attack = (attacker, opponent, move) => {
   if (player2Rando > attacker.weapons.move5.accuracy){
     $attackText.text('your defense has been bolstered by 50 hp');
     $attackImage.css('transform', 'translate(0)');
-    $attackImage.attr('src', imageArray[10]);
+    $attackImage.attr('src', attacker.weapons.move5.attackImage);
     setTimeout(function(){$attackImage.attr('src', '')}, 1000);
     attacker.health += 50;
     $player2Health.text(attacker.health);
@@ -250,7 +261,7 @@ const player2Attack = (attacker, opponent, move) => {
     attacker.health -= 10;
     $player2Health.text(attacker.health);
     $attackImage.css('transform', 'translate(0)');
-    $attackImage.attr('src', imageArray[11]);
+    $attackImage.attr('src', imagattacker.weapons.move5.attackImageMiss);
     setTimeout(function(){$attackImage.attr('src', '')}, 1000);
     setTimeout(winGame(player2), 1000);
     }
@@ -261,7 +272,6 @@ $player1Health.text(player1.health);
 $player1Button.show();
 $player2Button.hide();
 }
-
 
 
 //////////////////////////////////////
@@ -319,6 +329,7 @@ class Character {
   constructor(name, health, image, weapons){
     this.name = name
     this.health = 400
+    this.image = image
     this.weapons = weapons
   }
   // Attack methods that must do accuracy function, draw away health if hit, log message, and lead to an animation
@@ -472,72 +483,83 @@ class Enemy extends Character {
 //   }
 // }
 
-const player1 = new Character('Guy', 400, 'images/Guy-Fighter.png', {
+const guy = new Character('Guy', 400, 'images/Guy-Fighter.png', {
   move1: {
     name: 'donkey sauce',
     power: 50,
-    accuracy: .7
+    accuracy: .7,
+    attackImage: 'images/Donkey_Sauce.jpg'
   },
   move2: {
     name: 'frosted tip projectiles',
     power: 20,
-    accuracy: .8
+    accuracy: .8,
+    attackImage: 'images/frosted_tips.jpg'
   },
   move3: {
     name: 'bowling shirt flamethrower',
     power: 130,
-    accuracy: .3
+    accuracy: .3,
+    attackImage: 'images/Flamethrower.png'
   },
   move4: {
     name: 'alliterative show titles',
     power: 60,
-    accuracy: .5
+    accuracy: .5,
+    attackImage: 'images/alliteration.png'
   },
   move5: {
     name: 'shield',
     power: 50,
     misfire: 10,
-    accuracy: .5
+    accuracy: .5,
+    attackImage: 'images/Fieri_Shield.jpg',
+    attackImageMiss: 'images/short_circuit.png'
   }
 });
 
-const player2 = new Character('Well Adjusted Adult', 400, 'images/wellAdjustedAdult.png', {
+const conan = new Character('Well Adjusted Adult', 400, 'images/wellAdjustedAdult.png', {
   move1: {
     name: 'health conscious food',
     power: 30,
-    accuracy: .8
+    accuracy: .8,
+    attackImage: 'images/healthy_food.jpg'
   },
   move2: {
     name: 'appropriate clothing',
     power: 10,
-    accuracy: 1.0
+    accuracy: 1.0,
+    attackImage:'images/suit.jpg'
   },
   move3: {
     name: 'midlife crisis antidote',
     power: 80,
-    accuracy: .4
+    accuracy: .4,
+    attackImage: 'images/Antidote.jpg'
   },
   move4: {
     name: 'good table manners',
     power: 40,
-    accuracy: .5
+    accuracy: .5,
+    attackImage: 'images/good_manners.jpg'
   },
   move5: {
     name: 'shield',
     power: 70,
     misfire: 20,
-    accuracy: .5
+    accuracy: .5,
+    attackImage: 'images/shield.png',
+    attackImageMiss: 'images/short_circuit.png'
   }
 });
 
 console.log(player2);
 
 // commented this out for practice console.log(player2.weapons.midlifeCrisisAntidote.power);
-
+/// Display score
 // guy.attack(player2, 'Frosted Tip Projectiles');
 $(()=> {
   /// Display score
-
 
   /// All my onclick events
   $player1Button1.on('click', ()=>{player1Attack(player1, player2, $(event.currentTarget).attr('id'))
@@ -560,24 +582,30 @@ $(()=> {
   });
   $player2Shield.on('click', () => {player2Attack(player2, player1, $(event.currentTarget).attr('id'))
   });
-  $conanSelect.on('click', () => {
+  $player2Select.on('click', () => {
     // $player2Button.hide();
-    $player1Button.hide();
-    $modal.css('display', 'none');
-    // $player1Image.attr('src', 'images/wellAdjustedAdult.png');
-    // $player1Image.css('visibility', 'visible');
-    // $player1Image.css('transform', 'scaleX(-1)');
-    // $player2Image.attr('src', 'images/Guy-Fighter.png');
-    // $player2Image.css('visibility', 'visible');
-    // $player2Image.css('transform', 'scaleX(-1)');
-  });
-  $guySelect.on('click', () => {
     $player2Button.hide();
+    player1 = conan;
+    player2 = guy;
     $modal.css('display', 'none');
-    // $player2Image.attr('src', 'images/wellAdjustedAdult.png');
-    // $player2Image.css('visibility', 'visible');
-    // $player1Image.attr('src', 'images/Guy-Fighter.png');
-    // $player1Image.css('visibility', 'visible');
+    $player1Button1.text(player1.weapons.move1.name + ' ' + player1.weapons.move1.power);
+    $player1Button2.text(player1.weapons.move2.name + ' ' + player1.weapons.move2.power);
+    $player1Button3.text(player1.weapons.move3.name + ' ' + player1.weapons.move3.power);
+    $player1Button4.text(player1.weapons.move4.name + ' ' + player1.weapons.move4.power);
+    $player1Shield.text(player1.weapons.move5.name + ' ' + player1.weapons.move5.power);
+    $player1Image.attr('src', player2.image);
+    $player2Button1.text(player2.weapons.move1.name + ' ' + player2.weapons.move1.power);
+    $player2Button2.text(player2.weapons.move2.name + ' ' + player2.weapons.move2.power);
+    $player2Button3.text(player2.weapons.move3.name + ' ' + player2.weapons.move3.power);
+    $player2Button4.text(player2.weapons.move4.name + ' ' + player2.weapons.move4.power);
+    $player2Shield.text(player2.weapons.move5.name + ' ' + player2.weapons.move5.power);
+    $player1Image.attr('src', player1.image);
+    $player2Image.attr('src', player2.image);
+    $player1Image.css('transform', 'scaleX(-1)');
+    $player2Image.css('transform', 'scaleX(-1)');
+    $player2Image.css('visibility', 'visible');
+    $player1Image.css('visibility', 'visible');
+    $modal.css('display', 'none');
   });
 
 const $modal = $('#modal');
@@ -615,6 +643,27 @@ $twoPlayerBtn.on('click', ()=>{
   console.log(player);
 });
 $closeBtn.on('click', closeModal);
+$player1Select.on('click', ()=>{
+  player1 = guy;
+  player2 = conan;
+  $player1Button1.text(player1.weapons.move1.name + ' ' + player1.weapons.move1.power);
+  $player1Button2.text(player1.weapons.move2.name + ' ' + player1.weapons.move2.power);
+  $player1Button3.text(player1.weapons.move3.name + ' ' + player1.weapons.move3.power);
+  $player1Button4.text(player1.weapons.move4.name + ' ' + player1.weapons.move4.power);
+  $player1Shield.text(player1.weapons.move5.name + ' ' + player1.weapons.move5.power);
+  $player1Image.attr('src', player1.image);
+  $player2Button1.text(player2.weapons.move1.name + ' ' + player2.weapons.move1.power);
+  $player2Button2.text(player2.weapons.move2.name + ' ' + player2.weapons.move2.power);
+  $player2Button3.text(player2.weapons.move3.name + ' ' + player2.weapons.move3.power);
+  $player2Button4.text(player2.weapons.move4.name + ' ' + player2.weapons.move4.power);
+  $player2Shield.text(player2.weapons.move5.name + ' ' + player2.weapons.move5.power);
+  $player1Image.attr('src', player1.image);
+  $player2Image.attr('src', player2.image);
+  $player2Image.css('visibility', 'visible');
+  $player1Image.css('visibility', 'visible');
+  $player2Button.hide();
+  $modal.css('display', 'none');
+})
 
 // set a timer to automatically close Modal
 setTimeout(openPremodal, 200);
@@ -623,4 +672,6 @@ setTimeout(openPremodal, 200);
 
   // on click events for each of the attacks
   // we will draw the html text from the event current target to get the input
-})
+});
+
+console.log(player);
