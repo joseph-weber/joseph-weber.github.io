@@ -109,6 +109,7 @@ const player1Attack = (attacker, opponent, move) => {
     if (player1Rando < attacker.weapons.move1.accuracy){
     $attackText.text(attacker.name + ' has dealt ' + attacker.weapons.move1.power + ' damage to ' + opponent.name);
     opponent.health -= attacker.weapons.move1.power;
+    $player2Health.css('width', player2.health);
     $player2Image.css('transform', 'rotate(20deg)')
     setTimeout(function(){$player2Image.css('transform', 'rotate(0)')}, 1000);
     $attackImage.attr('src', attacker.weapons.move1.attackImage);
@@ -810,7 +811,7 @@ $player1Select.on('click', ()=>{
   $player2Image.attr('src', player2.image);
   $player2Image.css('visibility', 'visible');
   $player1Image.css('visibility', 'visible');
-  $player2Button.hide();
+  $player2Button.css('visibility', 'hidden');
   $modal.css('display', 'none');
   $player1Name.text(player1.name);
   $player2Name.text(player2.name);
