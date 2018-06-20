@@ -515,6 +515,41 @@ const conan = new Character('Well Adjusted Adult', 400, 'images/wellAdjustedAdul
   }
 });
 
+const pusheen = new Character('Pusheen the Cat', 400, 'images/pusheen.png', 'images/pusheen.png', {
+  move1: {
+    name: 'hairball',
+    power: 40,
+    accuracy: .9,
+    attackImage: 'images/hairball.png'
+  },
+  move2: {
+    name: 'box sitting',
+    power: 20,
+    accuracy: 1.0,
+    attackImage:'images/pusheen_in_a_box.jpg'
+  },
+  move3: {
+    name: 'claws',
+    power: 80,
+    accuracy: .4,
+    attackImage: 'images/claws.png'
+  },
+  move4: {
+    name: 'love',
+    power: 60,
+    accuracy: .5,
+    attackImage: 'images/love.png'
+  },
+  move5: {
+    name: 'shield',
+    power: 70,
+    misfire: 20,
+    accuracy: .5,
+    attackImage: 'images/pusheen_shield.png',
+    attackImageMiss: 'images/short_circuit.png'
+  }
+});
+
 
 // commented this out for practice console.log(player2.weapons.midlifeCrisisAntidote.power);
 /// Display score
