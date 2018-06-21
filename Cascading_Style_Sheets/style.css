@@ -178,7 +178,7 @@ span {
   justify-content: center;
 }
 
-#player1-select, #player2-select, #pusheen-select {
+.player-selector {
   text-decoration: none;
   background-color: yellow;
   border-radius: 5px;
