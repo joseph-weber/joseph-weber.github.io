@@ -52,9 +52,17 @@ const $reset = $('#reset');
 
 const $playerSelectorButtons = $('.player-selector');
 
+const $player1Victories = $('#player1-victories');
+
+const $player2Victories = $('#player2-victories');
+
 let player1;
 
 let player2;
+
+let player1wins = 0;
+
+let player2wins = 0;
 
 let randomPlayerSelector = Math.floor(Math.random() * 2 + 1);
 
@@ -87,6 +95,8 @@ let player;
 // Win game function
 const winGame = (opponent) => {
   if (opponent.health <= 0){
+    player1wins += 1;
+    $player1Victories.text(player1wins);
     $attackText.text(player1.name + ' is victorious.');
     $player2Image.css('transform', 'rotate(180deg)');
     $player1Button.css('visibility', 'hidden');
@@ -97,6 +107,8 @@ const winGame = (opponent) => {
 // Lose game function
 const loseGame = (opponent) => {
   if (opponent.health <= 0){
+    player2wins += 1;
+    $player2Victories.text(player2wins);
     $attackText.text(player2.name + ' is the champion.');
     $player1Image.css('transform', 'rotate(180deg)');
     $player1Button.css('visibility', 'hidden');
@@ -208,6 +220,9 @@ else {
     if (opponent.health > 0) {
     setTimeout(function(){player2Attack(player2, player1, player2MoveArray[computerRando])}, 2000);
   }
+  else {
+    winGame(player2);;
+  }
   }
     else {
       miss(attacker);
@@ -227,7 +242,10 @@ else {
     if (opponent.health > 0) {
     setTimeout(function(){player2Attack(player2, player1, player2MoveArray[computerRando])}, 2000);
   }
-    }
+  else {
+    winGame(player2);
+  }
+}
     else {
       miss(attacker);
       $player1Button.css('visibility', 'hidden');
@@ -243,14 +261,17 @@ else {
     $attackImage.attr('src', attacker.weapons.move3.attackImage)
     player1AttackAnimation();
     $player1Button.css('visibility', 'hidden');
+    if (opponent.health > 0){
     setTimeout(function(){player2Attack(player2, player1, player2MoveArray[computerRando])}, 2000);
     }
     else {
+      winGame(player2);
+    }
+  }
+    else {
     miss(attacker);
     $player1Button.css('visibility', 'hidden');
-    if (opponent.health > 0) {
     setTimeout(function(){player2Attack(player2, player1, player2MoveArray[computerRando])}, 2000);
-  }
   }
   break;
   case 'player1-button4':
@@ -262,14 +283,17 @@ else {
     $attackImage.attr('src', attacker.weapons.move4.attackImage);
     player1AttackAnimation();
     $player1Button.css('visibility', 'hidden');
+    if (opponent.health > 0) {
     setTimeout(function(){player2Attack(player2, player1, player2MoveArray[computerRando])}, 2000);
     }
     else {
+      winGame(player2);
+    }
+  }
+    else {
     miss(attacker);
     $player1Button.css('visibility', 'hidden');
-    if (opponent.health > 0) {
     setTimeout(function(){player2Attack(player2, player1, player2MoveArray[computerRando])}, 2000);
-  }
   }
   break;
   case 'player1-shield':
@@ -282,9 +306,7 @@ else {
     $player1Health.text(attacker.health);
     loseGame(player1);
     $player1Button.css('visibility', 'hidden');
-    if (opponent.health > 0) {
     setTimeout(function(){player2Attack(player2, player1, player2MoveArray[computerRando])}, 2000);
-  }
   }
   else {
     console.log('miss');
@@ -302,7 +324,6 @@ else {
   }
     break;
 }
-winGame(player2);
 $player2Health.text(player2.health);
 $player2Health.css('width', player2.health);
 $player1Health.css('width', player1.health);

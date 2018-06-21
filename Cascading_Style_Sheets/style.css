@@ -16,8 +16,23 @@ h1, #player2-health, #player1-health {
 
 #win-and-reset {
   display: flex;
-  justify-content: flex-end;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 300px;
 }
+
+#player1-victories, #player2-victories {
+  width: 33%;
+  text-align: center;
+}
+
+#reset {
+  height: 20px;
+  width: 33%;
+  z-index: 2;
+  /* margin-top: 30px; */
+}
+
 #gameboard {
   background: linear-gradient(red, yellow);
   display: flex;
@@ -111,7 +126,7 @@ span {
 	left: 0;
 	height: 100%;
 	width: 100%;
-	z-index: 2;
+	z-index: 3;
 	overflow: auto;
 	display: none;
 }
@@ -147,7 +162,7 @@ span {
 	left: 0;
 	height: 100%;
 	width: 100%;
-	z-index: 2;
+	z-index: 3;
 	overflow: auto;
 	display: none;
 }
@@ -193,11 +208,6 @@ span {
   font-size: 20px;
 }
 
-#reset {
-  height: 20px;
-  width: 100px;
-  margin-top: 30px;
-}
 header {
   display: flex;
   flex-direction: column;
