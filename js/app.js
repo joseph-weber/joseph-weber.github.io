@@ -521,7 +521,7 @@ const conan = new Character('Well Adjusted Adult', 400, 'images/flipped-conan.pn
   }
 });
 
-const pusheen = new Character('Pusheen the Cat', 400, 'images/pusheen.png', 'images/pusheen.png', 'power = 8', 'accuracy = 8', 'shield = 2', {
+const pusheen = new Character('Pusheen the Cat', 400, 'images/pusheen-rightFacing.png', 'images/pusheen.png', 'power = 8', 'accuracy = 8', 'shield = 2', {
   move1: {
     name: 'hairball',
     power: 40,
@@ -668,7 +668,7 @@ const openPremodal = () => {
       attackImageMiss: 'images/short_circuit.png'
     }
   });
-  const pusheen = new Character('Pusheen the Cat', 400, 'images/pusheen.png', 'images/pusheen.png', 'power = 8', 'accuracy = 8', 'shield = 2', {
+  const pusheen = new Character('Pusheen the Cat', 400, 'images/pusheen-rightFacing.png', 'images/pusheen.png', 'power = 8', 'accuracy = 8', 'shield = 2', {
     move1: {
       name: 'hairball',
       power: 40,
@@ -757,73 +757,140 @@ $twoPlayerBtn.on('click', ()=>{
 });
 
   $player1Select.on('click', ()=> {
-    player1 = guy;
-    if (randomPlayerSelector === 1){
-      player2 = guy;
-      closeModal();
+    if (player === 1){
+      player1 = guy;
+      if (randomPlayerSelector === 1){
+        player2 = conan;
+        closeModal();
+        populateBoard();
+      }
+      else {
+        player2 = pusheen;
+        closeModal();
+        populateBoard();
+      }
     }
-    else {
-      player2 = pusheen;
-      closeModal();
+    else if (player === 2){
+      if (player1 === conan || player1 === guy || player1 === pusheen){
+        player2 = guy;
+        populateBoard();
+      }
+      else {
+        player1 = guy;
+      }
+      $playerSelectorButtons.text('Player 2 Select');
     }
   });
+
   $player2Select.on('click', ()=> {
-    player1 = conan;
-    if (randomPlayerSelector === 1){
-      player2 = guy;
-      closeModal();
+    if (player === 1){
+      player1 = conan;
+      if (randomPlayerSelector === 1){
+        player2 = guy;
+        closeModal();
+        populateBoard();
+      }
+      else {
+        player2 = pusheen;
+        closeModal();
+        populateBoard();
+      }
     }
-    else {
-      player2 = pusheen;
-      closeModal();
+    else if (player === 2){
+      if (player1 === conan || player1 === guy || player1 === pusheen){
+        player2 = conan;
+        populateBoard();
+      }
+      else {
+        player1 = conan;
+      }
+      $playerSelectorButtons.text('Player 2 Select');
     }
   });
+
   $player3Select.on('click', ()=> {
-    player1 = pusheen;
-    if (randomPlayerSelector === 1){
-      player2 = guy;
-      closeModal();
+    if (player === 1){
+      player1 = pusheen;
+      if (randomPlayerSelector === 1){
+        player2 = guy;
+        closeModal();
+        populateBoard();
+      }
+      else {
+        player2 = conan;
+        closeModal();
+        populateBoard();
+      }
     }
-    else {
-      player2 = conan;
-      closeModal();
+    else if (player === 2){
+      if (player1 === conan || player1 === guy || player1 === pusheen){
+        player2 = pusheen;
+        populateBoard();
+      }
+      else {
+        player1 = pusheen;
+      }
+      $playerSelectorButtons.text('Player 2 Select');
     }
   });
-// Player 1 Button is selected
-$player1Select.on('click', ()=>{
-  if (player1 === conan || player1 === guy || player1 === pusheen){
-    player2 = guy;
-    populateBoard();
-  }
-  else {
-    player1 = guy;
-  }
-  $playerSelectorButtons.text('Player 2 Select');
-})
 
-// Player 2 Button is selected
-$player2Select.on('click', () => {
-  if (player1 === conan || player1 === guy || player1 === pusheen){
-    player2 = conan;
-    populateBoard();
-  }
-  else {
-    player1 = conan
-  }
-  $playerSelectorButtons.text('Player 2 Select')
-});
-
-// Player 3 Button is selected
-$player3Select.on('click', () => {
-  if (player1 === conan || player1 === guy || player1 === pusheen){
-    player2 = pusheen;
-    populateBoard();
-  }
-  else {
-    player1 = pusheen;
-  }
-  $playerSelectorButtons.text('Player 2 Select')
-});
+//   $player2Select.on('click', ()=> {
+//     player1 = conan;
+//     if (randomPlayerSelector === 1){
+//       player2 = guy;
+//       closeModal();
+//     }
+//     else {
+//       player2 = pusheen;
+//       closeModal();
+//     }
+//   });
+//   $player3Select.on('click', ()=> {
+//     player1 = pusheen;
+//     if (randomPlayerSelector === 1){
+//       player2 = guy;
+//       closeModal();
+//     }
+//     else {
+//       player2 = conan;
+//       closeModal();
+//     }
+//   });
+// // Player 1 Button is selected
+// $player1Select.on('click', ()=>{
+//   if (player1 === conan || player1 === guy || player1 === pusheen){
+//     player2 = guy;
+//     populateBoard();
+//   }
+//   else {
+//     player1 = guy;
+//   }
+//   $playerSelectorButtons.text('Player 2 Select');
+// })
+//
+// // Player 2 Button is selected
+// $player2Select.on('click', () => {
+//   if (player1 === conan || player1 === guy || player1 === pusheen){
+//     player2 = conan;
+//     populateBoard();
+//   }
+//   else {
+//     player1 = conan
+//   }
+//   $playerSelectorButtons.text('Player 2 Select')
+// });
+//
+// // Player 3 Button is selected
+// $player3Select.on('click', () => {
+//   if (player1 === conan || player1 === guy || player1 === pusheen){
+//     player2 = pusheen;
+//     populateBoard();
+//   }
+//   else {
+//     player1 = pusheen;
+//   }
+//   $playerSelectorButtons.text('Player 2 Select')
+// });
 
 // set a timer to automatically close Modal
 setTimeout(openPremodal, 200);
