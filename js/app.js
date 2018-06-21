@@ -1,3 +1,12 @@
+// Fix reset for victories (ie. place your player in their original place)
+
+// Fix victory so that final attack doesn't work
+//These two are connected
+// Fix it so that winner stays up after victory
+
+// Reset button should randomize opponent all over again
+
+
 // Set variables up here for all of the events in the document ready.
 
 const $scoreboard = $('#scoreboard');
@@ -56,7 +65,7 @@ let player1;
 
 let player2;
 
-let randomPlayerSelector = Math.floor(Math.random() * 2 + 1)
+let randomPlayerSelector = Math.floor(Math.random() * 2 + 1);
 
 const player2MoveArray = ["player2-button1", "player2-button2", "player2-button3", "player2-button4", "player2-button5"]
 
@@ -89,7 +98,8 @@ const winGame = (opponent) => {
   if (opponent.health <= 0){
     $attackText.text(player1.name + ' is victorious.');
     $player2Image.css('transform', 'rotate(180deg)');
-    $player2Button.hide();
+    $player1Button.css('visibility', 'hidden');
+    $player2Button.css('visibility', 'hidden');
     $player1Image.css('transform', 'translate(400px, -150px)');
   }
 }
@@ -98,7 +108,8 @@ const loseGame = (opponent) => {
   if (opponent.health <= 0){
     $attackText.text(player2.name + ' is the champion.');
     $player1Image.css('transform', 'rotate(180deg)');
-    $player1Button.hide();
+    $player1Button.css('visibility', 'hidden');
+    $player2Button.css('visibility', 'hidden');
     $player2Image.css('transform', 'translate(-400px, -150px)');
   }
 }
@@ -710,6 +721,26 @@ const resetGame = () => {
   $player1Health.text(player1.health);
   $player2Health.text(player2.health);
   openPremodal();
+  $player1Button1.text('');
+  $player1Button2.text('');
+  $player1Button3.text('');
+  $player1Button4.text('');
+  $player1Shield.text('');
+  $player2Button1.text('');
+  $player2Button2.text('');
+  $player2Button3.text('');
+  $player2Button4.text('');
+  $player2Shield.text('');
+  $player1Image.css('visibility', 'hidden');
+  $player2Image.css('visibility', 'hidden');
+  $player1Button.css('visibility', 'visible');
+  $player2Button.css('visibility', 'visible');
+  $modal.css('display', 'none');
+  $player1Name.text('');
+  $player2Name.text('');
+  $player1Health.css('width', player1.health);
+  $player2Health.css('width', player2.health);
+  randomPlayerSelector = Math.floor(Math.random() * 2 + 1);
 }
 
 const populateBoard = () => {
@@ -731,6 +762,7 @@ const populateBoard = () => {
   $modal.css('display', 'none');
   $player1Name.text(player1.name);
   $player2Name.text(player2.name);
+  randomPlayerSelector;
 }
 const closePremodal = () => {
   $premodal.css('display', 'none');
@@ -809,6 +841,7 @@ $twoPlayerBtn.on('click', ()=>{
   });
 
   $player3Select.on('click', ()=> {
+    console.log(randomPlayerSelector);
     if (player === 1){
       player1 = pusheen;
       if (randomPlayerSelector === 1){
@@ -834,70 +867,8 @@ $twoPlayerBtn.on('click', ()=>{
     }
   });
 
-//   $player2Select.on('click', ()=> {
-//     player1 = conan;
-//     if (randomPlayerSelector === 1){
-//       player2 = guy;
-//       closeModal();
-//     }
-//     else {
-//       player2 = pusheen;
-//       closeModal();
-//     }
-//   });
-//   $player3Select.on('click', ()=> {
-//     player1 = pusheen;
-//     if (randomPlayerSelector === 1){
-//       player2 = guy;
-//       closeModal();
-//     }
-//     else {
-//       player2 = conan;
-//       closeModal();
-//     }
-//   });
-// // Player 1 Button is selected
-// $player1Select.on('click', ()=>{
-//   if (player1 === conan || player1 === guy || player1 === pusheen){
-//     player2 = guy;
-//     populateBoard();
-//   }
-//   else {
-//     player1 = guy;
-//   }
-//   $playerSelectorButtons.text('Player 2 Select');
-// })
-//
-// // Player 2 Button is selected
-// $player2Select.on('click', () => {
-//   if (player1 === conan || player1 === guy || player1 === pusheen){
-//     player2 = conan;
-//     populateBoard();
-//   }
-//   else {
-//     player1 = conan
-//   }
-//   $playerSelectorButtons.text('Player 2 Select')
-// });
-//
-// // Player 3 Button is selected
-// $player3Select.on('click', () => {
-//   if (player1 === conan || player1 === guy || player1 === pusheen){
-//     player2 = pusheen;
-//     populateBoard();
-//   }
-//   else {
-//     player1 = pusheen;
-//   }
-//   $playerSelectorButtons.text('Player 2 Select')
-// });
 
-// set a timer to automatically close Modal
 setTimeout(openPremodal, 200);
 
-// $player1Health.text(player2.health);
-
-  // on click events for each of the attacks
-  // we will draw the html text from the event current target to get the input
 
 });
