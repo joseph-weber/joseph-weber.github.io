@@ -214,7 +214,9 @@ else {
     $attackImage.attr('src', attacker.weapons.move1.attackImage);
     player1AttackAnimation();
     $player1Button.css('visibility', 'hidden');
+    if (opponent.health > 0) {
     setTimeout(function(){player2Attack(player2, player1, player2MoveArray[computerRando])}, 2000);
+  }
   }
     else {
       miss(attacker);
@@ -231,7 +233,9 @@ else {
     $attackImage.attr('src', attacker.weapons.move2.attackImage);
     player1AttackAnimation();
     $player1Button.css('visibility', 'hidden');
+    if (opponent.health > 0) {
     setTimeout(function(){player2Attack(player2, player1, player2MoveArray[computerRando])}, 2000);
+  }
     }
     else {
       miss(attacker);
@@ -253,7 +257,9 @@ else {
     else {
     miss(attacker);
     $player1Button.css('visibility', 'hidden');
+    if (opponent.health > 0) {
     setTimeout(function(){player2Attack(player2, player1, player2MoveArray[computerRando])}, 2000);
+  }
   }
   break;
   case 'player1-button4':
@@ -270,7 +276,9 @@ else {
     else {
     miss(attacker);
     $player1Button.css('visibility', 'hidden');
+    if (opponent.health > 0) {
     setTimeout(function(){player2Attack(player2, player1, player2MoveArray[computerRando])}, 2000);
+  }
   }
   break;
   case 'player1-shield':
@@ -283,7 +291,9 @@ else {
     $player1Health.text(attacker.health);
     loseGame(player1);
     $player1Button.css('visibility', 'hidden');
+    if (opponent.health > 0) {
     setTimeout(function(){player2Attack(player2, player1, player2MoveArray[computerRando])}, 2000);
+  }
   }
   else {
     console.log('miss');
@@ -295,8 +305,10 @@ else {
     setTimeout(function(){$attackImage.attr('src', '')}, 1000);
     setTimeout(loseGame(player1), 1000);
     $player1Button.css('visibility', 'hidden');
+    if (attacker.health > 0) {
     setTimeout(function(){player2Attack(player2, player1, player2MoveArray[computerRando])}, 2000);
     }
+  }
     break;
 }
 winGame(player2);
