@@ -1,8 +1,5 @@
 body {
-  background: linear-gradient(red, yellow);
   color: blue;
-  background-size: center;
-  height: 100%;
 }
 
 h1, #player2-health, #player1-health {
@@ -10,11 +7,22 @@ h1, #player2-health, #player1-health {
   text-align: center;
 }
 
-#gameboard {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
+#container {
+  background: linear-gradient(red, yellow);
+  background-size: cover;
   height: 100%;
+  width: 100%;
+}
+
+#win-and-reset {
+  display: flex;
+  justify-content: flex-end;
+}
+#gameboard {
+  background: linear-gradient(red, yellow);
+  display: flex;
+  height: 100%;
+  justify-content: center;
 }
 
 
@@ -82,7 +90,7 @@ span {
   z-index: 1;
 }
 
-#attack-images p {
+#attack-text {
   width: 400px;
   background-color: rgba(0, 0, 0, 0.4);
   height: 160px;
@@ -186,6 +194,25 @@ span {
 }
 
 #reset {
-  position: absolute;
-  top: -3px;
+  height: 20px;
+  width: 100px;
+  margin-top: 30px;
+}
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+footer, header {
+  color: white;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+footer > p {
+  margin: 0;
+  height: 48px;
 }

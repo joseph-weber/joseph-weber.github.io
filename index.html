@@ -7,86 +7,96 @@
     <title>Guy Fighter</title>
   </head>
   <body>
+    <div id='content'>
     <!--First Modal Div-->
-    <div id="premodal">
-      <div id="premodal-textbox">
-        <h1>Welcome to Guy Fighter: 2018</h1>
-        <p>One player or Two player?</p>
-        <a id="one-player" href="#">Single Player</a>
-        <a id="two-player" href="#">Versus Battle</a>
+      <div id="premodal">
+        <div id="premodal-textbox">
+          <h1>Welcome to Guy Fighter: 2018</h1>
+          <p>One player or Two player?</p>
+          <a id="one-player" href="#">Single Player</a>
+          <a id="two-player" href="#">Versus Battle</a>
+        </div>
       </div>
-    </div>
-    <!-- Modal Div  -->
-    <div id="modal">
-      <div id="modal-textbox">
-        <h1>How to Play Guy Fighter</h1>
-        <!-- Content -->
-        <p>Guy Fighter 2018 is greatest fighter game in the world. You can either play as Guy Fieri or as the Well-Adjusted Adult. Your battle goes until one of the fighters is defeated</p>
-        <p>Each attacker has 4 unique attacks. The more powerful attacks will be less accurate. Use the shield move to help increase your health, but beware of the shield backfiring.</p>
-        <p>Now, get ready to play Guy Fighter. Will tacky Ed-Hardyness win or will this be the triumph of norm-core? You may select your player. Choose your character wisely</p>
-        <div id = "character-select">
-          <div id="guy-stats">
-            <img id = "modal-guy" src="images/Guy-Fighter.png" alt="Guy">
-            <h1>Stats</h1>
-            <p id="guy-power-stat">Power: 9</p>
-            <p id="guy-accuracy-stat">Accuracy: 6</p>
-            <p id="guy-shield-stat">Shield: 5</p>
-            <a class="player-selector" id="player1-select" href="#">Player 1 Select</a>
-          </div>
-          <div id="conan-stats">
-            <img id = "modal-conan" src="images/wellAdjustedAdult.png" alt="Enemy">
-            <h1>Stats</h1>
-            <p id="conan-power-stat">Power: 5</p>
-            <p id="conan-accuracy-stat">Accuracy: 8</p>
-            <p id="conan-shield-stat">Shield: 7</p>
-            <a class="player-selector" id="player2-select" href="#">Player 1 Select</a>
-          </div>
-          <div id="pusheen-stats">
-            <img id = "modal-pusheen" src="images/pusheen.png" alt="Enemy">
-            <h1>Stats</h1>
-            <p id="pusheen-power-stat">Power: 8</p>
-            <p id="pusheen-accuracy-stat">Accuracy: 8</p>
-            <p id="pusheen-shield-stat">Shield: 2</p>
-            <a class="player-selector" id="player3-select" href="#">Player 1 Select</a>
+      <!-- Modal Div  -->
+      <div id="modal">
+        <div id="modal-textbox">
+          <h1>How to Play Guy Fighter</h1>
+          <!-- Content -->
+          <p>Guy Fighter 2018 is greatest fighter game in the world. You can either play as Guy Fieri or as the Well-Adjusted Adult. Your battle goes until one of the fighters is defeated</p>
+          <p>Each attacker has 4 unique attacks. The more powerful attacks will be less accurate. Use the shield move to help increase your health, but beware of the shield backfiring.</p>
+          <p>Now, get ready to play Guy Fighter. Will tacky Ed-Hardyness win or will this be the triumph of norm-core? You may select your player. Choose your character wisely</p>
+          <div id = "character-select">
+            <div id="guy-stats">
+              <img id = "modal-guy" src="images/Guy-Fighter.png" alt="Guy">
+              <h1>Stats</h1>
+              <p id="guy-power-stat">Power: 9</p>
+              <p id="guy-accuracy-stat">Accuracy: 6</p>
+              <p id="guy-shield-stat">Shield: 5</p>
+              <a class="player-selector" id="player1-select" href="#">Player 1 Select</a>
+            </div>
+            <div id="conan-stats">
+              <img id = "modal-conan" src="images/wellAdjustedAdult.png" alt="Enemy">
+              <h1>Stats</h1>
+              <p id="conan-power-stat">Power: 5</p>
+              <p id="conan-accuracy-stat">Accuracy: 8</p>
+              <p id="conan-shield-stat">Shield: 7</p>
+              <a class="player-selector" id="player2-select" href="#">Player 1 Select</a>
+            </div>
+            <div id="pusheen-stats">
+              <img id = "modal-pusheen" src="images/pusheen.png" alt="Enemy">
+              <h1>Stats</h1>
+              <p id="pusheen-power-stat">Power: 8</p>
+              <p id="pusheen-accuracy-stat">Accuracy: 8</p>
+              <p id="pusheen-shield-stat">Shield: 2</p>
+              <a class="player-selector" id="player3-select" href="#">Player 1 Select</a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <h1>Welcome to Guy Figher: 2018</h1>
-    <button id="reset">Reset Match</button>
-    <div id="gameboard">
-      <div id="guy-div">
-        <h2 id="player1-name"></h2>
-        <div id="player1-health">400</div>
-        <img id = "player1-pic" src="" alt="Guy">
-        <p>Moves</p>
-        <div class="attacks">
-          <button class="player1-button" id="player1-button1"></button>
-          <button class="player1-button" id="player1-button2"></button>
-          <button class="player1-button" id="player1-button3"></button>
-          <button class="player1-button" id="player1-button4"></button>
+      <header>
+        <h1>Guy Fighter 2018</h1>
+      </header>
+      <div id="gameboard">
+        <div id="guy-div">
+          <h2 id="player1-name"></h2>
+          <div id="player1-health">400</div>
+          <img id = "player1-pic" src="" alt="Guy">
+          <p>Moves</p>
+          <div class="attacks">
+            <button class="player1-button" id="player1-button1"></button>
+            <button class="player1-button" id="player1-button2"></button>
+            <button class="player1-button" id="player1-button3"></button>
+            <button class="player1-button" id="player1-button4"></button>
+          </div>
+          <button class="player1-button" id="player1-shield"></button>
         </div>
-        <button class="player1-button" id="player1-shield"></button>
-      </div>
-      <div id="attack-images">
-        <img>
-        <img id="attack">
-        <p id="attack-text">Player #1 Begin</p>
-      </div>
-      <div id="conan-div">
-        <h2 id="player2-name"></h2>
-        <div id="player2-health">400</div>
-        <img id = "player2-pic" src="" alt="Enemy">
-        <p>Moves</p>
-        <div class="attacks">
-          <button class = "player2-button" id="player2-button1"></button>
-          <button class = "player2-button" id="player2-button2"></button>
-          <button class = "player2-button" id="player2-button3"></button>
-          <button class = "player2-button" id="player2-button4"></button>
+        <div id="attack-images">
+          <div id="win-and-reset">
+            <p id='player1-victories'>Victories: </p>
+            <button id="reset">Reset Match</button>
+            <p id='player2-victories'>Victories: </p>
         </div>
-        <button class="player2-button" id="player2-shield"></button>
+          <img id="attack">
+          <p id="attack-text">Player #1 Begin</p>
+        </div>
+        <div id="conan-div">
+          <h2 id="player2-name"></h2>
+          <div id="player2-health">400</div>
+          <img id = "player2-pic" src="" alt="Enemy">
+          <p>Moves</p>
+          <div class="attacks">
+            <button class = "player2-button" id="player2-button1"></button>
+            <button class = "player2-button" id="player2-button2"></button>
+            <button class = "player2-button" id="player2-button3"></button>
+            <button class = "player2-button" id="player2-button4"></button>
+          </div>
+          <button class="player2-button" id="player2-shield"></button>
+        </div>
       </div>
-    </div>
+    <footer>
+      <p>A Joseph Weber Joint</p>
+    </footer>
+  </div>
   </body>
   <script
 src="https://code.jquery.com/jquery-3.3.1.min.js"

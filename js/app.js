@@ -1,12 +1,3 @@
-// Fix reset for victories (ie. place your player in their original place)
-
-// Fix victory so that final attack doesn't work
-//These two are connected
-// Fix it so that winner stays up after victory
-
-// Reset button should randomize opponent all over again
-
-
 // Set variables up here for all of the events in the document ready.
 
 const $scoreboard = $('#scoreboard');
@@ -745,6 +736,8 @@ const resetGame = () => {
   $player2Shield.text('');
   $player1Image.css('visibility', 'hidden');
   $player2Image.css('visibility', 'hidden');
+  $player1Image.css('transform', 'translate(0, 0)');
+  $player2Image.css('transform', 'translate(0, 0)');
   $player1Button.css('visibility', 'visible');
   $player2Button.css('visibility', 'visible');
   $modal.css('display', 'none');
