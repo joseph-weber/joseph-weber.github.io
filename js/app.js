@@ -110,6 +110,81 @@ let player;
 //////////////////////////////////////////
 // All my functions go here
 ///////////////////////////////////
+
+///// This runs for the character selection
+const openPremodal = () => {
+  $premodal.css('display', 'block');
+}
+///// When you click the reset button, this function runs
+const resetGame = () => {
+  player1.health = 400;
+  player2.health = 400;
+  $player1Health.text(player1.health);
+  $player2Health.text(player2.health);
+  openPremodal();
+  $player1Button1.text('');
+  $player1Button2.text('');
+  $player1Button3.text('');
+  $player1Button4.text('');
+  $player1Shield.text('');
+  $player2Button1.text('');
+  $player2Button2.text('');
+  $player2Button3.text('');
+  $player2Button4.text('');
+  $player2Shield.text('');
+  $player1Image.css('visibility', 'hidden');
+  $player2Image.css('visibility', 'hidden');
+  $player1Image.css('transform', 'translate(0, 0)');
+  $player2Image.css('transform', 'translate(0, 0)');
+  $player1Button.css('visibility', 'visible');
+  $player2Button.css('visibility', 'visible');
+  $modal.css('display', 'none');
+  $player1Name.text('');
+  $player2Name.text('');
+  $player1Health.css('width', player1.health);
+  $player2Health.css('width', player2.health);
+  player1 = undefined;
+  player2 = undefined;
+  randomPlayerSelector = Math.floor(Math.random() * 2 + 1);
+}
+//////// Sets the board after character selection is done ///////////////
+const populateBoard = () => {
+  $player1Button1.text(player1.weapons.move1.name + ' ' + player1.weapons.move1.power);
+  $player1Button2.text(player1.weapons.move2.name + ' ' + player1.weapons.move2.power);
+  $player1Button3.text(player1.weapons.move3.name + ' ' + player1.weapons.move3.power);
+  $player1Button4.text(player1.weapons.move4.name + ' ' + player1.weapons.move4.power);
+  $player1Shield.text(player1.weapons.move5.name + ' ' + player1.weapons.move5.power);
+  $player2Button1.text(player2.weapons.move1.name + ' ' + player2.weapons.move1.power);
+  $player2Button2.text(player2.weapons.move2.name + ' ' + player2.weapons.move2.power);
+  $player2Button3.text(player2.weapons.move3.name + ' ' + player2.weapons.move3.power);
+  $player2Button4.text(player2.weapons.move4.name + ' ' + player2.weapons.move4.power);
+  $player2Shield.text(player2.weapons.move5.name + ' ' + player2.weapons.move5.power);
+  $player1Image.attr('src', player1.rightFacingImage);
+  $player2Image.attr('src', player2.leftFacingImage);
+  $player2Image.css('visibility', 'visible');
+  $player1Image.css('visibility', 'visible');
+  $player2Button.css('visibility', 'hidden');
+  $modal.css('display', 'none');
+  $player1Name.text(player1.name);
+  $player2Name.text(player2.name);
+  randomPlayerSelector;
+}
+
+
+/////// Select one or two player
+const closePremodal = () => {
+  $premodal.css('display', 'none');
+  openModal();
+}
+///////// Opens the modal for character select
+const openModal = () => {
+  $modal.css('display', 'block');
+}
+
+/////// Closes the character select modal
+const closeModal = () => {
+  $modal.css('display', 'none');
+}
 // Win game function
 const winGame = (opponent) => {
   if (opponent.health <= 0){
@@ -651,75 +726,6 @@ $(()=> {
   });
 
 
-///// This runs for the character selection p
-const openPremodal = () => {
-  $premodal.css('display', 'block');
-}
-///// When you click the reset button, this function runs
-const resetGame = () => {
-  player1.health = 400;
-  player2.health = 400;
-  $player1Health.text(player1.health);
-  $player2Health.text(player2.health);
-  openPremodal();
-  $player1Button1.text('');
-  $player1Button2.text('');
-  $player1Button3.text('');
-  $player1Button4.text('');
-  $player1Shield.text('');
-  $player2Button1.text('');
-  $player2Button2.text('');
-  $player2Button3.text('');
-  $player2Button4.text('');
-  $player2Shield.text('');
-  $player1Image.css('visibility', 'hidden');
-  $player2Image.css('visibility', 'hidden');
-  $player1Image.css('transform', 'translate(0, 0)');
-  $player2Image.css('transform', 'translate(0, 0)');
-  $player1Button.css('visibility', 'visible');
-  $player2Button.css('visibility', 'visible');
-  $modal.css('display', 'none');
-  $player1Name.text('');
-  $player2Name.text('');
-  $player1Health.css('width', player1.health);
-  $player2Health.css('width', player2.health);
-  player1 = undefined;
-  player2 = undefined;
-  randomPlayerSelector = Math.floor(Math.random() * 2 + 1);
-}
-
-const populateBoard = () => {
-  $player1Button1.text(player1.weapons.move1.name + ' ' + player1.weapons.move1.power);
-  $player1Button2.text(player1.weapons.move2.name + ' ' + player1.weapons.move2.power);
-  $player1Button3.text(player1.weapons.move3.name + ' ' + player1.weapons.move3.power);
-  $player1Button4.text(player1.weapons.move4.name + ' ' + player1.weapons.move4.power);
-  $player1Shield.text(player1.weapons.move5.name + ' ' + player1.weapons.move5.power);
-  $player2Button1.text(player2.weapons.move1.name + ' ' + player2.weapons.move1.power);
-  $player2Button2.text(player2.weapons.move2.name + ' ' + player2.weapons.move2.power);
-  $player2Button3.text(player2.weapons.move3.name + ' ' + player2.weapons.move3.power);
-  $player2Button4.text(player2.weapons.move4.name + ' ' + player2.weapons.move4.power);
-  $player2Shield.text(player2.weapons.move5.name + ' ' + player2.weapons.move5.power);
-  $player1Image.attr('src', player1.rightFacingImage);
-  $player2Image.attr('src', player2.leftFacingImage);
-  $player2Image.css('visibility', 'visible');
-  $player1Image.css('visibility', 'visible');
-  $player2Button.css('visibility', 'hidden');
-  $modal.css('display', 'none');
-  $player1Name.text(player1.name);
-  $player2Name.text(player2.name);
-  randomPlayerSelector;
-}
-const closePremodal = () => {
-  $premodal.css('display', 'none');
-  openModal();
-}
-
-const openModal = () => {
-  $modal.css('display', 'block');
-}
-const closeModal = () => {
-  $modal.css('display', 'none');
-}
 
 $
 $onePlayerBtn.on('click', ()=>{
