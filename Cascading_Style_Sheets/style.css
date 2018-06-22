@@ -1,5 +1,6 @@
 body {
   color: blue;
+  background: linear-gradient(red, yellow);
 }
 
 h1, #player2-health, #player1-health {
@@ -8,7 +9,7 @@ h1, #player2-health, #player1-health {
 }
 
 #container {
-  background: linear-gradient(red, yellow);
+  /* background: linear-gradient(red, yellow); */
   background-size: cover;
   height: 100%;
   width: 100%;

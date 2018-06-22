@@ -92,6 +92,7 @@ let player;
 
 //////////////////////////////////////////
 // All my functions go here
+
 // Win game function
 const winGame = (opponent) => {
   if (opponent.health <= 0){
@@ -116,8 +117,21 @@ const loseGame = (opponent) => {
     $player2Image.css('transform', 'translate(-400px, -150px)');
   }
 }
-// Attack functions for animations
-// Guy's attack
+
+// Check health/health bars functions
+
+const checkHealth = () => {
+  $player1Health.text(player1.health);
+  $player2Health.text(player2.health);
+  $player2Health.css('width', player2.health);
+  $player1Health.css('width', player1.health);
+}
+// Attack and shiled functions
+
+// Player 1's shields
+
+
+// Player 1's attack
 const player1Attack = (attacker, opponent, move) => {
   if (player === 2){
   const player1Rando = Math.random() * 1;
@@ -126,6 +140,9 @@ const player1Attack = (attacker, opponent, move) => {
     if (player1Rando < attacker.weapons.move1.accuracy){
     $attackText.text(attacker.name + ' has dealt ' + attacker.weapons.move1.power + ' damage to ' + opponent.name);
     opponent.health -= attacker.weapons.move1.power;
+    console.log(opponent);
+    console.log(attacker);
+    checkHealth();
     $player2Image.css('transform', 'rotate(20deg)')
     setTimeout(function(){$player2Image.css('transform', 'rotate(0)')}, 1000);
     $attackImage.attr('src', attacker.weapons.move1.attackImage);
@@ -139,6 +156,7 @@ const player1Attack = (attacker, opponent, move) => {
     if (player1Rando < attacker.weapons.move2.accuracy){
     $attackText.text(attacker.name + ' has dealt ' + attacker.weapons.move2.power + ' damage to ' + opponent.name);
     opponent.health -= attacker.weapons.move2.power;
+    checkHealth();
     $player2Image.css('transform', 'rotate(20deg)')
     setTimeout(function(){$player2Image.css('transform', 'rotate(0)')}, 1000);
     $attackImage.attr('src', attacker.weapons.move2.attackImage);
@@ -152,6 +170,7 @@ const player1Attack = (attacker, opponent, move) => {
   if (player1Rando < attacker.weapons.move3.accuracy){
     $attackText.text(attacker.name + ' has dealt ' + attacker.weapons.move3.power + ' damage to ' + opponent.name);
     opponent.health -= attacker.weapons.move3.power;
+    checkHealth();
     $player2Image.css('transform', 'rotate(20deg)')
     setTimeout(function(){$player2Image.css('transform', 'rotate(0)')}, 1000);
     $attackImage.attr('src', attacker.weapons.move3.attackImage)
@@ -165,6 +184,7 @@ const player1Attack = (attacker, opponent, move) => {
   if (player1Rando < attacker.weapons.move4.accuracy){
     $attackText.text(attacker.name + ' has dealt ' + attacker.weapons.move4.power + ' damage to ' + opponent.name);
     opponent.health -= attacker.weapons.move4.power;
+    checkHealth();
     $player2Image.css('transform', 'rotate(20deg)')
     setTimeout(function(){$player2Image.css('transform', 'rotate(0)')}, 1000);
     $attackImage.attr('src', attacker.weapons.move4.attackImage)
@@ -181,14 +201,14 @@ const player1Attack = (attacker, opponent, move) => {
     $attackImage.attr('src', attacker.weapons.move5.attackImage);
     setTimeout(function(){$attackImage.attr('src', '')}, 1000);
     attacker.health += attacker.weapons.move5.power;
-    $player1Health.text(attacker.health);
+    checkHealth();
     loseGame(player1);
   }
   else {
     console.log('miss');
     $attackText.text(attacker.name + '\'s shields short-circuited, ' + attacker.weapons.move5.misfire + ' health lost');
     attacker.health -= attacker.weapons.move5.misfire;
-    $player1Health.text(attacker.health);
+    checkHealth();
     $attackImage.css('transform', 'translate(0)');
     $attackImage.attr('src', attacker.weapons.move5.attackImageMiss);
     setTimeout(function(){$attackImage.attr('src', '')}, 1000);
@@ -197,11 +217,8 @@ const player1Attack = (attacker, opponent, move) => {
     break;
 }
 winGame(player2);
-$player2Health.text(player2.health);
 $player2Button.css('visibility', 'visible');
 $player1Button.css('visibility', 'hidden');
-$player2Health.css('width', player2.health);
-$player1Health.css('width', player1.health);
 }
 else {
   $player2Button.hide();
@@ -324,9 +341,7 @@ else {
   }
     break;
 }
-$player2Health.text(player2.health);
-$player2Health.css('width', player2.health);
-$player1Health.css('width', player1.health);
+checkHealth();
 }
 }
 ///////////////////////////////////
@@ -394,14 +409,12 @@ const player2Attack = (attacker, opponent, move) => {
     $attackImage.attr('src', attacker.weapons.move5.attackImage);
     setTimeout(function(){$attackImage.attr('src', '')}, 1000);
     attacker.health += 50;
-    $player2Health.text(attacker.health);
     loseGame(player1);
   }
   else {
     // console.log('miss');
     $attackText.text(attacker.name + '\'s shields short-circuited, 10 health lost');
     attacker.health -= 10;
-    $player2Health.text(attacker.health);
     $attackImage.css('transform', 'translate(0)');
     $attackImage.attr('src', attacker.weapons.move5.attackImageMiss);
     setTimeout(function(){$attackImage.attr('src', '')}, 1000);
@@ -409,12 +422,10 @@ const player2Attack = (attacker, opponent, move) => {
     }
     break;
 }
-loseGame(player1);
-$player1Health.text(player1.health);
 $player1Button.css('visibility', 'visible');
 $player2Button.css('visibility', 'hidden');
-$player2Health.css('width', player2.health);
-$player1Health.css('width', player1.health);
+checkHealth();
+loseGame(player1);
 }
 
 
@@ -470,23 +481,137 @@ const miss = (attacker) => {
 // Create my general fighter class here
 class Character {
   // health will be the same for both characters
-  constructor(name, health, rightFacingImage, leftFacingImage, overallPower, overallAccuracy, shield, weapons){
-    this.name = name
-    this.health = 400
-    this.rightFacingImage = rightFacingImage
-    this.leftFacingImage = leftFacingImage
-    this.overallPower = overallPower
-    this.overallAccuracy = overallAccuracy
-    this.shield = shield
-    this.weapons = weapons
+  constructor(characterObject){
+    this.name = characterObject.name
+    this.health = characterObject.health
+    this.rightFacingImage = characterObject.rightFacingImage
+    this.leftFacingImage = characterObject.leftFacingImage
+    this.overallPower = characterObject.overallPower
+    this.overallAccuracy = characterObject.overallAccuracy
+    this.shield = characterObject.shield
+    this.weapons = characterObject.weapons
   }
   // Attack methods that must do accuracy function, draw away health if hit, log message, and lead to an animation
-  attack(opponent, move){
-  }
 }
 
 ///////// Stock characters
-const guy = new Character('Guy', 400, 'images/Guy-Fighter.png', 'images/flipped-Guy-Fieri.png', 'power = 9', 'accuracy = 6', 'shield = 5', {
+// const guy = new Character('Guy', 400, 'images/Guy-Fighter.png', 'images/flipped-Guy-Fieri.png', 'power = 9', 'accuracy = 6', 'shield = 5', {
+//   move1: {
+//     name: 'donkey sauce',
+//     power: 50,
+//     accuracy: .7,
+//     attackImage: 'images/Donkey_Sauce.jpg'
+//   },
+//   move2: {
+//     name: 'frosted tip projectiles',
+//     power: 20,
+//     accuracy: .8,
+//     attackImage: 'images/frosted_tips.jpg'
+//   },
+//   move3: {
+//     name: 'bowling shirt flamethrower',
+//     power: 130,
+//     accuracy: .3,
+//     attackImage: 'images/Flamethrower.png'
+//   },
+//   move4: {
+//     name: 'alliterative show titles',
+//     power: 60,
+//     accuracy: .5,
+//     attackImage: 'images/alliteration.png'
+//   },
+//   move5: {
+//     name: 'shield',
+//     power: 50,
+//     misfire: 10,
+//     accuracy: .5,
+//     attackImage: 'images/Fieri_Shield.jpg',
+//     attackImageMiss: 'images/short_circuit.png'
+//   }
+// });
+//
+// const conan = new Character('Well Adjusted Adult', 400, 'images/flipped-conan.png', 'images/wellAdjustedAdult.png', 'power = 5', 'accuracy = 8', 'shield = 7', {
+//   move1: {
+//     name: 'health conscious food',
+//     power: 30,
+//     accuracy: .8,
+//     attackImage: 'images/healthy_food.jpg'
+//   },
+//   move2: {
+//     name: 'appropriate clothing',
+//     power: 10,
+//     accuracy: 1.0,
+//     attackImage:'images/suit.jpg'
+//   },
+//   move3: {
+//     name: 'midlife crisis antidote',
+//     power: 80,
+//     accuracy: .4,
+//     attackImage: 'images/Antidote.jpg'
+//   },
+//   move4: {
+//     name: 'good table manners',
+//     power: 40,
+//     accuracy: .5,
+//     attackImage: 'images/good_manners.jpg'
+//   },
+//   move5: {
+//     name: 'shield',
+//     power: 70,
+//     misfire: 20,
+//     accuracy: .5,
+//     attackImage: 'images/shield.png',
+//     attackImageMiss: 'images/short_circuit.png'
+//   }
+// });
+//
+// const pusheen = new Character('Pusheen the Cat', 400, 'images/pusheen-rightFacing.png', 'images/pusheen.png', 'power = 8', 'accuracy = 8', 'shield = 2', {
+//   move1: {
+//     name: 'hairball',
+//     power: 40,
+//     accuracy: .9,
+//     attackImage: 'images/hairball.png'
+//   },
+//   move2: {
+//     name: 'box sitting',
+//     power: 20,
+//     accuracy: 1.0,
+//     attackImage:'images/pusheen_in_a_box.jpg'
+//   },
+//   move3: {
+//     name: 'claws',
+//     power: 80,
+//     accuracy: .4,
+//     attackImage: 'images/claws.png'
+//   },
+//   move4: {
+//     name: 'love',
+//     power: 60,
+//     accuracy: .5,
+//     attackImage: 'images/love.png'
+//   },
+//   move5: {
+//     name: 'shield',
+//     power: 40,
+//     misfire: 20,
+//     accuracy: .5,
+//     attackImage: 'images/pusheen_shield.png',
+//     attackImageMiss: 'images/short_circuit.png'
+//   }
+// });
+
+
+const characterInfo = {};
+
+characterInfo.guy =
+{name: 'Guy',
+health: 400,
+rightFacingImage: 'images/Guy-Fighter.png',
+leftFacingImage: 'images/flipped-Guy-Fieri.png',
+overallPower: 'power = 9',
+overallAccuracy: 'accuracy = 6',
+shield: 'shield = 5',
+ weapons: {
   move1: {
     name: 'donkey sauce',
     power: 50,
@@ -519,44 +644,63 @@ const guy = new Character('Guy', 400, 'images/Guy-Fighter.png', 'images/flipped-
     attackImage: 'images/Fieri_Shield.jpg',
     attackImageMiss: 'images/short_circuit.png'
   }
-});
+}
+};
 
-const conan = new Character('Well Adjusted Adult', 400, 'images/flipped-conan.png', 'images/wellAdjustedAdult.png', 'power = 5', 'accuracy = 8', 'shield = 7', {
-  move1: {
-    name: 'health conscious food',
-    power: 30,
-    accuracy: .8,
-    attackImage: 'images/healthy_food.jpg'
-  },
-  move2: {
-    name: 'appropriate clothing',
-    power: 10,
-    accuracy: 1.0,
-    attackImage:'images/suit.jpg'
-  },
-  move3: {
-    name: 'midlife crisis antidote',
-    power: 80,
-    accuracy: .4,
-    attackImage: 'images/Antidote.jpg'
-  },
-  move4: {
-    name: 'good table manners',
-    power: 40,
-    accuracy: .5,
-    attackImage: 'images/good_manners.jpg'
-  },
-  move5: {
-    name: 'shield',
-    power: 70,
-    misfire: 20,
-    accuracy: .5,
-    attackImage: 'images/shield.png',
-    attackImageMiss: 'images/short_circuit.png'
+characterInfo.conan =
+{
+name: 'Well Adjusted Adult',
+health: 400,
+rightFacingImage: 'images/flipped-conan.png',
+leftFacingImage: 'images/wellAdjustedAdult.png',
+overallPower: 'power = 5',
+overallAccuracy: 'accuracy = 8',
+shield: 'shield = 7',
+weapons: {
+    move1: {
+      name: 'health conscious food',
+      power: 30,
+      accuracy: .8,
+      attackImage: 'images/healthy_food.jpg'
+    },
+    move2: {
+      name: 'appropriate clothing',
+      power: 10,
+      accuracy: 1.0,
+      attackImage:'images/suit.jpg'
+    },
+    move3: {
+      name: 'midlife crisis antidote',
+      power: 80,
+      accuracy: .4,
+      attackImage: 'images/Antidote.jpg'
+    },
+    move4: {
+      name: 'good table manners',
+      power: 40,
+      accuracy: .5,
+      attackImage: 'images/good_manners.jpg'
+    },
+    move5: {
+      name: 'shield',
+      power: 70,
+      misfire: 20,
+      accuracy: .5,
+      attackImage: 'images/shield.png',
+      attackImageMiss: 'images/short_circuit.png'
+    }
   }
-});
+}
 
-const pusheen = new Character('Pusheen the Cat', 400, 'images/pusheen-rightFacing.png', 'images/pusheen.png', 'power = 8', 'accuracy = 8', 'shield = 2', {
+characterInfo.pusheen =
+{name: 'Pusheen the Cat',
+health: 400,
+rightFacingImage: 'images/pusheen-rightFacing.png',
+leftFacingImage: 'images/pusheen.png',
+overallPower: 'power = 8',
+overallAccuracy: 'accuracy = 8',
+shield: 'shield = 2',
+weapons: {
   move1: {
     name: 'hairball',
     power: 40,
@@ -589,7 +733,16 @@ const pusheen = new Character('Pusheen the Cat', 400, 'images/pusheen-rightFacin
     attackImage: 'images/pusheen_shield.png',
     attackImageMiss: 'images/short_circuit.png'
   }
-});
+}
+}
+
+console.log(characterInfo);
+
+console.log(characterInfo.pusheen);
+
+console.log(characterInfo.conan);
+
+
 
 
 // commented this out for practice console.log(player2.weapons.midlifeCrisisAntidote.power);
@@ -816,25 +969,25 @@ $twoPlayerBtn.on('click', ()=>{
 
   $player1Select.on('click', ()=> {
     if (player === 1){
-      player1 = guy;
+      player1 = new Character(characterInfo.guy);
       if (randomPlayerSelector === 1){
-        player2 = conan;
+        player2 = new Character(characterInfo.conan);
         closeModal();
         populateBoard();
       }
       else {
-        player2 = pusheen;
+        new Character(characterInfo.pusheen);
         closeModal();
         populateBoard();
       }
     }
     else if (player === 2){
-      if (player1 === conan || player1 === guy || player1 === pusheen){
-        player2 = guy;
+      if (player1 !== undefined){
+        player2 = new Character(characterInfo.guy);
         populateBoard();
       }
       else {
-        player1 = guy;
+        player1 = new Character(characterInfo.guy);
       }
       $playerSelectorButtons.text('Player 2 Select');
     }
@@ -842,25 +995,25 @@ $twoPlayerBtn.on('click', ()=>{
 
   $player2Select.on('click', ()=> {
     if (player === 1){
-      player1 = conan;
+      player1 = new Character(characterInfo.conan);
       if (randomPlayerSelector === 1){
-        player2 = guy;
+        player2 = new Character(characterInfo.guy);
         closeModal();
         populateBoard();
       }
       else {
-        player2 = pusheen;
+        player2 = new Character(characterInfo.guy);
         closeModal();
         populateBoard();
       }
     }
     else if (player === 2){
-      if (player1 === conan || player1 === guy || player1 === pusheen){
-        player2 = conan;
+      if (player1 !== undefined){
+        player2 = new Character(characterInfo.conan);
         populateBoard();
       }
       else {
-        player1 = conan;
+        player1 = new Character(characterInfo.conan);
       }
       $playerSelectorButtons.text('Player 2 Select');
     }
@@ -869,25 +1022,25 @@ $twoPlayerBtn.on('click', ()=>{
   $player3Select.on('click', ()=> {
     console.log(randomPlayerSelector);
     if (player === 1){
-      player1 = pusheen;
+      player1 = new Character(characterInfo.pusheen);
       if (randomPlayerSelector === 1){
-        player2 = guy;
+        player2 = new Character(characterInfo.guy);
         closeModal();
         populateBoard();
       }
       else {
-        player2 = conan;
+        player2 = new Character(characterInfo.conan);
         closeModal();
         populateBoard();
       }
     }
     else if (player === 2){
-      if (player1 === conan || player1 === guy || player1 === pusheen){
-        player2 = pusheen;
+      if (player1 !== undefined){
+        player2 = new Character(characterInfo.pusheen);
         populateBoard();
       }
       else {
-        player1 = pusheen;
+        player1 = new Character(characterInfo.pusheen);
       }
       $playerSelectorButtons.text('Player 2 Select');
     }
