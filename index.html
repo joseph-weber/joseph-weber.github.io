@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="./css/main.css">
     <meta charset="utf-8">
     <title></title>
@@ -15,23 +13,65 @@
       <img src=""
     </div>
     <div class="app">
-      <img src="images/guyfighter.png" alt="image of guy fighter app">
+      <div id="myCarousel" class="carousel slide">
+
+        <ol class= "carousel-indicators">
+          <li data-target = "#myCarousel" data-slide-to = "0" class = "active"></li>
+          <li data-target = "#myCarousel" data-slide-to = "1"></li>
+          <li data-target = "#myCarousel" data-slide-to = "2"></li>
+        </ol>
+        <div class = "carousel-inner">
+          <div class = "item active">
+            <img src= "images/guy-fighter-menu.png" alt="Guy Main Screen" class= "img-responsive">
+            <div class = "carousel-caption">
+              <h3> Game Start </h3>
+            </div>
+          </div>
+
+          <div class = "item">
+            <img src= "images/guyfighter-character-select.png" alt="Guy Main Screen" class= "img-responsive">
+            <div class = "carousel-caption">
+              <h3> Character Select </h3>
+            </div>
+          </div>
+
+          <div class = "item">
+            <img src= "images/guyfighter.png" alt="Guy Main Screen" class= "img-responsive">
+            <div class = "carousel-caption">
+              <h3> Fight Screen </h3>
+            </div>
+          </div>
+        </div>
+        <a class = "carousel-control left" href = "#myCarousel" data-slide="prev">
+          <span class="icon-prev">
+        </a>
+        <a class = "carousel-control right" href = "#myCarousel" data-slide="next">
+          <span class="icon-next">
+        </a>
+      </div>
       <h2> Guy Fighter </h2>
       <p> A turn-based fighter created using javascript, jquery, HTML and CSS. </p>
-      <a href="https://guy-fighter.herokuapp.com/">Guy Fighter Website</a>
+      <a href="https://guy-fighter.herokuapp.com/"><button type="button" class="btn btn-primary">Guy Fighter App</button></a>
+    </div>
     </div>
     <div class="app">
+
       <img src="images/pawsibilities.png" alt="image of pawsibilities app">
       <h2> Pawsibilities Animal Shelter </h2>
       <p> A full CRUD app for a fictional animal shelter. Used the MEN (MongoDB, Express and Node,js) stack with user authentication and related models </p>
-      <a href="https://floating-cliffs-55244.herokuapp.com/">Pawsibilities Website</a>
+      <a href="https://floating-cliffs-55244.herokuapp.com/"><button type="button" class="btn btn-primary">Pawsibilities App</button></a>
     </div>
     <div class="app">
       <img src="images/rentR.png" alt="image of rentR website">
       <h2> RentR </h2>
       <p> A group project with Austyn Heinlein and Andrea Croak. We created a full CRUD MEAN(MongoDB, Express, Angular and Node.js) app for a fictional realty website. The website uses dropdown menu search functionality, partials and full user authentication. </p>
-      <a href="https://mighty-bayou-92141.herokuapp.com/">Rentr Website</a>
+      <a href="https://mighty-bayou-92141.herokuapp.com/"><button type="button" class="btn btn-primary">RentR App</button></a>
     </div>
+
+    <script src = "http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js" charset="utf-8"></script>
+
+<script>
 
   </body>
 </html>

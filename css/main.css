@@ -36,9 +36,34 @@ p {
   margin: 20px auto;
 }
 
-.app img {
+img {
   width: 50%;
   margin: 0 auto;
   height: auto;
   box-shadow: 0 0 10px grey;
+}
+
+#myCarousel img {
+  width: 100%;
+  margin: 0 auto;
+  height: 203px;
+  box-shadow: 0 0 10px grey;
+}
+
+#myCarousel {
+  margin: 0 auto;
+  width: 50%;
+}
+
+#myCarousel li {
+  background: black;
+}
+
+
+
+#myCarousel h3 {
+display: inline;
+background: black;
+color: white;
+border-radius: 20px;
 }
