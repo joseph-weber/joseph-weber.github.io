@@ -12,6 +12,7 @@
 body {
   background-color: snow;
   color: #333333;
+  font-family: 'Jua', sans-serif;
 }
 .container {
   margin: 0 auto;
@@ -91,4 +92,50 @@ display: inline;
 background: black;
 color: white;
 border-radius: 20px;
+}
+
+header {
+  background: url('../images/st_pete.jpg') no-repeat center center fixed;
+  background-size: cover;
+  height: 900px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+header img {
+  width: 20%;
+  height: 20%;
+  border-radius: 50%;
+  border: 2px solid whitesmoke;
+}
+
+header h1 {
+  font-size: 60px;
+}
+
+.headerDiv {
+  width: 50%;
+  color: whitesmoke;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  background-color: #333333;
+  color: whitesmoke;
+}
+
+.aboutMe {
+  text-align: center;
+  margin: 80px auto;
+}
+
+.aboutMe p {
+  font-size: 30px;
 }
