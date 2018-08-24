@@ -161,7 +161,36 @@
       <a href="https://floating-cliffs-55244.herokuapp.com/"><button type="button" class="btn btn-primary">Pawsibilities App</button></a>
     </div>
     <div class="app">
-      <img src="images/rentR.png" alt="image of rentR website">
+      <div id="rentrCarousel" class="carousel slide">
+
+        <ol class= "carousel-indicators">
+          <li data-target = "#rentrCarousel" data-slide-to = "0" class = "active"></li>
+          <li data-target = "#rentrCarousel" data-slide-to = "1"></li>
+          <li data-target = "#rentrCarousel" data-slide-to = "2"></li>
+        </ol>
+        <div class = "carousel-inner">
+          <div class = "item active">
+            <img src="images/rentR.png" alt="image of rentR website" class= "img-responsive">
+            <div class = "carousel-caption">
+              <h3> RentR Main Page </h3>
+            </div>
+          </div>
+
+          <div class = "item">
+            <img src= "images/rentr_show.png" alt="rentr show page" class= "img-responsive">
+            <div class = "carousel-caption">
+              <h3> Property Show Page </h3>
+            </div>
+          </div>
+
+          <div class = "item">
+              <img src="images/rentr_form.png" alt="image of rentR form" class= "img-responsive">
+            <div class = "carousel-caption">
+              <h3> RentR Form Page </h3>
+            </div>
+          </div>
+        </div>
+      </div>
       <h2> RentR </h2>
       <p> A group project with Austyn Heinlein and Andrea Croak. We created a full CRUD MEAN(MongoDB, Express, Angular and Node.js) app for a fictional realty website. The website uses dropdown menu search functionality, partials and full user authentication. </p>
       <a href="https://mighty-bayou-92141.herokuapp.com/"><button type="button" class="btn btn-primary">RentR App</button></a>
