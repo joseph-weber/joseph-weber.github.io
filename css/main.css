@@ -131,6 +131,12 @@ nav {
   color: whitesmoke;
 }
 
+nav div {
+  width: 32%;
+  display: flex;
+  justify-content: center;
+}
+
 .aboutMe {
   text-align: center;
   margin: 80px auto;
