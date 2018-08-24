@@ -139,3 +139,25 @@ nav {
 .aboutMe p {
   font-size: 30px;
 }
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  background-color: #333333;
+  color: whitesmoke;
+  border: 1px solid black;
+}
+
+footer div {
+  width: 48%;
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  border: 1px solid black;
+}
+
+
+footer a {
+  font-size: 30px;
+  color: whitesmoke;
+}
