@@ -12,8 +12,39 @@
 body {
   background-color: snow;
   color: #333333;
-  font-family: 'Jua', sans-serif;
+  font-family: 'Ubuntu', sans-serif;
 }
+
+
+.typewriter h1 {
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid snow; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em; /* Adjust as needed */
+  animation-delay: 3.5s;
+  animation:
+    typing 3.5s steps(40, end),
+    blink-caret .75s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: snow; }
+}
+
+nav a {
+  font-size: 30px;
+  color: whitesmoke;
+}
+
 .container {
   margin: 0 auto;
   display: flex;
@@ -78,21 +109,20 @@ img {
   background: black;
 }
 
+#rentrCarousel li {
+  background: black;
+}
 
 
-#myCarousel h3 {
+
+
+h3 {
 display: inline;
 background: black;
 color: white;
 border-radius: 20px;
 }
 
-#pawsCarousel h3 {
-display: inline;
-background: black;
-color: white;
-border-radius: 20px;
-}
 
 header {
   background: url('../images/st_pete.jpg') no-repeat center center fixed;
@@ -135,6 +165,10 @@ nav div {
   width: 32%;
   display: flex;
   justify-content: center;
+}
+
+button {
+  margin-top: 10px;
 }
 
 .aboutMe {
