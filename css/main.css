@@ -229,3 +229,23 @@ footer a {
   font-size: 30px;
   color: whitesmoke;
 }
+
+#modal_1 {
+  display: none;
+}
+
+#modal_2 {
+  display: none;
+}
+
+#modal_3 {
+  display: none;
+}
+
+#modal_4 {
+  display: none;
+}
+
+#modal_5 {
+  display: none;
+}

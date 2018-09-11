@@ -6,6 +6,8 @@
     <link rel="shortcut icon" type="image/png" href="/favicon.png"/>
 <link rel="shortcut icon" type="image/png" href="https://i.ytimg.com/vi/QAgy9r331v0/hqdefault.jpg"/>
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+       <script src="./js/app.js"></script>
 <link rel="stylesheet" href="./css/main.css">
     <meta charset="utf-8">
     <title></title>
@@ -30,205 +32,261 @@
       </div>
       <h1>|</h1>
       <div>
-        <a href="https://joseph-weber.github.io/#myApps"><h1>My Projects</h1></a>
+        <a id="to_apps" href="https://joseph-weber.github.io/#myApps"><h1>My Projects</h1></a>
       </div>
       <h1>|</h1>
       <div>
         <a href="https://joseph-weber.github.io/#linkedIn"><h1>GitHub and LinkedIn</h1></a>
       </div>
     </nav>
-    <div id="aboutMe" class="aboutMe">
-      <p>Hello, my name is Joseph Weber and I am a full-stack web-developer. I have experience working with React.js, Node.js, Ruby on Rails and SQL database. I am an eager learner who would love to work for a dynamic and driven team.</p>
+    <div id="main-content">
+      <div id="aboutMe" class="aboutMe">
+        <p>Hello, my name is Joseph Weber and I am a full-stack web-developer. I have experience working with React.js, Node.js, Ruby on Rails and SQL database. I am an eager learner who would love to work for a dynamic and driven team.</p>
+      </div>
+      <div id="myApps" class="myApps">
+        <div class="app">
+          <div id="philanthropediaCarousel" class="carousel slide">
+
+            <ol class= "carousel-indicators">
+              <li data-target = "#philanthropediaCarousel" data-slide-to = "0" class = "active"></li>
+              <li data-target = "#philanthropediaCarousel" data-slide-to = "1"></li>
+              <li data-target = "#philanthropediaCarousel" data-slide-to = "2"></li>
+            </ol>
+            <div class = "carousel-inner">
+              <div id="carousel" class = "item active">
+                <img src= "images/phil_landing.png" alt="Philanthropedia Main Page" class= "img-responsive">
+                <div class = "carousel-caption">
+                  <h3> Philanthropedia Main Page </h3>
+                </div>
+              </div>
+
+              <div class = "item">
+                <img src= "images/phil_index.png" alt="Philanthropedia Search" class= "img-responsive">
+                <div class = "carousel-caption">
+                  <h3> Philanthropedia Search </h3>
+                </div>
+              </div>
+
+              <div class = "item">
+                <img src= "images/phil_crises.png" alt="Philanthropedia Crises Show" class= "img-responsive">
+                <div class = "carousel-caption">
+                  <h3> Philanthropedia Crises Show </h3>
+                </div>
+              </div>
+            </div>
+          </div>
+          <h2> Philanthropedia Search </h2>
+          <p> Philanthropedia is an app for finding a charity based on your search criteria. It is a React/Ruby on Rails interacting with a SQL database. </p>
+          <a href="https://philanthropedia.herokuapp.com/"><button type="button" class="btn btn-primary">Philanthropedia App</button></a>
+          <button id="project1" type="button" class="btn btn-primary">App Info</button>
+        </div>
+        <div id="#project2" class="app">
+          <div id="quitterCarousel" class="carousel slide">
+
+            <ol class= "carousel-indicators">
+              <li data-target = "#quitterCarousel" data-slide-to = "0" class = "active"></li>
+              <li data-target = "#quitterCarousel" data-slide-to = "1"></li>
+              <li data-target = "#quitterCarousel" data-slide-to = "2"></li>
+            </ol>
+            <div class = "carousel-inner">
+              <div class = "item active">
+                <img src= "images/quitter_index.png" alt="Philanthropedia Main Page" class= "img-responsive">
+                <div class = "carousel-caption">
+                  <h3> Quitter Main Page </h3>
+                </div>
+              </div>
+
+              <div class = "item">
+                <img src= "images/quitter_user_showpage.png" alt="Quitter user show" class= "img-responsive">
+                <div class = "carousel-caption">
+                  <h3> Quitter User Show </h3>
+                </div>
+              </div>
+
+              <div class = "item">
+                <img src= "images/quitter_post_show.png" alt="Quitter Post Show" class= "img-responsive">
+                <div class = "carousel-caption">
+                  <h3> Quitter Post Show </h3>
+                </div>
+              </div>
+            </div>
+          </div>
+          <h2> Quitter </h2>
+          <p> Quitter is a twitter clone built with a React front-end and a Ruby on Rails backend. </p>
+          <a href="https://quitter-app.herokuapp.com/"><button type="button" class="btn btn-primary">Quitter App</button></a>
+          <button id="project2" type="button" class="btn btn-primary">App Info</button>
+        </div>
+
+        <div id="#project3" class="app">
+          <div id="myCarousel" class="carousel slide">
+
+            <ol class= "carousel-indicators">
+              <li data-target = "#myCarousel" data-slide-to = "0" class = "active"></li>
+              <li data-target = "#myCarousel" data-slide-to = "1"></li>
+              <li data-target = "#myCarousel" data-slide-to = "2"></li>
+            </ol>
+            <div class = "carousel-inner">
+              <div class = "item active">
+                <img src= "images/guy-fighter-menu.png" alt="Guy Main Screen" class= "img-responsive">
+                <div class = "carousel-caption">
+                  <h3> Game Start </h3>
+                </div>
+              </div>
+
+              <div class = "item">
+                <img src= "images/guyfighter-character-select.png" alt="Guy Main Screen" class= "img-responsive">
+                <div class = "carousel-caption">
+                  <h3> Character Select </h3>
+                </div>
+              </div>
+
+              <div class = "item">
+                <img src= "images/guyfighter.png" alt="Guy Main Screen" class= "img-responsive">
+                <div class = "carousel-caption">
+                  <h3> Fight Screen </h3>
+                </div>
+              </div>
+            </div>
+
+            <!-- <a class = "carousel-control left" href = "#myCarousel" data-slide="prev">
+              <span class="icon-prev">
+            </a>
+            <a class = "carousel-control right" href = "#myCarousel" data-slide="next">
+              <span class="icon-next">
+            </a> -->
+          </div>
+          <h2> Guy Fighter </h2>
+          <p> A turn-based fighter created using javascript, jquery, HTML and CSS. </p>
+          <a href="https://guy-fighter.herokuapp.com/"><button type="button" class="btn btn-primary">Guy Fighter App</button></a>
+          <button id="project3" type="button" class="btn btn-primary">App Info</button>
+        </div>
+        <div id="#project4" class="app">
+          <div id="pawsCarousel" class="carousel slide">
+
+            <ol class= "carousel-indicators">
+              <li data-target = "#pawsCarousel" data-slide-to = "0" class = "active"></li>
+              <li data-target = "#pawsCarousel" data-slide-to = "1"></li>
+              <li data-target = "#pawsCarousel" data-slide-to = "2"></li>
+            </ol>
+            <div class = "carousel-inner">
+              <div class = "item active">
+                <img src= "images/pawsibilities.png" alt="Paw Main Screen" class= "img-responsive">
+                <div class = "carousel-caption">
+                  <h3> Pawsibilities Main Page </h3>
+                </div>
+              </div>
+
+              <div class = "item">
+                <img src= "images/paws-strays.png" alt="Guy Main Screen" class= "img-responsive">
+                <div class = "carousel-caption">
+                  <h3> Character Select </h3>
+                </div>
+              </div>
+
+              <div class = "item">
+                <img src= "images/paws-events.png" alt="Guy Main Screen" class= "img-responsive">
+                <div class = "carousel-caption">
+                  <h3> Fight Screen </h3>
+                </div>
+              </div>
+            </div>
+          </div>
+          <h2> Pawsibilities Animal Shelter </h2>
+          <p> A full CRUD app for a fictional animal shelter. Used the MEN (MongoDB, Express and Node,js) stack with user authentication and related models </p>
+          <a href="https://floating-cliffs-55244.herokuapp.com/"><button type="button" class="btn btn-primary">Pawsibilities App</button></a>
+          <button id="project4" type="button" class="btn btn-primary">App Info</button>
+        </div>
+        <div id="#project5" class="app">
+          <div id="rentrCarousel" class="carousel slide">
+
+            <ol class= "carousel-indicators">
+              <li data-target = "#rentrCarousel" data-slide-to = "0" class = "active"></li>
+              <li data-target = "#rentrCarousel" data-slide-to = "1"></li>
+              <li data-target = "#rentrCarousel" data-slide-to = "2"></li>
+            </ol>
+            <div class = "carousel-inner">
+              <div class = "item active">
+                <img src="images/rentR.png" alt="image of rentR website" class= "img-responsive">
+                <div class = "carousel-caption">
+                  <h3> RentR Main Page </h3>
+                </div>
+              </div>
+
+              <div class = "item">
+                <img src= "images/rentr_show.png" alt="rentr show page" class= "img-responsive">
+                <div class = "carousel-caption">
+                  <h3> Property Show Page </h3>
+                </div>
+              </div>
+
+              <div class = "item">
+                  <img src="images/rentr_form.png" alt="image of rentR form" class= "img-responsive">
+                <div class = "carousel-caption">
+                  <h3> RentR Form Page </h3>
+                </div>
+              </div>
+            </div>
+          </div>
+          <h2> RentR </h2>
+          <p> A group project with Austyn Heinlein and Andrea Croak. We created a full CRUD MEAN(MongoDB, Express, Angular and Node.js) app for a fictional realty website. The website uses dropdown menu search functionality, partials and full user authentication. </p>
+          <a href="https://mighty-bayou-92141.herokuapp.com/"><button type="button" class="btn btn-primary">RentR App</button></a>
+          <button id="project5" type="button" class="btn btn-primary">App Info</button>
+        </div>
+      </div>
+  </div>
+    <div id="modal_1">
+        <div class="app">
+          <h1> Philanthropedia </h1>
+          <h2> App Description </h2>
+          <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <h2> Technologies Used </h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <button id="close_1">Close</button>
+
+        </div>
     </div>
-    <div id="myApps" class="myApps">
-      <div class="app">
-        <div id="philanthropediaCarousel" class="carousel slide">
+    <div id="modal_2">
+        <div class="app">
+          <h1> Quitter </h1>
+          <h2> App Description </h2>
+          <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <h2> Technologies Used </h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <button id="close_2">Close</button>
 
-          <ol class= "carousel-indicators">
-            <li data-target = "#philanthropediaCarousel" data-slide-to = "0" class = "active"></li>
-            <li data-target = "#philanthropediaCarousel" data-slide-to = "1"></li>
-            <li data-target = "#philanthropediaCarousel" data-slide-to = "2"></li>
-          </ol>
-          <div class = "carousel-inner">
-            <div id="carousel" class = "item active">
-              <img src= "images/phil_landing.png" alt="Philanthropedia Main Page" class= "img-responsive">
-              <div class = "carousel-caption">
-                <h3> Philanthropedia Main Page </h3>
-              </div>
-            </div>
-
-            <div class = "item">
-              <img src= "images/phil_index.png" alt="Philanthropedia Search" class= "img-responsive">
-              <div class = "carousel-caption">
-                <h3> Philanthropedia Search </h3>
-              </div>
-            </div>
-
-            <div class = "item">
-              <img src= "images/phil_crises.png" alt="Philanthropedia Crises Show" class= "img-responsive">
-              <div class = "carousel-caption">
-                <h3> Philanthropedia Crises Show </h3>
-              </div>
-            </div>
-          </div>
         </div>
-        <h2> Philanthropedia Search </h2>
-        <p> Philanthropedia is an app for finding a charity based on your search criteria. It is a React/Ruby on Rails interacting with a SQL database. </p>
-        <a href="https://philanthropedia.herokuapp.com/"><button type="button" class="btn btn-primary">Philanthropedia App</button></a>
-        <a href="#"><button type="button" class="btn btn-primary">App Info</button></a>
-      </div>
-      <div class="app">
-        <div id="quitterCarousel" class="carousel slide">
+    </div>
+    <div id="modal_3">
+        <div class="app">
+          <h1> Quitter </h1>
+          <h2> App Description </h2>
+          <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <h2> Technologies Used </h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <button id="close_3">Close</button>
 
-          <ol class= "carousel-indicators">
-            <li data-target = "#quitterCarousel" data-slide-to = "0" class = "active"></li>
-            <li data-target = "#quitterCarousel" data-slide-to = "1"></li>
-            <li data-target = "#quitterCarousel" data-slide-to = "2"></li>
-          </ol>
-          <div class = "carousel-inner">
-            <div class = "item active">
-              <img src= "images/quitter_index.png" alt="Philanthropedia Main Page" class= "img-responsive">
-              <div class = "carousel-caption">
-                <h3> Quitter Main Page </h3>
-              </div>
-            </div>
-
-            <div class = "item">
-              <img src= "images/quitter_user_showpage.png" alt="Quitter user show" class= "img-responsive">
-              <div class = "carousel-caption">
-                <h3> Quitter User Show </h3>
-              </div>
-            </div>
-
-            <div class = "item">
-              <img src= "images/quitter_post_show.png" alt="Quitter Post Show" class= "img-responsive">
-              <div class = "carousel-caption">
-                <h3> Quitter Post Show </h3>
-              </div>
-            </div>
-          </div>
         </div>
-        <h2> Quitter </h2>
-        <p> Quitter is a twitter clone built with a React front-end and a Ruby on Rails backend. </p>
-        <a href="https://quitter-app.herokuapp.com/"><button type="button" class="btn btn-primary">Quitter App</button></a>
-        <a href="#"><button type="button" class="btn btn-primary">App Info</button></a>
-      </div>
+    </div>
+    <div id="modal_4">
+        <div class="app">
+          <h1> Quitter </h1>
+          <h2> App Description </h2>
+          <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <h2> Technologies Used </h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <button id="close_4">Close</button>
 
-      <div class="app">
-        <div id="myCarousel" class="carousel slide">
-
-          <ol class= "carousel-indicators">
-            <li data-target = "#myCarousel" data-slide-to = "0" class = "active"></li>
-            <li data-target = "#myCarousel" data-slide-to = "1"></li>
-            <li data-target = "#myCarousel" data-slide-to = "2"></li>
-          </ol>
-          <div class = "carousel-inner">
-            <div class = "item active">
-              <img src= "images/guy-fighter-menu.png" alt="Guy Main Screen" class= "img-responsive">
-              <div class = "carousel-caption">
-                <h3> Game Start </h3>
-              </div>
-            </div>
-
-            <div class = "item">
-              <img src= "images/guyfighter-character-select.png" alt="Guy Main Screen" class= "img-responsive">
-              <div class = "carousel-caption">
-                <h3> Character Select </h3>
-              </div>
-            </div>
-
-            <div class = "item">
-              <img src= "images/guyfighter.png" alt="Guy Main Screen" class= "img-responsive">
-              <div class = "carousel-caption">
-                <h3> Fight Screen </h3>
-              </div>
-            </div>
-          </div>
-
-          <!-- <a class = "carousel-control left" href = "#myCarousel" data-slide="prev">
-            <span class="icon-prev">
-          </a>
-          <a class = "carousel-control right" href = "#myCarousel" data-slide="next">
-            <span class="icon-next">
-          </a> -->
         </div>
-        <h2> Guy Fighter </h2>
-        <p> A turn-based fighter created using javascript, jquery, HTML and CSS. </p>
-        <a href="https://guy-fighter.herokuapp.com/"><button type="button" class="btn btn-primary">Guy Fighter App</button></a>
-        <a href="#"><button type="button" class="btn btn-primary">App Info</button></a>
-      </div>
-      <div class="app">
-        <div id="pawsCarousel" class="carousel slide">
-
-          <ol class= "carousel-indicators">
-            <li data-target = "#pawsCarousel" data-slide-to = "0" class = "active"></li>
-            <li data-target = "#pawsCarousel" data-slide-to = "1"></li>
-            <li data-target = "#pawsCarousel" data-slide-to = "2"></li>
-          </ol>
-          <div class = "carousel-inner">
-            <div class = "item active">
-              <img src= "images/pawsibilities.png" alt="Paw Main Screen" class= "img-responsive">
-              <div class = "carousel-caption">
-                <h3> Pawsibilities Main Page </h3>
-              </div>
-            </div>
-
-            <div class = "item">
-              <img src= "images/paws-strays.png" alt="Guy Main Screen" class= "img-responsive">
-              <div class = "carousel-caption">
-                <h3> Character Select </h3>
-              </div>
-            </div>
-
-            <div class = "item">
-              <img src= "images/paws-events.png" alt="Guy Main Screen" class= "img-responsive">
-              <div class = "carousel-caption">
-                <h3> Fight Screen </h3>
-              </div>
-            </div>
-          </div>
+    </div>
+    <div id="modal_5">
+        <div class="app">
+          <h1> Quitter </h1>
+          <h2> App Description </h2>
+          <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <h2> Technologies Used </h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <button id="close_5">Close</button>
         </div>
-        <h2> Pawsibilities Animal Shelter </h2>
-        <p> A full CRUD app for a fictional animal shelter. Used the MEN (MongoDB, Express and Node,js) stack with user authentication and related models </p>
-        <a href="https://floating-cliffs-55244.herokuapp.com/"><button type="button" class="btn btn-primary">Pawsibilities App</button></a>
-        <a href="#"><button type="button" class="btn btn-primary">App Info</button></a>
-      </div>
-      <div class="app">
-        <div id="rentrCarousel" class="carousel slide">
-
-          <ol class= "carousel-indicators">
-            <li data-target = "#rentrCarousel" data-slide-to = "0" class = "active"></li>
-            <li data-target = "#rentrCarousel" data-slide-to = "1"></li>
-            <li data-target = "#rentrCarousel" data-slide-to = "2"></li>
-          </ol>
-          <div class = "carousel-inner">
-            <div class = "item active">
-              <img src="images/rentR.png" alt="image of rentR website" class= "img-responsive">
-              <div class = "carousel-caption">
-                <h3> RentR Main Page </h3>
-              </div>
-            </div>
-
-            <div class = "item">
-              <img src= "images/rentr_show.png" alt="rentr show page" class= "img-responsive">
-              <div class = "carousel-caption">
-                <h3> Property Show Page </h3>
-              </div>
-            </div>
-
-            <div class = "item">
-                <img src="images/rentr_form.png" alt="image of rentR form" class= "img-responsive">
-              <div class = "carousel-caption">
-                <h3> RentR Form Page </h3>
-              </div>
-            </div>
-          </div>
-        </div>
-        <h2> RentR </h2>
-        <p> A group project with Austyn Heinlein and Andrea Croak. We created a full CRUD MEAN(MongoDB, Express, Angular and Node.js) app for a fictional realty website. The website uses dropdown menu search functionality, partials and full user authentication. </p>
-        <a href="https://mighty-bayou-92141.herokuapp.com/"><button type="button" class="btn btn-primary">RentR App</button></a>
-        <a href="#"><button type="button" class="btn btn-primary">App Info</button></a>
-      </div>
     </div>
     <footer id="linkedIn">
     <div class="button">
@@ -245,10 +303,6 @@
     </div>
   </footer>
 
-    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-<script>
 
   </body>
 </html>
