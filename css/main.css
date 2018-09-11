@@ -249,3 +249,9 @@ footer a {
 #modal_5 {
   display: none;
 }
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
