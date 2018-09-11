@@ -59,6 +59,11 @@ footer h2:hover {
   color: #333333;
 }
 
+.competency {
+  height: auto;
+  width: 100px;
+}
+
 .container {
   margin: 0 auto;
   display: flex;
@@ -250,8 +255,28 @@ footer a {
   display: none;
 }
 
+#main-content {
+  display: none;
+}
+
+#my_image {
+  width: 20%;
+}
+
 ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
+}
+
+.navImg {
+  width: 300px;
+  height: auto;
+  margin: 10px 0;
+}
+
+#navImages {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
