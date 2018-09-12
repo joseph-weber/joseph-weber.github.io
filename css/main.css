@@ -158,7 +158,7 @@ border-radius: 20px;
 
 
 header {
-  background: url('../images/st_pete.jpg') no-repeat center center fixed;
+  background: url('../images/st_pete.png') no-repeat center center fixed;
   background-size: cover;
   height: 900px;
   display: flex;
@@ -270,7 +270,7 @@ ul {
 }
 
 .navImg {
-  width: 300px;
+  width: 150px;
   height: auto;
   margin: 10px 0;
 }
