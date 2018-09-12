@@ -42,7 +42,7 @@ $(()=> {
  const $closeModal_1Fnc = () => {
    $main.css("display", "block");
    $modal_1.css("display", "none");
-   $about.css("display", "block");
+   $about.css("display", "none");
  }
  //modal 2 Quitter
  const $openModal_2Fnc = () => {
@@ -53,7 +53,7 @@ $(()=> {
  const $closeModal_2Fnc = () => {
    $main.css("display", "block");
    $modal_2.css("display", "none");
-   $about.css("display", "block");
+   $about.css("display", "none");
  }
  //modal 3 Guy-Fighter
  const $openModal_3Fnc = () => {
@@ -64,7 +64,7 @@ $(()=> {
  const $closeModal_3Fnc = () => {
    $main.css("display", "block");
    $modal_3.css("display", "none");
-   $about.css("display", "block");
+   $about.css("display", "none");
  }
  //modal 4 Pawsibilities
  const $openModal_4Fnc = () => {
@@ -75,7 +75,7 @@ $(()=> {
  const $closeModal_4Fnc = () => {
    $main.css("display", "block");
    $modal_4.css("display", "none");
-   $about.css("display", "block");
+   $about.css("display", "none");
  }
 
  //modal 5 Rentr
@@ -87,7 +87,7 @@ $(()=> {
  const $closeModal_5Fnc = () => {
    $main.css("display", "block");
    $modal_5.css("display", "none");
-   $about.css("display", "block");
+   $about.css("display", "none");
  }
 
  const $project_Fnc = () => {
