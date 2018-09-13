@@ -21,6 +21,7 @@ $(()=> {
   const $modal_5 = $('#modal_5');
   const $closeModal_5 = $('#close_5');
   //main content - Main
+  const $portfolio = $('#projects');
   const $main = $('#main-content');
   //about me - about me
   const $about = $('#aboutMe');
@@ -29,74 +30,93 @@ $(()=> {
   // about button
   const $aboutButton = $('#aboutButton');
   // all modals
-  const $allModals = $('.modal');
+  const $allModals = $('#modals');
 
 
   //Event Handlers
  //modal 1 Philanthropedia
  const $openModal_1Fnc = () => {
-   $modal_1.css("display", "block");
-   $main.css("display", "none");
+   $modal_1.css({"display": "flex", "flex-direction"
+   : "column", "justify-content": "center", "align-items": "center", "text-align": "center", "box-shadow": "0 0 10px gray", "margin": "30px", "background": "rgba(125, 125, 125, 0.2)"});
+   $portfolio.css("display", "none");
    $about.css("display", "none");
  }
  const $closeModal_1Fnc = () => {
-   $main.css("display", "block");
+   $portfolio.css({"display": "flex", "flex-flow"
+   : "wrap", "justify-content": "center"});
    $modal_1.css("display", "none");
    $about.css("display", "none");
  }
  //modal 2 Quitter
  const $openModal_2Fnc = () => {
-   $modal_2.css("display", "block");
-   $main.css("display", "none");
+   $modal_2.css({"display": "flex", "flex-direction"
+   : "column", "justify-content": "center", "align-items": "center", "text-align": "center", "box-shadow": "0 0 10px gray", "margin": "30px", "background": "rgba(125, 125, 125, 0.2)"});
+   $portfolio.css("display", "none");
+   $portfolio.css("display", "none");
    $about.css("display", "none");
  }
  const $closeModal_2Fnc = () => {
-   $main.css("display", "block");
+   $portfolio.css({"display": "flex", "flex-flow"
+   : "wrap", "justify-content": "center"});
    $modal_2.css("display", "none");
    $about.css("display", "none");
  }
  //modal 3 Guy-Fighter
  const $openModal_3Fnc = () => {
-   $modal_3.css("display", "block");
-   $main.css("display", "none");
+   $modal_3.css({"display": "flex", "flex-direction"
+   : "column", "justify-content": "center", "align-items": "center", "text-align": "center", "box-shadow": "0 0 10px gray", "margin": "30px", "background": "rgba(125, 125, 125, 0.2)"});
+   $portfolio.css("display", "none");
+   $portfolio.css("display", "none");
    $about.css("display", "none");
  }
  const $closeModal_3Fnc = () => {
-   $main.css("display", "block");
+   $portfolio.css({"display": "flex", "flex-flow"
+   : "wrap", "justify-content": "center"});
    $modal_3.css("display", "none");
    $about.css("display", "none");
  }
  //modal 4 Pawsibilities
  const $openModal_4Fnc = () => {
-   $modal_4.css("display", "block");
-   $main.css("display", "none");
+   $modal_4.css({"display": "flex", "flex-direction"
+   : "column", "justify-content": "center", "align-items": "center", "text-align": "center", "box-shadow": "0 0 10px gray", "margin": "30px", "background": "rgba(125, 125, 125, 0.2)"});
+   $portfolio.css("display", "none");
+   $portfolio.css("display", "none");
    $about.css("display", "none");
  }
  const $closeModal_4Fnc = () => {
-   $main.css("display", "block");
+   $portfolio.css({"display": "flex", "flex-flow"
+   : "wrap", "justify-content": "center"});
    $modal_4.css("display", "none");
    $about.css("display", "none");
  }
 
  //modal 5 Rentr
  const $openModal_5Fnc = () => {
-   $modal_5.css("display", "block");
-   $main.css("display", "none");
+   $modal_5.css({"display": "flex", "flex-direction"
+   : "column", "justify-content": "center", "align-items": "center", "text-align": "center", "box-shadow": "0 0 10px gray", "margin": "30px", "background": "rgba(125, 125, 125, 0.2)"});
+   $portfolio.css("display", "none");
    $about.css("display", "none");
  }
  const $closeModal_5Fnc = () => {
-   $main.css("display", "block");
+   $portfolio.css({"display": "flex", "flex-flow"
+   : "wrap", "justify-content": "center"});
    $modal_5.css("display", "none");
    $about.css("display", "none");
  }
 
  const $project_Fnc = () => {
-   $main.css("display", "block");
+   $portfolio.css({"display": "flex", "flex-flow"
+   : "wrap", "justify-content": "center"});
    $about.css("display", "none");
+   $modal_1.css("display", "none");
+   $modal_2.css("display", "none");
+   $modal_3.css("display", "none");
+   $modal_4.css("display", "none");
+   $modal_5.css("display", "none");
  }
 
  const $about_Fnc = () => {
-   $main.css("display", "none");
+   $portfolio.css("display", "none");
    $about.css("display", "block");
    $modal_1.css("display", "none");
    $modal_2.css("display", "none");

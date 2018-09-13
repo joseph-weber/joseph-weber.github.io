@@ -72,29 +72,23 @@ footer h2:hover {
   margin: 0 auto;
 }
 
-.app {
+.main-content {
   display: flex;
-  flex-direction: column;
-  width: 70%;
-  margin: 50px auto;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-  border: 5px solid black;
-  padding: 20px;
+  flex-flow: row;
 }
+
 
 p {
   width: 50%;
   margin: 20px auto;
 }
 
-.app img {
+/* .app img {
   min-width: 50%;
   max-width: 100%;
   margin: 0 auto;
   box-shadow: 0 0 10px grey;
-}
+} */
 
 #philanthropediaCarousel {
   display: flex;
@@ -188,6 +182,7 @@ header h1 {
 }
 
 nav {
+  width: 100%;
   display: flex;
   justify-content: space-around;
   background-color: #333333;
@@ -235,6 +230,18 @@ footer a {
   color: whitesmoke;
 }
 
+#main {
+  display: flex;
+  flex-direction: column;
+}
+
+#projects {
+  display: none;
+}
+
+#modal {
+  display: none;
+}
 #modal_1 {
   display: none;
 }
@@ -256,7 +263,7 @@ footer a {
 }
 
 #main-content {
-  display: none;
+  display: block;
 }
 
 #my_image {
@@ -279,4 +286,63 @@ ul {
   display: flex;
   justify-content: space-around;
   align-items: center;
+}
+
+
+
+.card img {
+  height: 320px;
+}
+
+.card {
+  background: rgba(122, 122, 122, .1);
+  margin: 10px 20px;
+  width: 150%;
+  position: relative;
+  padding: 10px;
+}
+
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.card a {
+  display: block;
+  position: absolute;
+  bottom: 10px;
+  text-align: center;
+}
+
+
+
+
+.modals {
+  background: rgba(122, 122, 122, .5);
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  height: 700px;
+  margin: 50px auto;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+  width: 30%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+
+.carousel {
+  width: 70%;
+}
+.carousel-inner {
+  margin: 0 auto;
+  width: 70%;
+  height: 400px;
+}
+
+/* Add some padding inside the card container */
+.containered {
+    padding: 2px 16px;
 }
